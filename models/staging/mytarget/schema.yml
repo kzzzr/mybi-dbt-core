@@ -1,0 +1,19 @@
+version: 2
+
+models:
+    - name: stg_mt_campaigns
+      tests:
+          - not_null:
+              column_name: "[Идентификатор кампании]"
+    - name: stg_mt_banners
+      tests:
+          - not_null:
+              column_name: "[Идентификатор объявления]"
+    - name: stg_mt_campaigns_facts
+      tests:
+          - not_null:
+              column_name: "[Идентификатор кампании]"
+    - name: stg_mt_banners_facts
+      tests:
+          - not_null:
+              column_name: "[Идентификатор объявления]"

@@ -1,0 +1,7 @@
+target/
+logs/
+.DS_Store
+dbt_modules/
+dbt_modules/dbt_utils/
+audit/
+models/data_audit/

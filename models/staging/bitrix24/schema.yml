@@ -1,0 +1,49 @@
+version: 2
+
+models:
+    - name: stg_b24_leads_facts
+      tests:
+          - not_null:
+              column_name: "[Идентификатор лида]"
+    - name: stg_b24_deals_facts
+      tests:
+          - not_null:
+              column_name: "[Идентификатор сделки]"
+    - name: stg_b24_products_facts
+      tests:
+          - not_null:
+              column_name: "[Идентификатор товара]"
+    - name: stg_b24_users
+      tests:
+          - not_null:
+              column_name: "[Идентификатор пользователя]"
+    - name: stg_b24_deals
+      tests:
+          - not_null:
+              column_name: "[Идентификатор сделки]"
+    - name: stg_b24_contacts
+      tests:
+          - not_null:
+              column_name: "[Идентификатор контакта]"
+    - name: stg_b24_companies
+      tests:
+          - not_null:
+              column_name: "[Идентификатор компании]"
+    - name: stg_b24_products
+      tests:
+          - not_null:
+              column_name: "[Идентификатор товара]"
+    - name: stg_b24_leads
+      tests:
+          - not_null:
+              column_name: "[Идентификатор лида]"
+
+              
+              
+              
+                            
+              
+              
+              
+              
+              

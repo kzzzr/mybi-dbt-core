@@ -1,0 +1,23 @@
+version: 2
+
+models:
+    - name: stg_fb_campaigns
+      tests:
+          - not_null:
+              column_name: "[Идентификатор кампании]"
+    - name: stg_fb_adsets
+      tests:
+          - not_null:
+              column_name: "[Идентификатор набора объявлений]"
+    - name: stg_fb_ads
+      tests:
+          - not_null:
+              column_name: "[Идентификатор объявления]"
+    - name: stg_fb_creatives
+      tests:
+          - not_null:
+              column_name: "[Идентификатор креатива]"
+    - name: stg_fb_ads_facts
+      tests:
+          - not_null:
+              column_name: "[Идентификатор подключенного аккаунта]"

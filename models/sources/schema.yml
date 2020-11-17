@@ -1,0 +1,344 @@
+version: 2
+
+sources:
+    - name: metrika
+      database: "{{ var('mybi_database') }}"
+      schema: "{{ var('mybi_schema') }}"
+      tags: ['metrika']
+      tables:
+        - name: custom_facts
+          identifier: "{{ var('mybi_table_metrika_custom') }}"
+          columns:
+              - name: "[Идентификатор записи]"
+                tests:
+                    - not_null        
+        - name: sessions_facts
+          identifier: "ЯМ Посещения сайта"
+          columns:
+              - name: "[Идентификатор подключенного аккаунта]"
+                tests:
+                    - not_null
+        - name: devices
+          identifier: "ЯМ Параметры устройств"
+          columns:
+              - name: "[Идентификатор типа устройства]"
+                tests:
+                    - not_null
+        - name: goals
+          identifier: "ЯМ Параметры целей"
+          columns:
+              - name: "[Идентификатор цели]"
+                tests:
+                    - not_null
+        - name: goals_facts
+          identifier: "ЯМ Достигнутые цели"
+          columns:
+              - name: "[Идентификатор подключенного аккаунта]"
+                tests:
+                    - not_null
+        - name: purchases
+          identifier: "ЯМ Параметры заказов"
+          columns:
+              - name: "[Идентификатор покупки]"
+                tests:
+                    - not_null
+        - name: purchases_facts
+          identifier: "ЯМ Оформленные заказы"
+          columns:
+              - name: "[Идентификатор подключенного аккаунта]"
+                tests:
+                    - not_null
+
+    - name: direct
+      database: "{{ var('mybi_database') }}"
+      schema: "{{ var('mybi_schema') }}"
+      tags: ['direct']
+      tables:
+        - name: campaigns
+          identifier: "ЯД Параметры кампаний"
+          columns:
+              - name: "[Идентификатор подключенного аккаунта]"
+                tests:
+                    - not_null
+        - name: adgroups
+          identifier: "ЯД Параметры групп объявлений"
+          columns:
+              - name: "[Идентификатор подключенного аккаунта]"
+                tests:
+                    - not_null
+        - name: ads
+          identifier: "ЯД Параметры объявлений"
+          columns:
+              - name: "[Идентификатор подключенного аккаунта]"
+                tests:
+                    - not_null
+        - name: ads_facts
+          identifier: "ЯД Статистика по объявлениям"
+          columns:
+              - name: "[Идентификатор подключенного аккаунта]"
+                tests:
+                    - not_null                  
+
+    - name: gaw
+      database: "{{ var('mybi_database') }}"
+      schema: "{{ var('mybi_schema') }}"
+      tags: ['gaw']
+      tables:
+        - name: campaigns
+          identifier: "GAW Параметры кампаний"
+          columns:
+              - name: "[Идентификатор кампании]"
+                tests:
+                    - not_null
+        - name: adgroups
+          identifier: "GAW Параметры групп"
+          columns:
+              - name: "[Идентификатор группы объявлений]"
+                tests:
+                    - not_null
+        - name: ads
+          identifier: "GAW Параметры объявлений"
+          columns:
+              - name: "[Идентификатор объявлений]"
+                tests:
+                    - not_null
+        - name: keywords
+          identifier: "GAW Параметры ключевых слов"
+          columns:
+              - name: "[Идентификатор ключевого слова]"
+                tests:
+                    - not_null
+        - name: ads_facts
+          identifier: "GAW Статистика по объявлениям"
+          columns:
+              - name: "[Идентификатор подключенного аккаунта]"
+                tests:
+                    - not_null
+        - name: keywords_facts
+          identifier: "GAW Статистика по ключевым словам"
+          columns:
+              - name: "[Идентификатор подключенного аккаунта]"
+                tests:
+                    - not_null                   
+
+    - name: facebook
+      database: "{{ var('mybi_database') }}"
+      schema: "{{ var('mybi_schema') }}"
+      tags: ['facebook']
+      tables:
+        - name: campaigns
+          identifier: "FB Параметры кампаний"
+          columns:
+              - name: "[Идентификатор кампании]"
+                tests:
+                    - not_null
+        - name: adsets
+          identifier: "FB Параметры наборов"
+          columns:
+              - name: "[Идентификатор набора объявлений]"
+                tests:
+                    - not_null
+        - name: ads
+          identifier: "FB Параметры объявлений"
+          columns:
+              - name: "[Идентификатор объявления]"
+                tests:
+                    - not_null
+        - name: creatives
+          identifier: "FB Параметры креативов"
+          columns:
+              - name: "[Идентификатор креатива]"
+                tests:
+                    - not_null
+        - name: ads_facts
+          identifier: "FB Статистика по объявлениям"
+          columns:
+              - name: "[Идентификатор подключенного аккаунта]"
+                tests:
+                    - not_null
+
+    - name: mytarget
+      database: "{{ var('mybi_database') }}"
+      schema: "{{ var('mybi_schema') }}"
+      tags: ['mytarget']      
+      tables:
+        - name: campaigns
+          identifier: "MT Параметры кампаний"
+          columns:
+              - name: "[Идентификатор кампании]"
+                tests:
+                    - not_null                    
+        - name: banners
+          identifier: "MT Параметры объявлений"
+          columns:
+              - name: "[Идентификатор объявления]"
+                tests:
+                    - not_null                    
+        - name: campaigns_facts
+          identifier: "MT Статистика по кампаниям"
+          columns:
+              - name: "[Идентификатор кампании]"
+                tests:
+                    - not_null                    
+        - name: banners_facts
+          identifier: "MT Статистика по объявлениям"
+          columns:
+              - name: "[Идентификатор объявления]"
+                tests:
+                    - not_null                    
+
+    - name: bitrix24
+      database: "{{ var('mybi_database') }}"
+      schema: "{{ var('mybi_schema') }}"
+      tags: ['bitrix24']      
+      tables:
+        - name: leads_facts
+          identifier: "B24 Полученные лиды"
+          columns:
+              - name: "[Идентификатор лида]"
+                tests:
+                    - not_null                       
+        - name: deals_facts
+          identifier: "B24 Оформленные сделки"
+          columns:
+              - name: "[Идентификатор сделки]"
+                tests:
+                    - not_null                       
+        - name: products_facts
+          identifier: "B24 Проданные товары"
+          columns:
+              - name: "[Идентификатор товара]"
+                tests:
+                    - not_null                       
+        - name: users
+          identifier: "B24 Параметры пользователей"
+          columns:
+              - name: "[Идентификатор пользователя]"
+                tests:
+                    - not_null                       
+        - name: deals
+          identifier: "B24 Параметры сделок"
+          columns:
+              - name: "[Идентификатор сделки]"
+                tests:
+                    - not_null                       
+        - name: contacts
+          identifier: "B24 Параметры контактов"
+          columns:
+              - name: "[Идентификатор контакта]"
+                tests:
+                    - not_null                       
+        - name: companies
+          identifier: "B24 Параметры компаний"
+          columns:
+              - name: "[Идентификатор компании]"
+                tests:
+                    - not_null                       
+        - name: products
+          identifier: "B24 Параметры товаров"
+          columns:
+              - name: "[Идентификатор товара]"
+                tests:
+                    - not_null                       
+        - name: leads
+          identifier: "B24 Параметры лидов"
+          columns:
+              - name: "[Идентификатор лида]"
+                tests:
+                    - not_null  
+
+    - name: amocrm
+      database: "{{ var('mybi_database') }}"
+      schema: "{{ var('mybi_schema') }}"
+      tags: ['amocrm']      
+      tables:
+        - name: leads_facts
+          identifier: "AMO Сделки"
+          columns:
+              - name: "[Идентификатор сделки]"
+                tests:
+                    - not_null                     
+        - name: users
+          identifier: "AMO Параметры пользователей"
+          columns:
+              - name: "[Идентификатор пользователя]"
+                tests:
+                    - not_null                     
+        - name: leads
+          identifier: "AMO Параметры сделок"
+          columns:
+              - name: "[Идентификатор сделки]"
+                tests:
+                    - not_null          
+        - name: contacts
+          identifier: "AMO Параметры контактов"
+          columns:
+              - name: "[Идентификатор контакта]"
+                tests:
+                    - not_null          
+        - name: companies
+          identifier: "AMO Параметры компаний"
+          columns:
+              - name: "[Идентификатор компании]"
+                tests:
+                    - not_null          
+        - name: leads_info
+          identifier: "AMO Дополнительные параметры сделок"
+          columns:
+              - name: "[Идентификатор сделки]"
+                tests:
+                    - not_null          
+        - name: leads_tags
+          identifier: "AMO Метки сделок"
+          columns:
+              - name: "[Идентификатор сделки]"
+                tests:
+                    - not_null                    
+                    
+    - name: general
+      database: "{{ var('mybi_database') }}"
+      schema: "{{ var('mybi_schema') }}"
+      tags: ['amocrm']
+      tables:
+        - name: clientids
+          identifier: "SHD Параметры посетителей"
+          columns:
+              - name: "[Идентификатор клиента]"
+                tests:
+                    - not_null                      
+        - name: dates
+          identifier: "SHD Параметры дат"
+          columns:
+              - name: "[Идентификатор даты]"
+                tests:
+                    - not_null                      
+        - name: traffic
+          identifier: "SHD Параметры трафика"
+          columns:
+              - name: "[Идентификатор источника трафика]"
+                tests:
+                    - not_null                      
+        - name: locations
+          identifier: "SHD Параметры местоположений"
+          columns:
+              - name: "[Идентификатор местоположения]"
+                tests:
+                    - not_null                      
+        - name: sites
+          identifier: "SHD Параметры сайтов"
+          columns:
+              - name: "[Идентификатор сайта]"
+                tests:
+                    - not_null                      
+        - name: accounts
+          identifier: "SHD Параметры источников данных"
+          columns:
+              - name: "[Идентификатор записи]"
+                tests:
+                    - not_null                      
+        - name: costs_facts
+          identifier: "SHD Статистика по расходам"
+          columns:
+              - name: "[Идентификатор подключенного аккаунта]"
+                tests:
+                    - not_null

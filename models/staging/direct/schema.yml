@@ -1,0 +1,23 @@
+version: 2
+
+models:
+    - name: stg_yd_campaigns
+      tests:
+          - not_null:
+              column_name: "[Идентификатор кампании]"
+    - name: stg_yd_adgroups
+      tests:
+          - not_null:
+              column_name: "[Идентификатор группы объявлений]"
+    - name: stg_yd_ads
+      tests:
+          - not_null:
+              column_name: "[Идентификатор объявления]"
+    - name: stg_yd_ads_facts
+      tests:
+          - not_null:
+              column_name: "[Идентификатор подключенного аккаунта]"
+    - name: stg_yd_keywords_facts
+      tests:
+          - not_null:
+              column_name: "[Идентификатор подключенного аккаунта]"

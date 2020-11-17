@@ -1,0 +1,27 @@
+version: 2
+
+models:
+    - name: stg_gaw_campaigns
+      tests:
+          - not_null:
+              column_name: "[Идентификатор кампании]"
+    - name: stg_gaw_adgroups
+      tests:
+          - not_null:
+              column_name: "[Идентификатор группы объявлений]"
+    - name: stg_gaw_ads
+      tests:
+          - not_null:
+              column_name: "[Идентификатор объявлений]"
+    - name: stg_gaw_keywords
+      tests:
+          - not_null:
+              column_name: "[Идентификатор ключевого слова]"
+    - name: stg_gaw_ads_facts
+      tests:
+          - not_null:
+              column_name: "[Идентификатор подключенного аккаунта]"
+    - name: stg_gaw_keywords_facts
+      tests:
+          - not_null:
+              column_name: "[Идентификатор подключенного аккаунта]"

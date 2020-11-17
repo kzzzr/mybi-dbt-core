@@ -30,8 +30,24 @@ quoting:
     database: True
     schema: True
     identifier: True
-
     
+vars:
+    mybi_database: mybi-fyiupzo
+    mybi_schema: dbo
+    mybi_table_metrika_custom: "ЯМ YM.2P_CONVERSIONS"
+
+    account_id_b24: "19646"
+    account_id_direct: "18789"
+    account_id_facebook: "18787"
+    account_id_adwords: "18790, 18798"
+    account_id_metrika: "18795"
+    account_id_mytarget: "18799"
+    
+    caption_metrika: 'metrika'
+    caption_direct: 'yandex'
+    caption_adwords: 'google'                    
+    caption_facebook: 'facebook' 
+
 # Configuring models
 # Full documentation: https://docs.getdbt.com/docs/configuring-models
 
@@ -40,4 +56,32 @@ quoting:
 # using the `{{ config(...) }}` macro.
 models:
     mybi_dbt_core:
-        materialized: view
+        +materialized: view
+        +enabled: true       
+        staging:
+            +materialized: view
+            +schema: staging
+            +tags: ["staging"]
+            metrika:
+                +tags: ["metrika"]
+            direct:
+                +tags: ["direct"]
+            gaw:
+                +tags: ["gaw"]
+            facebook:
+                +tags: ["facebook"]
+            mytarget:
+                +tags: ["mytarget"]
+            bitrix24:
+                +tags: ["bitrix24"]
+            general:
+                +tags: ["general"]
+        aux:
+            +enabled: false 
+            +materialized: table
+            +schema: aux
+            +tags: ["aux"]
+        marts:
+            +enabled: false
+            +materialized: table
+            +ags: ["marts"]                    
