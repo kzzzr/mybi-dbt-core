@@ -17,7 +17,3 @@ models:
       tests:
           - not_null:
               column_name: "[Идентификатор подключенного аккаунта]"
-    - name: stg_yd_keywords_facts
-      tests:
-          - not_null:
-              column_name: "[Идентификатор подключенного аккаунта]"

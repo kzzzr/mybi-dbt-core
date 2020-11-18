@@ -76,12 +76,12 @@ models:
                 +tags: ["bitrix24"]
             general:
                 +tags: ["general"]
-        aux:
-            +enabled: false 
-            +materialized: table
-            +schema: aux
-            +tags: ["aux"]
-        marts:
-            +enabled: false
-            +materialized: table
-            +ags: ["marts"]                    
+        # aux:
+        #     +enabled: false 
+        #     +materialized: table
+        #     +schema: aux
+        #     +tags: ["aux"]
+        # marts:
+        #     +enabled: false
+        #     +materialized: table
+        #     +tags: ["marts"]                    
