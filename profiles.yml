@@ -1,0 +1,17 @@
+config:
+    send_anonymous_usage_stats: False
+    use_colors: True
+    partial_parse: True
+
+mybi_dbt_core:
+  target: core
+  outputs:
+    core:
+      type: sqlserver
+      driver: 'ODBC Driver 17 for SQL Server'
+      server: "{{ env_var('DBT_MSSQL_SERVER') }}"
+      port: 1433
+      user: "{{ env_var('DBT_MSSQL_USER') }}"
+      password: "{{ env_var('DBT_MSSQL_PASSWORD') }}"
+      database: "{{ env_var('DBT_MSSQL_DATABASE') }}"
+      schema: "{{ env_var('DBT_MSSQL_SCHEMA') }}"
