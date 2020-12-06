@@ -1,0 +1,31 @@
+version: 2
+
+models:
+    - name: stg_amo_companies
+      tests:
+          - not_null:
+              column_name: "[Идентификатор компании]"
+    - name: stg_amo_contacts
+      tests:
+          - not_null:
+              column_name: "[Идентификатор контакта]"
+    - name: stg_amo_leads
+      tests:
+          - not_null:
+              column_name: "[Идентификатор сделки]"
+    - name: stg_amo_leads_facts
+      tests:
+          - not_null:
+              column_name: "[Идентификатор сделки]"
+    - name: stg_amo_leads_info
+      tests:
+          - not_null:
+              column_name: "[Идентификатор сделки]"
+    - name: stg_amo_leads_tags
+      tests:
+          - not_null:
+              column_name: "[Идентификатор сделки]"
+    - name: stg_amo_users
+      tests:
+          - not_null:
+              column_name: "[Идентификатор пользователя]"
