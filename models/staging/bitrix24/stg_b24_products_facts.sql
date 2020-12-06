@@ -28,7 +28,7 @@ SELECT
 FROM {{ source('bitrix24', 'products_facts') }}
 
 WHERE 1=1
-	AND [Идентификатор подключенного аккаунта] = {{ account_id }}
+	AND [Идентификатор подключенного аккаунта] in ({{ account_id }})
 
 )
 
