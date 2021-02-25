@@ -52,8 +52,12 @@ SELECT
 	, CAST(ISNULL([ym:s:goal47798275reaches], 0) AS FLOAT) AS [Отправка формы Бронирование примерочной]
 
 FROM {{ source('metrika', 'custom_facts') }}
-WHERE 1=1
-	AND [Идентификатор подключенного аккаунта] in ({{ account_id }})
+
+{{ filter_rows(
+    account_id=var('account_id_metrika'),
+    last_number_of_days=true, 
+    ts_field='[Дата отчета]'
+) }}
 
 ),
 

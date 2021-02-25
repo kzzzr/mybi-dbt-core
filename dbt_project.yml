@@ -32,10 +32,11 @@ quoting:
     identifier: True
     
 vars:
+    filter_days_of_data: 3
     mybi_dbt_core:
-        # mybi_database: mybi-fyiupzo
-        # mybi_schema: dbo
-        # mybi_table_metrika_custom: "ЯМ YM.2P_CONVERSIONS"
+        mybi_database: mybi-fyiupzo
+        mybi_schema: dbo
+        mybi_table_metrika_custom: "ЯМ YM.2P_CONVERSIONS"
 
         account_id_b24: "19646"
         account_id_direct: "18789"

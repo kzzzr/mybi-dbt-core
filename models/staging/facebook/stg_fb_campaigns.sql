@@ -4,8 +4,6 @@
     })
 }}
 
-{% set account_id = var('account_id_facebook') %}
-
 with source as (
 
 SELECT
@@ -22,8 +20,11 @@ SELECT
 
 FROM {{ source('facebook', 'campaigns') }}
 
-WHERE 1=1
-	AND [Идентификатор подключенного аккаунта] in ( {{ account_id }} )
+{{ filter_rows(
+    account_id=var('account_id_facebook'),
+    last_number_of_days=false, 
+    ts_field=none
+) }}
 
 )
 
