@@ -14,22 +14,25 @@ jobs:
   dbt_ci:    
     services:
       mssql:
-        image: mcr.microsoft.com/mssql/server:2017-latest
+        image: mcr.microsoft.com/mssql/server:2019-latest
         env:
-          - ACCEPT_EULA=Y      
-          - SA_PASSWORD=sa
+          ACCEPT_EULA: Y
+          SA_PASSWORD: P@ssword
         ports:
           - 1433:1433
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: wait for services to start up
+        run: sleep 30
       - name: dbt mssql action
         uses: kzzzr/mybi-dbt-action@v1
         env:
           DBT_MSSQL_TARGET: ci
-          DBT_MSSQL_SERVER: localhost
+          DBT_MSSQL_SERVER: mssql
           DBT_MSSQL_USER: sa
-          DBT_MSSQL_PASSWORD: sa
-          DBT_MSSQL_DATABASE: sa
-          GITHUB_PR_NUMBER: ${{ github.event.number }}
-        
+          DBT_MSSQL_PASSWORD: P@ssword
+          DBT_MSSQL_DATABASE: master
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v3
+        if: ${{ failure() }}
