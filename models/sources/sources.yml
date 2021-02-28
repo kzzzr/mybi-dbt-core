@@ -2,16 +2,10 @@ version: 2
 
 sources:
     - name: metrika
-      database: "{{ var('mybi_database') }}"
-      schema: "{{ var('mybi_schema') }}"
+      database: "{{ env_var('DBT_MSSQL_DATABASE') }}"
+      schema: "{{ env_var('DBT_MSSQL_SCHEMA') }}"
       tags: ['metrika']
-      tables:
-        - name: custom_facts
-          identifier: "{{ var('mybi_table_metrika_custom') }}"
-          columns:
-              - name: "[Идентификатор записи]"
-                tests:
-                    - not_null        
+      tables:   
         - name: sessions_facts
           identifier: "ЯМ Посещения сайта"
           columns:
@@ -50,8 +44,8 @@ sources:
                     - not_null
 
     - name: direct
-      database: "{{ var('mybi_database') }}"
-      schema: "{{ var('mybi_schema') }}"
+      database: "{{ env_var('DBT_MSSQL_DATABASE') }}"
+      schema: "{{ env_var('DBT_MSSQL_SCHEMA') }}"
       tags: ['direct']
       tables:
         - name: campaigns
@@ -80,8 +74,8 @@ sources:
                     - not_null                  
 
     - name: gaw
-      database: "{{ var('mybi_database') }}"
-      schema: "{{ var('mybi_schema') }}"
+      database: "{{ env_var('DBT_MSSQL_DATABASE') }}"
+      schema: "{{ env_var('DBT_MSSQL_SCHEMA') }}"
       tags: ['gaw']
       tables:
         - name: campaigns
@@ -122,8 +116,8 @@ sources:
                     - not_null                   
 
     - name: facebook
-      database: "{{ var('mybi_database') }}"
-      schema: "{{ var('mybi_schema') }}"
+      database: "{{ env_var('DBT_MSSQL_DATABASE') }}"
+      schema: "{{ env_var('DBT_MSSQL_SCHEMA') }}"
       tags: ['facebook']
       tables:
         - name: campaigns
@@ -158,8 +152,8 @@ sources:
                     - not_null
 
     - name: mytarget
-      database: "{{ var('mybi_database') }}"
-      schema: "{{ var('mybi_schema') }}"
+      database: "{{ env_var('DBT_MSSQL_DATABASE') }}"
+      schema: "{{ env_var('DBT_MSSQL_SCHEMA') }}"
       tags: ['mytarget']      
       tables:
         - name: campaigns
@@ -188,8 +182,8 @@ sources:
                     - not_null                    
 
     - name: bitrix24
-      database: "{{ var('mybi_database') }}"
-      schema: "{{ var('mybi_schema') }}"
+      database: "{{ env_var('DBT_MSSQL_DATABASE') }}"
+      schema: "{{ env_var('DBT_MSSQL_SCHEMA') }}"
       tags: ['bitrix24']      
       tables:
         - name: leads_facts
@@ -248,8 +242,8 @@ sources:
                     - not_null  
 
     - name: amocrm
-      database: "{{ var('mybi_database') }}"
-      schema: "{{ var('mybi_schema') }}"
+      database: "{{ env_var('DBT_MSSQL_DATABASE') }}"
+      schema: "{{ env_var('DBT_MSSQL_SCHEMA') }}"
       tags: ['amocrm']      
       tables:
         - name: leads_facts
@@ -296,8 +290,8 @@ sources:
                     - not_null                    
                     
     - name: general
-      database: "{{ var('mybi_database') }}"
-      schema: "{{ var('mybi_schema') }}"
+      database: "{{ env_var('DBT_MSSQL_DATABASE') }}"
+      schema: "{{ env_var('DBT_MSSQL_SCHEMA') }}"
       tags: ['amocrm']
       tables:
         - name: clientids
