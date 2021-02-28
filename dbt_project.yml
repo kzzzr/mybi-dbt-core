@@ -54,12 +54,6 @@ vars:
         caption_bitrix24: 'bitrix24' 
         caption_amocrm: 'amocrm' 
 
-# Configuring models
-# Full documentation: https://docs.getdbt.com/docs/configuring-models
-
-# In this example config, we tell dbt to build all models in the example/ directory
-# as tables. These settings can be overridden in the individual model files
-# using the `{{ config(...) }}` macro.
 models:
     mybi_dbt_core:
         +materialized: view
@@ -84,12 +78,3 @@ models:
                 +tags: ["amocrm"]
             general:
                 +tags: ["general"]
-        # aux:
-        #     +enabled: false 
-        #     +materialized: table
-        #     +schema: aux
-        #     +tags: ["aux"]
-        # marts:
-        #     +enabled: false
-        #     +materialized: table
-        #     +tags: ["marts"]                    
