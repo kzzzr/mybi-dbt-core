@@ -1,0 +1,27 @@
+version: 2
+
+models:
+    - name: stg_ym_devices
+      tests:
+          - not_null:
+              column_name: "[Идентификатор типа устройства]"
+    - name: stg_ym_goals
+      tests:
+          - not_null:
+              column_name: "[Идентификатор цели]"
+    - name: stg_ym_goals_facts
+      tests:
+          - not_null:
+              column_name: "[Идентификатор подключенного аккаунта]"
+    - name: stg_ym_purchases
+      tests:
+          - not_null:
+              column_name: "[Идентификатор покупки]"
+    - name: stg_ym_purchases_facts
+      tests:
+          - not_null:
+              column_name: "[Идентификатор подключенного аккаунта]"
+    - name: stg_ym_sessions_facts
+      tests:
+          - not_null:
+              column_name: "[Идентификатор подключенного аккаунта]"
