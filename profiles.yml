@@ -6,7 +6,7 @@ config:
 mybi_dbt_core:
   target: "{{ env_var('DBT_MSSQL_TARGET') }}"
   outputs:
-    ci:
+    core_ci:
       type: sqlserver
       driver: 'ODBC Driver 17 for SQL Server'
       server: "{{ env_var('DBT_MSSQL_SERVER') }}"
@@ -14,4 +14,4 @@ mybi_dbt_core:
       user: "{{ env_var('DBT_MSSQL_USER') }}"
       password: "{{ env_var('DBT_MSSQL_PASSWORD') }}"
       database: "{{ env_var('DBT_MSSQL_DATABASE') }}"
-      schema: ci
+      schema: "{{ env_var('DBT_MSSQL_TARGET') }}"

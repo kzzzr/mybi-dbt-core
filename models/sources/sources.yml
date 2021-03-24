@@ -12,6 +12,18 @@ sources:
               - name: "[Идентификатор подключенного аккаунта]"
                 tests:
                     - not_null
+        - name: goals_facts
+          identifier: "ЯМ Достигнутые цели"
+          columns:
+              - name: "[Идентификатор подключенного аккаунта]"
+                tests:
+                    - not_null
+        - name: purchases_facts
+          identifier: "ЯМ Оформленные заказы"
+          columns:
+              - name: "[Идентификатор подключенного аккаунта]"
+                tests:
+                    - not_null
         - name: devices
           identifier: "ЯМ Параметры устройств"
           columns:
@@ -24,22 +36,10 @@ sources:
               - name: "[Идентификатор цели]"
                 tests:
                     - not_null
-        - name: goals_facts
-          identifier: "ЯМ Достигнутые цели"
-          columns:
-              - name: "[Идентификатор подключенного аккаунта]"
-                tests:
-                    - not_null
         - name: purchases
           identifier: "ЯМ Параметры заказов"
           columns:
               - name: "[Идентификатор покупки]"
-                tests:
-                    - not_null
-        - name: purchases_facts
-          identifier: "ЯМ Оформленные заказы"
-          columns:
-              - name: "[Идентификатор подключенного аккаунта]"
                 tests:
                     - not_null
 
@@ -292,7 +292,7 @@ sources:
     - name: general
       database: "{{ env_var('DBT_MSSQL_DATABASE') }}"
       schema: "{{ env_var('DBT_MSSQL_SCHEMA') }}"
-      tags: ['amocrm']
+      tags: ['general']
       tables:
         - name: clientids
           identifier: "SHD Параметры посетителей"

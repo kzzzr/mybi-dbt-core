@@ -26,13 +26,13 @@ quoting:
 vars:
     filter_days_of_data: 3
     mybi_dbt_core:
-        account_id_b24: "19646"
-        account_id_direct: "18789"
-        account_id_facebook: "18787"
-        account_id_adwords: "18790, 18798"
-        account_id_metrika: "18795"
-        account_id_mytarget: "18799"
-        account_id_amocrm: "20652"        
+        account_id_metrika: null
+        account_id_b24: null
+        account_id_direct: null
+        account_id_facebook: null
+        account_id_adwords: null
+        account_id_mytarget: null
+        account_id_amocrm: null        
         caption_metrika: 'metrika'
         caption_direct: 'yandex'
         caption_adwords: 'google'                    
@@ -45,10 +45,11 @@ models:
     mybi_dbt_core:
         +materialized: view
         +enabled: true       
+        
         staging:
-            +materialized: view
             +schema: staging
             +tags: ["staging"]
+        
             metrika:
                 +tags: ["metrika"]
             direct:
