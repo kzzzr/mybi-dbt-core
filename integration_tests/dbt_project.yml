@@ -1,0 +1,55 @@
+name: 'mybi_dbt_core_integration_tests'
+version: '1.0.0'
+config-version: 2
+
+require-dbt-version: [">=0.19.0", "<0.20.0"]
+
+profile: 'mybi_dbt_core'
+
+source-paths: ["models"]
+test-paths: ["tests"]
+data-paths: ["data"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+target-path: "target"
+clean-targets:       
+    - "target"
+    - "dbt_modules"
+
+quoting:
+    database: True
+    schema: True
+    identifier: True
+    
+vars:
+    filter_days_of_data: 3
+    mybi_dbt_core:
+        account_id_metrika: "21600"
+
+        account_id_b24: "19646"
+        account_id_direct: "18789"
+        account_id_facebook: "18787"
+        account_id_adwords: "18790, 18798"
+        account_id_mytarget: "18799"
+        account_id_amocrm: "20652"   
+
+        caption_metrika: 'metrika'
+        caption_direct: 'yandex'
+        caption_adwords: 'google'                    
+        caption_facebook: 'facebook' 
+        caption_mytarget: 'mytarget' 
+        caption_bitrix24: 'bitrix24' 
+        caption_amocrm: 'amocrm' 
+
+seeds:
+  +quote_columns: true  
+  mybi_dbt_core_integration_tests:
+    
+    metrika:
+        
+    general:
+        "SHD Параметры трафика":
+            +column_types:
+                "Кампания": varchar(256)
+                "Источник": varchar(256)

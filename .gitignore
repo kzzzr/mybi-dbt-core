@@ -6,3 +6,5 @@ dbt_modules/dbt_utils/
 audit/
 models/data_audit/
 integration_tests/.user.yml
+integration_tests/profiles.yml
+.gitignore
