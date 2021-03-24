@@ -25,10 +25,12 @@ jobs:
       - uses: actions/checkout@v2
       - name: wait for services to start up
         run: sleep 30
+      - name: cd to integration tests
+        run: cp ./profiles.yml ./integration_tests/ && cd ./integration_tests
       - name: dbt mssql action
         uses: kzzzr/mybi-dbt-action@v1
         env:
-          DBT_MSSQL_TARGET: ci
+          DBT_MSSQL_TARGET: core_ci
           DBT_MSSQL_SERVER: mssql
           DBT_MSSQL_USER: sa
           DBT_MSSQL_PASSWORD: P@ssword
