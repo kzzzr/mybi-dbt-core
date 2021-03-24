@@ -1,8 +1,4 @@
-{{
-    config({
-        "materialized": 'view'
-    })
-}}
+
 
 {% set account_id = var('account_id_mytarget') %}
 
