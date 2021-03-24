@@ -8,40 +8,16 @@ sources:
       tables:   
         - name: sessions_facts
           identifier: "ЯМ Посещения сайта"
-          columns:
-              - name: "[Идентификатор подключенного аккаунта]"
-                tests:
-                    - not_null
         - name: goals_facts
           identifier: "ЯМ Достигнутые цели"
-          columns:
-              - name: "[Идентификатор подключенного аккаунта]"
-                tests:
-                    - not_null
         - name: purchases_facts
           identifier: "ЯМ Оформленные заказы"
-          columns:
-              - name: "[Идентификатор подключенного аккаунта]"
-                tests:
-                    - not_null
         - name: devices
           identifier: "ЯМ Параметры устройств"
-          columns:
-              - name: "[Идентификатор типа устройства]"
-                tests:
-                    - not_null
         - name: goals
           identifier: "ЯМ Параметры целей"
-          columns:
-              - name: "[Идентификатор цели]"
-                tests:
-                    - not_null
         - name: purchases
           identifier: "ЯМ Параметры заказов"
-          columns:
-              - name: "[Идентификатор покупки]"
-                tests:
-                    - not_null
 
     - name: direct
       database: "{{ env_var('DBT_MSSQL_DATABASE') }}"
