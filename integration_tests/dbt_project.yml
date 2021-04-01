@@ -47,6 +47,7 @@ seeds:
   mybi_dbt_core_integration_tests:
     
     metrika:
+    mytarget:
         
     general:
         "SHD Параметры трафика":

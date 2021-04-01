@@ -14,4 +14,4 @@ services:
     entrypoint: /bin/bash
     tty: true
     volumes:
-     - /Users/artemiykozyr/repositories/spasibo/mybi-dbt-core:/usr/app/mybi-dbt-core
+     - .:/usr/app/mybi-dbt-core
