@@ -1,10 +1,4 @@
-{{
-    config({
-        "materialized": 'view'
-    })
-}}
 
-{% set account_id = var('account_id_adwords') %}
 
 with source as (
 
@@ -21,8 +15,11 @@ SELECT
 
 FROM {{ source('gaw', 'keywords') }}
 
-WHERE 1=1
-	AND [Идентификатор подключенного аккаунта] in ( {{ account_id }} )
+{{ filter_rows(
+    account_id=var('account_id_adwords'),
+    last_number_of_days=false, 
+    ts_field=none
+) }}
 
 )
 

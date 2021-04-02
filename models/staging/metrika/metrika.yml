@@ -1,0 +1,51 @@
+version: 2
+
+models:
+    - name: stg_ym_sessions_facts
+      tests:
+        - non_empty
+        - not_null:
+            column_name: >
+                ([Идентификатор подключенного аккаунта] + [Идентификатор клиента]
+                    + [Идентификатор даты] + [Идентификатор источника трафика]
+                    + [Идентификатор местоположения] + [Идентификатор типа устройства])
+        - unique:
+            column_name: >
+                CONCAT([Идентификатор подключенного аккаунта], [Идентификатор клиента]
+                    , [Идентификатор даты], [Идентификатор источника трафика]
+                    , [Идентификатор местоположения], [Идентификатор типа устройства])
+        - relationships:
+            to: ref('stg_general_accounts')
+            column_name: "[Идентификатор подключенного аккаунта]"           
+            field: "[Идентификатор подключенного аккаунта]"
+        - relationships:
+            to: ref('stg_general_clientids')
+            column_name: "[Идентификатор клиента]"           
+            field: "[Идентификатор клиента]"
+        - relationships:
+            to: ref('stg_general_dates')
+            column_name: "[Идентификатор даты]"           
+            field: "[Идентификатор даты]"
+        - relationships:
+            to: ref('stg_general_traffic')
+            column_name: "[Идентификатор источника трафика]"           
+            field: "[Идентификатор источника трафика]"
+        - relationships:
+            to: ref('stg_general_locations')
+            column_name: "[Идентификатор местоположения]"           
+            field: "[Идентификатор местоположения]"
+        - relationships:
+            to: ref('stg_ym_devices')
+            column_name: "[Идентификатор типа устройства]"           
+            field: "[Идентификатор типа устройства]"
+            
+    - name: stg_ym_devices
+      tests:
+        - non_empty
+        - not_null:
+            column_name: "[Идентификатор типа устройства]"
+
+    - name: stg_ym_purchases_facts
+    - name: stg_ym_goals_facts
+    - name: stg_ym_goals
+    - name: stg_ym_purchases

@@ -1,10 +1,4 @@
-{{
-    config({
-        "materialized": 'view'
-    })
-}}
 
-{% set account_id = var('account_id_amocrm') %}
 
 with source as (
 
@@ -15,15 +9,15 @@ SELECT
 	[Идентификатор сделки],
 	[Внутренний идентификатор параметра],
 	Название,
-	Значение,
-	[Дата начала актуальности записи],
-	[Дата окончания актуальности записи],
-	[Признак актуальности записи]
+	Значение
 
 FROM {{ source('amocrm', 'leads_info') }}
 
-WHERE 1=1
-	AND [Идентификатор подключенного аккаунта] in ( {{ account_id }} )
+{{ filter_rows(
+    account_id=var('account_id_amocrm'),
+    last_number_of_days=false, 
+    ts_field=none
+) }}
 
 )
 

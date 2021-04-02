@@ -2,56 +2,26 @@ version: 2
 
 sources:
     - name: metrika
-      database: "{{ var('mybi_database') }}"
-      schema: "{{ var('mybi_schema') }}"
+      database: "{{ env_var('DBT_MSSQL_DATABASE') }}"
+      schema: "{{ env_var('DBT_MSSQL_SCHEMA') }}"
       tags: ['metrika']
-      tables:
-        - name: custom_facts
-          identifier: "{{ var('mybi_table_metrika_custom') }}"
-          columns:
-              - name: "[Идентификатор записи]"
-                tests:
-                    - not_null        
+      tables:   
         - name: sessions_facts
           identifier: "ЯМ Посещения сайта"
-          columns:
-              - name: "[Идентификатор подключенного аккаунта]"
-                tests:
-                    - not_null
-        - name: devices
-          identifier: "ЯМ Параметры устройств"
-          columns:
-              - name: "[Идентификатор типа устройства]"
-                tests:
-                    - not_null
-        - name: goals
-          identifier: "ЯМ Параметры целей"
-          columns:
-              - name: "[Идентификатор цели]"
-                tests:
-                    - not_null
         - name: goals_facts
           identifier: "ЯМ Достигнутые цели"
-          columns:
-              - name: "[Идентификатор подключенного аккаунта]"
-                tests:
-                    - not_null
-        - name: purchases
-          identifier: "ЯМ Параметры заказов"
-          columns:
-              - name: "[Идентификатор покупки]"
-                tests:
-                    - not_null
         - name: purchases_facts
           identifier: "ЯМ Оформленные заказы"
-          columns:
-              - name: "[Идентификатор подключенного аккаунта]"
-                tests:
-                    - not_null
+        - name: devices
+          identifier: "ЯМ Параметры устройств"
+        - name: goals
+          identifier: "ЯМ Параметры целей"
+        - name: purchases
+          identifier: "ЯМ Параметры заказов"
 
     - name: direct
-      database: "{{ var('mybi_database') }}"
-      schema: "{{ var('mybi_schema') }}"
+      database: "{{ env_var('DBT_MSSQL_DATABASE') }}"
+      schema: "{{ env_var('DBT_MSSQL_SCHEMA') }}"
       tags: ['direct']
       tables:
         - name: campaigns
@@ -80,8 +50,8 @@ sources:
                     - not_null                  
 
     - name: gaw
-      database: "{{ var('mybi_database') }}"
-      schema: "{{ var('mybi_schema') }}"
+      database: "{{ env_var('DBT_MSSQL_DATABASE') }}"
+      schema: "{{ env_var('DBT_MSSQL_SCHEMA') }}"
       tags: ['gaw']
       tables:
         - name: campaigns
@@ -122,8 +92,8 @@ sources:
                     - not_null                   
 
     - name: facebook
-      database: "{{ var('mybi_database') }}"
-      schema: "{{ var('mybi_schema') }}"
+      database: "{{ env_var('DBT_MSSQL_DATABASE') }}"
+      schema: "{{ env_var('DBT_MSSQL_SCHEMA') }}"
       tags: ['facebook']
       tables:
         - name: campaigns
@@ -158,8 +128,8 @@ sources:
                     - not_null
 
     - name: mytarget
-      database: "{{ var('mybi_database') }}"
-      schema: "{{ var('mybi_schema') }}"
+      database: "{{ env_var('DBT_MSSQL_DATABASE') }}"
+      schema: "{{ env_var('DBT_MSSQL_SCHEMA') }}"
       tags: ['mytarget']      
       tables:
         - name: campaigns
@@ -188,8 +158,8 @@ sources:
                     - not_null                    
 
     - name: bitrix24
-      database: "{{ var('mybi_database') }}"
-      schema: "{{ var('mybi_schema') }}"
+      database: "{{ env_var('DBT_MSSQL_DATABASE') }}"
+      schema: "{{ env_var('DBT_MSSQL_SCHEMA') }}"
       tags: ['bitrix24']      
       tables:
         - name: leads_facts
@@ -248,8 +218,8 @@ sources:
                     - not_null  
 
     - name: amocrm
-      database: "{{ var('mybi_database') }}"
-      schema: "{{ var('mybi_schema') }}"
+      database: "{{ env_var('DBT_MSSQL_DATABASE') }}"
+      schema: "{{ env_var('DBT_MSSQL_SCHEMA') }}"
       tags: ['amocrm']      
       tables:
         - name: leads_facts
@@ -296,9 +266,9 @@ sources:
                     - not_null                    
                     
     - name: general
-      database: "{{ var('mybi_database') }}"
-      schema: "{{ var('mybi_schema') }}"
-      tags: ['amocrm']
+      database: "{{ env_var('DBT_MSSQL_DATABASE') }}"
+      schema: "{{ env_var('DBT_MSSQL_SCHEMA') }}"
+      tags: ['general']
       tables:
         - name: clientids
           identifier: "SHD Параметры посетителей"

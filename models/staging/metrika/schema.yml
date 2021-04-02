@@ -1,8 +1,0 @@
-version: 2
-
-models:
-    - name: stg_metrika
-      description: Custom report from Metrika
-      tests:
-          - not_null:
-              column_name: "[Идентификатор записи]"

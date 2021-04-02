@@ -1,10 +1,4 @@
-{{
-    config({
-        "materialized": 'view'
-    })
-}}
 
-{% set account_id = var('account_id_direct') %}
 
 with source as (
 
@@ -34,8 +28,11 @@ SELECT
 
 FROM {{ source('direct', 'ads_facts') }}
 
-WHERE 1=1
-	AND [Идентификатор подключенного аккаунта] in ({{ account_id }})
+{{ filter_rows(
+    account_id=var('account_id_direct'),
+    last_number_of_days=true, 
+    ts_field='[Дата]'
+) }}
 
 )
 

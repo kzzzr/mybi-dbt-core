@@ -1,10 +1,4 @@
-{{
-    config({
-        "materialized": 'view'
-    })
-}}
 
-{% set account_id = var('account_id_amocrm') %}
 
 with source as (
 
@@ -18,8 +12,11 @@ SELECT
 
 FROM {{ source('amocrm', 'leads_tags') }}
 
-WHERE 1=1
-	AND [Идентификатор подключенного аккаунта] in ( {{ account_id }} )
+{{ filter_rows(
+    account_id=var('account_id_amocrm'),
+    last_number_of_days=false, 
+    ts_field=none
+) }}
 
 )
 
