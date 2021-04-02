@@ -25,17 +25,17 @@ jobs:
       - uses: actions/checkout@v2
       - name: wait for services to start up
         run: sleep 30
-      - name: cd to integration tests
-        run: cp ./profiles.yml ./integration_tests/ && cd ./integration_tests
       - name: dbt mssql action
         uses: kzzzr/mybi-dbt-action@v2
+        with:
+          project_dir: ./integration_tests
         env:
           DBT_MSSQL_TARGET: core_ci
           DBT_MSSQL_SERVER: mssql
           DBT_MSSQL_USER: sa
           DBT_MSSQL_PASSWORD: P@ssword
           DBT_MSSQL_DATABASE: master
-          DBT_MSSQL_SCHEMA: dbo
-      # - name: Setup tmate session
-      #   uses: mxschmitt/action-tmate@v3
-      #   if: ${{ failure() }}
+          DBT_MSSQL_SCHEMA: core_ci
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v3
+        if: ${{ failure() }}
