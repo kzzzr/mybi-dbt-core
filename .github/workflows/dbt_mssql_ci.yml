@@ -28,7 +28,7 @@ jobs:
       - name: cd to integration tests
         run: cp ./profiles.yml ./integration_tests/ && cd ./integration_tests
       - name: dbt mssql action
-        uses: kzzzr/mybi-dbt-action@v1
+        uses: kzzzr/mybi-dbt-action@v2
         env:
           DBT_MSSQL_TARGET: core_ci
           DBT_MSSQL_SERVER: mssql
