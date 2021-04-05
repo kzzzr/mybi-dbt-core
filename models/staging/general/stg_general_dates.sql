@@ -2,28 +2,28 @@
 
 with source as (
 
-SELECT
+select
 
-	[Идентификатор даты]
-	, [Дата и время]
-	, Год
-	, [Номер квартала]
-	, Квартал
-	, [Номер месяца]
-	, Месяц
-	, [Номер недели]
-	, [Номер дня недели]
-	, [День недели]
-	, День
-	, Час
-	, Минута
-	, Дата
-	, CAST(DATEADD(wk, 0, DATEADD(DAY, 1-DATEPART(WEEKDAY, [Дата]), DATEDIFF(dd, 0, [Дата]))) AS DATE)
-		as [Дата начала недели]		
+	  id
+    , full_date as ts
+    , year
+    , quarter
+    , quarter_label
+    , month
+    , month_label
+    , week
+    , weekday
+    , weekday_label
+    , day
+    , hour
+    , minute
+    , simple_date as dt
+	, cast(dateadd(wk, 0, dateadd(day, 1-datepart(weekday, simple_date), datediff(dd, 0, simple_date))) as date)
+		as week_start_dt
 
-FROM {{ source('general', 'dates') }}
+from {{ source('general', 'dates') }}
 
-WHERE 1=1
+where 1=1
 
 )
 

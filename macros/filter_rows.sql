@@ -2,12 +2,12 @@
 {% macro filter_rows(
     account_id=none,
     last_number_of_days=none, 
-    ts_field='[Дата]'
+    ts_field='dt'
 ) -%}
     
     {#- prepare expression to filter on according account_id -#}
     {% if account_id -%}
-        {%- set filter_account_id = '[Идентификатор подключенного аккаунта] in (' ~ account_id ~ ')' -%}
+        {%- set filter_account_id = 'account_id in (' ~ account_id ~ ')' -%}
     {% else -%}
         {%- set filter_account_id = '1 = 1' -%}
     {%- endif -%}

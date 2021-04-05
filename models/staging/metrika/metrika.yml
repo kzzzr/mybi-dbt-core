@@ -4,46 +4,52 @@ models:
     - name: stg_ym_sessions_facts
       tests:
         - non_empty
-        - not_null:
-            column_name: >
-                ([Идентификатор подключенного аккаунта] + [Идентификатор клиента]
-                    + [Идентификатор даты] + [Идентификатор источника трафика]
-                    + [Идентификатор местоположения] + [Идентификатор типа устройства])
         - unique:
-            column_name: >
-                CONCAT([Идентификатор подключенного аккаунта], [Идентификатор клиента]
-                    , [Идентификатор даты], [Идентификатор источника трафика]
-                    , [Идентификатор местоположения], [Идентификатор типа устройства])
+            column_name: session_id
+        - not_null:
+            column_name: account_id
+        - not_null:
+            column_name: clientids_id
+        - not_null:
+            column_name: dates_id
+        - not_null:
+            column_name: traffic_id
+        - not_null:
+            column_name: locations_id
+        - not_null:
+            column_name: devices_id
         - relationships:
             to: ref('stg_general_accounts')
-            column_name: "[Идентификатор подключенного аккаунта]"           
-            field: "[Идентификатор подключенного аккаунта]"
+            column_name: account_id
+            field: account_id
         - relationships:
             to: ref('stg_general_clientids')
-            column_name: "[Идентификатор клиента]"           
-            field: "[Идентификатор клиента]"
+            column_name: clientids_id
+            field: id
         - relationships:
             to: ref('stg_general_dates')
-            column_name: "[Идентификатор даты]"           
-            field: "[Идентификатор даты]"
+            column_name: dates_id
+            field: id
         - relationships:
             to: ref('stg_general_traffic')
-            column_name: "[Идентификатор источника трафика]"           
-            field: "[Идентификатор источника трафика]"
+            column_name: traffic_id
+            field: id
         - relationships:
             to: ref('stg_general_locations')
-            column_name: "[Идентификатор местоположения]"           
-            field: "[Идентификатор местоположения]"
+            column_name: locations_id
+            field: id
         - relationships:
             to: ref('stg_ym_devices')
-            column_name: "[Идентификатор типа устройства]"           
-            field: "[Идентификатор типа устройства]"
+            column_name: devices_id
+            field: id
             
     - name: stg_ym_devices
       tests:
         - non_empty
         - not_null:
-            column_name: "[Идентификатор типа устройства]"
+            column_name: id
+        - unique:
+            column_name: id
 
     - name: stg_ym_purchases_facts
     - name: stg_ym_goals_facts

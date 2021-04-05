@@ -2,20 +2,20 @@
 
 with source as (
 
-SELECT
+select
 
-	[Идентификатор источника трафика]
-	, [Название группы]
-	, Источник
-	, Канал
-	, Кампания
-	, Объявление
-	, [Ключевое слово]
-	, [Страница входа]
+      id
+    , grouping
+    , source
+    , medium
+    , campaign
+    , content
+    , keyword
+    , landing_page
 
-FROM {{ source('general', 'traffic') }}
+from {{ source('general', 'traffic') }}
 
-WHERE 1=1
+where 1=1
 
 )
 

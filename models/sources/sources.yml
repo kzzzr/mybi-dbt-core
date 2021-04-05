@@ -1,23 +1,43 @@
 version: 2
 
 sources:
+    - name: general
+      database: "{{ env_var('DBT_MSSQL_DATABASE') }}"
+      schema: "{{ env_var('DBT_MSSQL_SCHEMA') }}"
+      tags: ['general']
+      tables:
+        - name: clientids
+          identifier: general_clientids             
+        - name: dates
+          identifier: general_dates                
+        - name: traffic
+          identifier: general_traffic               
+        - name: locations
+          identifier: general_locations             
+        - name: sites
+          identifier: general_sites                 
+        - name: accounts
+          identifier: general_accounts              
+        - name: costs_facts
+          identifier: general_costs_facts
+
     - name: metrika
       database: "{{ env_var('DBT_MSSQL_DATABASE') }}"
       schema: "{{ env_var('DBT_MSSQL_SCHEMA') }}"
       tags: ['metrika']
       tables:   
         - name: sessions_facts
-          identifier: "ЯМ Посещения сайта"
+          identifier: metrika_sessions_facts
         - name: goals_facts
-          identifier: "ЯМ Достигнутые цели"
+          identifier: metrika_goals_facts
         - name: purchases_facts
-          identifier: "ЯМ Оформленные заказы"
+          identifier: metrika_purchases_facts
         - name: devices
-          identifier: "ЯМ Параметры устройств"
+          identifier: metrika_devices
         - name: goals
-          identifier: "ЯМ Параметры целей"
+          identifier: metrika_goals
         - name: purchases
-          identifier: "ЯМ Параметры заказов"
+          identifier: metrika_purchases
 
     - name: direct
       database: "{{ env_var('DBT_MSSQL_DATABASE') }}"
@@ -263,52 +283,5 @@ sources:
           columns:
               - name: "[Идентификатор сделки]"
                 tests:
-                    - not_null                    
-                    
-    - name: general
-      database: "{{ env_var('DBT_MSSQL_DATABASE') }}"
-      schema: "{{ env_var('DBT_MSSQL_SCHEMA') }}"
-      tags: ['general']
-      tables:
-        - name: clientids
-          identifier: "SHD Параметры посетителей"
-          columns:
-              - name: "[Идентификатор клиента]"
-                tests:
-                    - not_null                      
-        - name: dates
-          identifier: "SHD Параметры дат"
-          columns:
-              - name: "[Идентификатор даты]"
-                tests:
-                    - not_null                      
-        - name: traffic
-          identifier: "SHD Параметры трафика"
-          columns:
-              - name: "[Идентификатор источника трафика]"
-                tests:
-                    - not_null                      
-        - name: locations
-          identifier: "SHD Параметры местоположений"
-          columns:
-              - name: "[Идентификатор местоположения]"
-                tests:
-                    - not_null                      
-        - name: sites
-          identifier: "SHD Параметры сайтов"
-          columns:
-              - name: "[Идентификатор сайта]"
-                tests:
-                    - not_null                      
-        - name: accounts
-          identifier: "SHD Параметры источников данных"
-          columns:
-              - name: "[Идентификатор записи]"
-                tests:
-                    - not_null                      
-        - name: costs_facts
-          identifier: "SHD Статистика по расходам"
-          columns:
-              - name: "[Идентификатор подключенного аккаунта]"
-                tests:
                     - not_null
+                    

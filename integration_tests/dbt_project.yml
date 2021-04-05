@@ -46,11 +46,19 @@ seeds:
   +quote_columns: true  
   mybi_dbt_core_integration_tests:
     
-    metrika:
-    mytarget:
-        
     general:
-        "SHD Параметры трафика":
-            +column_types:
-                "Кампания": varchar(256)
-                "Источник": varchar(256)
+        +tags: ["general"]
+    amocrm:
+        +tags: ["amocrm"]
+    bitrix24:
+        +tags: ["bitrix24"]
+    direct:
+        +tags: ["direct"]
+    facebook:
+        +tags: ["facebook"]
+    gaw:
+        +tags: ["gaw"]
+    metrika:
+        +tags: ["metrika"]
+    mytarget:
+        +tags: ["mytarget"]

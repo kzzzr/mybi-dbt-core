@@ -2,16 +2,16 @@
 
 with source as (
 
-SELECT 
+select
 
-	[Идентификатор типа устройства]
-	,[Идентификатор подключенного аккаунта]
-	,[Тип устройства]
-	,Браузер
-	,[Операционная система]
-	,[Версия операционной системы]
+      id
+    , account_id
+    , category
+    , browser
+    , os
+    , os_version
 
-FROM {{ source('metrika', 'devices') }}
+from {{ source('metrika', 'devices') }}
 
 {{ filter_rows(
     account_id=var('account_id_metrika'),

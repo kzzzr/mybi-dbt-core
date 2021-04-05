@@ -2,13 +2,13 @@
 
 with source as (
 
-SELECT 
+select 
 
-	[Идентификатор покупки]
-	,[Идентификатор подключенного аккаунта]
-	,[Внутренний идентификатор покупки]
+      id
+    , account_id
+    , purchase_id
 
-FROM {{ source('metrika', 'purchases') }}
+from {{ source('metrika', 'purchases') }}
 
 {{ filter_rows(
     account_id=var('account_id_metrika'),
