@@ -26,11 +26,11 @@ vars:
     filter_days_of_data: 3
     mybi_dbt_core:
         account_id_metrika: "21600"
+        account_id_adwords: "18380"
 
         account_id_b24: "19646"
         account_id_direct: "18789"
         account_id_facebook: "18787"
-        account_id_adwords: "18790, 18798"
         account_id_mytarget: "18799"
         account_id_amocrm: "20652"   
 
@@ -48,6 +48,12 @@ seeds:
     
     general:
         +tags: ["general"]
+        general_traffic:
+            +column_types:
+                grouping: nvarchar(128)
+        general_sites:
+            +column_types:
+                domain: nvarchar(1024)
     amocrm:
         +tags: ["amocrm"]
     bitrix24:
@@ -58,6 +64,18 @@ seeds:
         +tags: ["facebook"]
     gaw:
         +tags: ["gaw"]
+        adwords_campaigns:
+            +column_types:
+                campaign_id: nvarchar(32)
+        adwords_adgroups:
+            +column_types:
+                adgroup_id: nvarchar(32)
+        adwords_ads:
+            +column_types:
+                ad_id: nvarchar(32)
+        adwords_keywords:
+            +column_types:
+                keyword_id: nvarchar(32)
     metrika:
         +tags: ["metrika"]
     mytarget:

@@ -2,17 +2,17 @@
 
 with source as (
 
-SELECT 
+select 
 
-	  [Идентификатор группы объявлений]
-	, [Идентификатор подключенного аккаунта]
-	, [Внутренний идентификатор группы объявлений]
-	, [Имя группы объявлений]
-	, [Статус группы объявлений]
-	, [Метки группы объявлений]
-	, [Шаблон отслеживания основного объекта]
+      id
+    , account_id
+    , adgroup_id
+    , name
+    , status
+    , labels
+    , tracking_url_template
 
-FROM {{ source('gaw', 'adgroups') }}
+from {{ source('gaw', 'adgroups') }}
 
 {{ filter_rows(
     account_id=var('account_id_adwords'),

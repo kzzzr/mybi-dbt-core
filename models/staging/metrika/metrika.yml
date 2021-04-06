@@ -1,6 +1,14 @@
 version: 2
 
 models:
+    - name: stg_ym_devices
+      tests:
+        - non_empty
+        - not_null:
+            column_name: id
+        - unique:
+            column_name: id
+
     - name: stg_ym_sessions_facts
       tests:
         - non_empty
@@ -42,14 +50,6 @@ models:
             to: ref('stg_ym_devices')
             column_name: devices_id
             field: id
-            
-    - name: stg_ym_devices
-      tests:
-        - non_empty
-        - not_null:
-            column_name: id
-        - unique:
-            column_name: id
 
     - name: stg_ym_purchases_facts
     - name: stg_ym_goals_facts

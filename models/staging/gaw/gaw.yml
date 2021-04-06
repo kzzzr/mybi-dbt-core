@@ -2,26 +2,118 @@ version: 2
 
 models:
     - name: stg_gaw_campaigns
-      tests:
-          - not_null:
-              column_name: "[Идентификатор кампании]"
+      tests: &gaw_defaults
+        - non_empty
+        - not_null:
+            column_name: id
+        - unique:
+            column_name: id
+
     - name: stg_gaw_adgroups
-      tests:
-          - not_null:
-              column_name: "[Идентификатор группы объявлений]"
+      tests: *gaw_defaults
+
     - name: stg_gaw_ads
-      tests:
-          - not_null:
-              column_name: "[Идентификатор объявлений]"
+      tests: *gaw_defaults
+
     - name: stg_gaw_keywords
-      tests:
-          - not_null:
-              column_name: "[Идентификатор ключевого слова]"
+      tests: *gaw_defaults
+
     - name: stg_gaw_ads_facts
-      tests:
-          - not_null:
-              column_name: "[Идентификатор подключенного аккаунта]"
+      tests: 
+        - non_empty
+        - not_null:
+            column_name: id
+        - unique:
+            column_name: id
+        - not_null:
+            column_name: account_id
+        - not_null:
+            column_name: campaigns_id
+        - not_null:
+            column_name: adgroups_id
+        - not_null:
+            column_name: ads_id
+        - not_null:
+            column_name: dates_id
+        - not_null:
+            column_name: traffic_id
+        - not_null:
+            column_name: sites_id
+        - relationships:
+            to: ref('stg_general_accounts')
+            column_name: account_id
+            field: account_id
+        - relationships:
+            to: ref('stg_general_dates')
+            column_name: dates_id
+            field: id
+        - relationships:
+            to: ref('stg_general_traffic')
+            column_name: traffic_id
+            field: id
+        - relationships:
+            to: ref('stg_general_sites')
+            column_name: sites_id
+            field: id
+        - relationships:
+            to: ref('stg_gaw_campaigns')
+            column_name: campaigns_id
+            field: id
+        - relationships:
+            to: ref('stg_gaw_adgroups')
+            column_name: adgroups_id
+            field: id
+        - relationships:
+            to: ref('stg_gaw_ads')
+            column_name: ads_id
+            field: id
+
     - name: stg_gaw_keywords_facts
       tests:
-          - not_null:
-              column_name: "[Идентификатор подключенного аккаунта]"
+        - non_empty
+        - not_null:
+            column_name: id
+        - unique:
+            column_name: id
+        - not_null:
+            column_name: account_id
+        - not_null:
+            column_name: campaigns_id
+        - not_null:
+            column_name: adgroups_id
+        - not_null:
+            column_name: keywords_id
+        - not_null:
+            column_name: dates_id
+        - not_null:
+            column_name: traffic_id
+        - not_null:
+            column_name: sites_id
+        - relationships:
+            to: ref('stg_general_accounts')
+            column_name: account_id
+            field: account_id
+        - relationships:
+            to: ref('stg_general_dates')
+            column_name: dates_id
+            field: id
+        - relationships:
+            to: ref('stg_general_traffic')
+            column_name: traffic_id
+            field: id
+        - relationships:
+            to: ref('stg_general_sites')
+            column_name: sites_id
+            field: id
+        - relationships:
+            to: ref('stg_gaw_campaigns')
+            column_name: campaigns_id
+            field: id
+        - relationships:
+            to: ref('stg_gaw_adgroups')
+            column_name: adgroups_id
+            field: id
+        - relationships:
+            to: ref('stg_gaw_keywords')
+            column_name: keywords_id
+            field: id
