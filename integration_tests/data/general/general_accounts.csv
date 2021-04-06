@@ -1,2 +1,3 @@
 "id","account_id","caption","service","enabled","status","interval_start","interval_end"
-57,21600,YM.RRS,Яндекс.Метрика,1,успешно,2020-08-01,2021-04-05
+3,18380,GA.M2,Google AdWords,1,успешно,2020-04-01,2021-04-06
+57,21600,YM.RRS,Яндекс.Метрика,1,успешно,2020-08-01,2021-04-06

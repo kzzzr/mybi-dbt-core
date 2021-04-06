@@ -1,2 +1,3 @@
-"id","full_date","year","quarter","quarter_label","month","month_label","week","weekday","weekday_label","day","hour","minute","simple_date"
-159250,2021-04-05 00:00:00,2021,2,II,4,Апрель,14,1,Понедельник,5,0,0,2021-04-05
+"id","year","quarter","quarter_label","month","month_label","week","weekday","weekday_label","day","hour","minute","full_date","simple_date"
+303,2020,2,II,6,Июнь,25,3,Среда,24,0,0,2020-06-24 00:00:00,2020-06-24
+159250,2021,2,II,4,Апрель,14,1,Понедельник,5,0,0,2021-04-05 00:00:00,2021-04-05
