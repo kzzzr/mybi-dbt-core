@@ -29,9 +29,9 @@ vars:
         account_id_adwords: "18380"
         account_id_direct: "18378"
         account_id_facebook: "18441"
+        account_id_mytarget: "18799"
 
         account_id_b24: "19646"
-        account_id_mytarget: "18799"
         account_id_amocrm: "20652"   
 
         caption_metrika: 'metrika'

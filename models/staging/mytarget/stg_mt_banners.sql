@@ -1,26 +1,23 @@
 
-
-{% set account_id = var('account_id_mytarget') %}
-
 with source as (
 
-SELECT
+select
 
-	  [Идентификатор объявления]
-	, [Идентификатор подключенного аккаунта]
-	, [Внутренний идентификатор объявления]
-	, [Заголовок объявления]
-	, [Текстовое содержимое объявления]
-	, [Иное содержимое объявления]
-	, [Системный статус объявления]
-	, [Статус объявления]
-	, [Статус модерации]
-	, [Причина модерации]
-	, [Номер телефона]
-	, [Ссылка в объявлении]
-	, [Набор ссылок]
+      id
+    , account_id
+    , banner_id
+    , title
+    , text_content
+    , other_content
+    , system_status
+    , status
+    , moderation_status
+    , moderation_reason
+    , phone
+    , url
+    , urls
 
-FROM {{ source('mytarget', 'banners') }}
+from {{ source('mytarget', 'banners') }}
 
 {{ filter_rows(
     account_id=var('account_id_mytarget'),
