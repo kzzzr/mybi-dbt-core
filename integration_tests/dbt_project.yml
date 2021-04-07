@@ -28,9 +28,9 @@ vars:
         account_id_metrika: "21600"
         account_id_adwords: "18380"
         account_id_direct: "18378"
+        account_id_facebook: "18441"
 
         account_id_b24: "19646"
-        account_id_facebook: "18787"
         account_id_mytarget: "18799"
         account_id_amocrm: "20652"   
 
@@ -52,9 +52,10 @@ seeds:
             +column_types:
                 grouping: nvarchar(128)
                 content: nvarchar(512)
+                source: nvarchar(512)
         general_sites:
             +column_types:
-                domain: nvarchar(1024)
+                domain: nvarchar(512)
     amocrm:
         +tags: ["amocrm"]
     bitrix24:
@@ -69,6 +70,18 @@ seeds:
                 ad_id: nvarchar(32)
     facebook:
         +tags: ["facebook"]
+        facebook_ads:
+            +column_types:
+                ad_id: nvarchar(32)
+        facebook_adsets:
+            +column_types:
+                adset_id: nvarchar(32)            
+        facebook_campaigns:
+            +column_types:
+                campaign_id: nvarchar(32)            
+        facebook_creatives:
+            +column_types:
+                creative_id: nvarchar(32)            
     gaw:
         +tags: ["gaw"]
         adwords_campaigns:

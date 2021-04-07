@@ -2,22 +2,74 @@ version: 2
 
 models:
     - name: stg_fb_campaigns
-      tests:
-          - not_null:
-              column_name: "[Идентификатор кампании]"
+      tests: &facebook_defaults
+        - not_empty
+        - not_null:
+            column_name: id
+        - unique:
+            column_name: id
+    
     - name: stg_fb_adsets
-      tests:
-          - not_null:
-              column_name: "[Идентификатор набора объявлений]"
+      tests: *facebook_defaults
+    
     - name: stg_fb_ads
-      tests:
-          - not_null:
-              column_name: "[Идентификатор объявления]"
+      tests: *facebook_defaults
+
     - name: stg_fb_creatives
-      tests:
-          - not_null:
-              column_name: "[Идентификатор креатива]"
+      tests: *facebook_defaults
+    
     - name: stg_fb_ads_facts
       tests:
-          - not_null:
-              column_name: "[Идентификатор подключенного аккаунта]"
+        - not_empty
+        - not_null:
+            column_name: id
+        - unique:
+            column_name: id
+        - not_null:
+            column_name: account_id            
+        - not_null:
+            column_name: dates_id            
+        - not_null:
+            column_name: traffic_id            
+        - not_null:
+            column_name: sites_id            
+        - not_null:
+            column_name: campaigns_id            
+        - not_null:
+            column_name: adsets_id            
+        - not_null:
+            column_name: ads_id            
+        - not_null:
+            column_name: creatives_id
+        - relationships:
+            to: ref('stg_general_accounts')
+            column_name: account_id
+            field: account_id
+        - relationships:
+            to: ref('stg_general_dates')
+            column_name: dates_id
+            field: id
+        - relationships:
+            to: ref('stg_general_traffic')
+            column_name: traffic_id
+            field: id
+        - relationships:
+            to: ref('stg_general_sites')
+            column_name: sites_id
+            field: id        
+        - relationships:
+            to: ref('stg_fb_campaigns')
+            column_name: campaigns_id
+            field: id        
+        - relationships:
+            to: ref('stg_fb_adsets')
+            column_name: adsets_id
+            field: id        
+        - relationships:
+            to: ref('stg_fb_ads')
+            column_name: ads_id
+            field: id        
+        - relationships:
+            to: ref('stg_fb_creatives')
+            column_name: creatives_id
+            field: id        

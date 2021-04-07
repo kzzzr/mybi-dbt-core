@@ -2,30 +2,30 @@
 
 with source as (
 
-SELECT
+select
 
-	  [Идентификатор креатива]
-	, [Идентификатор подключенного аккаунта]
-	, [Внутренний идентификатор креатива]
-	, Тело
-	, [Тип call to action]
-	, [Обрезанные изображения]
-	, [URL изображения]
-	, [URL списки]
-	, [Название внешнего вида объявления]
-	, [Идентификатор объекта]
-	, [Идентификатор поста для объявления]
-	, [Настройки поста для объявления]
-	, [Целевой URL для объявления]
-	, [Идентификатор миниатюры]
-	, Заголовок
-	, [Теги URL]
-	, [Ссылка поста в Instagram]
-	, [Тип рекламируемого объекта]
-	, [Статус креатива]
-	, [Шаблон ссылки]
+      id
+    , account_id
+    , creative_id
+    , body
+    , call_to_action_type
+    , image_crops
+    , image_url
+    , link_url
+    , name
+    , object_id
+    , object_story_id
+    , object_story_spec
+    , object_url
+    , thumbnail_url
+    , title
+    , url_tags
+    , instagram_permalink_url
+    , object_type
+    , status
+    , template_url
 
-FROM {{ source('facebook', 'creatives') }}
+from {{ source('facebook', 'creatives') }}
 
 {{ filter_rows(
     account_id=var('account_id_facebook'),

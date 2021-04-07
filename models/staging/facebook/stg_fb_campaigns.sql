@@ -2,19 +2,20 @@
 
 with source as (
 
-SELECT
-	  [Идентификатор кампании]
-	, [Идентификатор подключенного аккаунта]
-	, [Внутренний идентификатор кампании]
-	, [Название кампании]
-	, [Тип оплаты кампании]
-	, [Статус кампании]
-	, [Состояние кампании]
-	, [Цель кампании]
-	, Категория
-	, [Стратегия оптимизации]
+select
 
-FROM {{ source('facebook', 'campaigns') }}
+      id
+    , account_id
+    , campaign_id
+    , name
+    , buying_type
+    , configured_status
+    , effective_status
+    , objective
+    , special_ad_category
+    , bid_strategy
+
+from {{ source('facebook', 'campaigns') }}
 
 {{ filter_rows(
     account_id=var('account_id_facebook'),
