@@ -64,6 +64,8 @@ sources:
       tables:
         - name: campaigns
           identifier: adwords_campaigns
+        - name: location_criterions
+          identifier: adwords_location_criterions
         - name: adgroups
           identifier: adwords_adgroups
         - name: ads

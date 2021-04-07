@@ -18,6 +18,19 @@ models:
     - name: stg_gaw_keywords
       tests: *gaw_defaults
 
+    - name: stg_gaw_location_criterions
+      tests:
+        - not_empty
+        - not_null:
+            column_name: id
+        - unique:
+            column_name: id
+        - relationships:
+            to: ref('stg_gaw_campaigns')
+            column_name: campaigns_id
+            field: id            
+        
+
     - name: stg_gaw_ads_facts
       tests: 
         - not_empty
