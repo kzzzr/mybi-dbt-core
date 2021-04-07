@@ -6,22 +6,15 @@ select
 
       id
     , account_id
-    , lead_id
+    , leads_id
+    , attribute_id
     , name
-    , pipeline
-    , pipeline_id
-    , status
-    , status_id
-    , status_order
+    , value
     , start_date
     , end_date
     , is_actual
-    , request_id
-    , loss_reason
-    , loss_reason_id
-    , is_deleted
 
-from {{ source('amocrm', 'leads') }}
+from {{ source('amocrm', 'leads_attributes') }}
 
 {{ filter_rows(
     account_id=var('account_id_amocrm'),

@@ -57,6 +57,9 @@ seeds:
         general_sites:
             +column_types:
                 domain: nvarchar(512)
+        general_accounts:
+            +column_types:
+                caption: nvarchar(256)                
     amocrm:
         +tags: ["amocrm"]
     bitrix24:

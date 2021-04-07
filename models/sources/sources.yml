@@ -146,7 +146,7 @@ sources:
           identifier: amocrm_contacts   
         - name: companies
           identifier: amocrm_companies  
-        - name: leads_info
+        - name: leads_attributes
           identifier: amocrm_leads_attributes
         - name: leads_tags
           identifier: amocrm_leads_tags

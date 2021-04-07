@@ -2,15 +2,15 @@
 
 with source as (
 
-SELECT
+select
 
-	[Идентификатор записи],
-	[Идентификатор подключенного аккаунта],
-	[Идентификатор сделки],
-	[Внутренний идентификатор метки],
-	Название
+      id
+    , account_id
+    , leads_id
+    , tag_id
+    , name
 
-FROM {{ source('amocrm', 'leads_tags') }}
+from {{ source('amocrm', 'leads_tags') }}
 
 {{ filter_rows(
     account_id=var('account_id_amocrm'),
