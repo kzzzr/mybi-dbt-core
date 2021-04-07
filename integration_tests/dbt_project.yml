@@ -30,8 +30,8 @@ vars:
         account_id_direct: "18378"
         account_id_facebook: "18441"
         account_id_mytarget: "18799"
-
         account_id_b24: "19646"
+
         account_id_amocrm: "20652"   
 
         caption_metrika: 'metrika'
@@ -53,6 +53,7 @@ seeds:
                 grouping: nvarchar(128)
                 content: nvarchar(512)
                 source: nvarchar(512)
+                campaign: nvarchar(256)
         general_sites:
             +column_types:
                 domain: nvarchar(512)
@@ -60,6 +61,12 @@ seeds:
         +tags: ["amocrm"]
     bitrix24:
         +tags: ["bitrix24"]
+        bitrix24_contacts:
+            +column_types:
+                phone: nvarchar(32)
+        bitrix24_users:
+            +column_types:
+                work_phone: nvarchar(32)
     direct:
         +tags: ["direct"]
         direct_adgroups:

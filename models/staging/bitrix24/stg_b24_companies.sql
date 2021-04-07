@@ -2,26 +2,26 @@
 
 with source as (
 
-SELECT
+select
 
-	[Идентификатор компании]
-	, [Идентификатор подключенного аккаунта]
-	, [Внутренний идентификатор компании]
-	, [Тип компании]
-	, [Название компании]
-	, [Юридический адрес]
-	, [Банковские реквизиты]
-	, [Сфера деятельности]
-	, [Количество сотрудников]
-	, [Годовой оборот]
-	, Комментарии
-	, Телефон
-	, [Адрес электронной почты]
-	, Сайт
-	, [Служба сообщений]
-	, [Компания удалена]
+      id
+    , account_id
+    , company_id
+    , company_type
+    , title
+    , address_legal
+    , banking_details
+    , industry
+    , employees
+    , revenue
+    , comments
+    , phone
+    , email
+    , web
+    , im
+    , is_deleted
 
-FROM {{ source('bitrix24', 'companies') }}
+from {{ source('bitrix24', 'companies') }}
 
 {{ filter_rows(
     account_id=var('account_id_b24'),

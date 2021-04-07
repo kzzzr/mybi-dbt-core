@@ -254,3 +254,12 @@
 916318,,{{site_source_name}},cpc,SPSB_{{adset.name}}_{{placement}},{{ad.name}}|cid|{{campaign.id}}|gid|{{adset.id}}|aid|{{ad.id}}|src|{{site_source_name}}|plc|{{placement}},,/
 916760,,{{site_source_name}},cpc,SPSB_{{adset.name}}_{{placement}},{{ad.name}}|cid|{{campaign.id}}|gid|{{adset.id}}|aid|{{ad.id}}|src|{{site_source_name}}|plc|{{placement}},,/catalog/sales
 4761887,Paid Search,mytarget,cpc,dveplanety_lal,video1_saint-p|cid|{{campaign.id}}|gid|{{adset.id}}|aid|{{ad.id}}|plc|{{site_source_name}}_{{placement}},,/local/scripts/utm.php
+350114,,,,,,,
+442643,,,cpc,{campaign_id}_{source_type}_search-msk-005,v1v1|cid|{campaign_id}|gid|{gbid}|aid|{ad_id}_{banner_id}|dvc|{device_type}|plc|{source_type}_{source}|kwd|{phrase_id}|pos|{position_type}_{position}|aud|{retargeting_id},{keyword},
+3067191,,google,cpc,"10702510036_search_spb_C101_TH",|cid|10702510036|gid|104853752823|aid|454561168284|dvc|m|plc|g_|kwd|kwd-296842498982|pos|,+купить +бюстгальтер +большого +размера,
+3802906,,google,cpc,"1724150099_search_msk_C130_TH",|cid|1724150099|gid|108993742271|aid|454575372450|dvc|m|plc|g_|kwd|kwd-297412497580|pos|,+спортивный +бюстгальтер +купить,
+3858595,,ok?utm_medium=post,post,"2021-01-06_freya-wild-5423-chernyy-rozovyy/",,,
+3858596,,vk,cpc,{Конверсии_G177_NY21_Лонгрид},{{ad_name}}|cid|1017441649|aid|83960609|plc|android,,
+3858597,,yandex,cpc,"54632713_search_search_msk_C101_TW_bs3",|cid|54632713|gid|4290396044|aid|9568729832_9568729832|dvc|mobile|plc|search_none|kwd|22019189128|pos|premium_1|aud|,бюстгальтеры больших размеров,
+3885129,,yandex,cpc,"41635605_context_RSYa_MSK_C100_None_Byustgaltery_bolshie",|cid|41635605|gid|3731689149|aid|7171890309_7171890309|dvc|mobile|plc|context_championat.com|kwd|16068978376|pos|none_0|aud|,большой бюстгальтер,
+4187122,,yandex,cpc,"41635693_context_RSYa_SPB_C100_None_Byustgaltery_bolshie",|cid|41635693|gid|3731690590|aid|7171895709_7171895709|dvc|desktop|plc|context_bankdeneg.com|kwd|16069024187|pos|none_0|aud|,бюстгальтер для большой груди,

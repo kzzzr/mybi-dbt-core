@@ -2,25 +2,29 @@
 
 with source as (
 
-SELECT
+select
 
-	[Идентификатор сделки]
-	, [Идентификатор подключенного аккаунта]
-	, [Внутренний идентификатор сделки]
-	, [Название сделки]
-	, [Тип сделки]
-	, [Идентификатор направления сделки]
-	, [Направление сделки]
-	, [Идентификатор этапа сделки]
-	, [Этап сделки]
-	, [Вероятность заключения]
-	, Валюта
-	, Комментарии
-	, [Дополнительная информация]
-	, [Сделка закрыта]
-	, [Сделка удалена]
+      id
+    , account_id
+    , deal_id
+    , title
+    , deal_type
+    , category_id
+    , category
+    , stage_id
+    , stage
+    , probability
+    , currency
+    , comments
+    , additional_info
+    , source_id
+    , source_name
+    , source_description
+    , closed
+    , is_return_customer
+    , is_deleted
 
-FROM {{ source('bitrix24', 'deals') }}
+from {{ source('bitrix24', 'deals') }}
 
 {{ filter_rows(
     account_id=var('account_id_b24'),

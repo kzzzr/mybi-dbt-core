@@ -2,24 +2,28 @@
 
 with source as (
 
-SELECT
+select
 
-	[Идентификатор подключенного аккаунта]
-	, [Идентификатор клиента]
-	, [Идентификатор источника трафика]
-	, [Идентификатор пользователя]
-	, [Идентификатор сделки]
-	, [Идентификатор контакта]
-	, [Идентификатор компании]
-	, [Идентификатор местоположения]
-	, [Дата открытия сделки]
-	, [Дата закрытия сделки]
-	, [Идентификатор товара]
-	, Количество
-	, Сумма
-	, [Сумма скидки]
+      f.account_id
+    , f.clientids_id
+    , f.traffic_id
+    , f.users_id
+    , f.deals_id
+    , f.contacts_id
+    , f.companies_id
+    , f.locations_id
+    , began.dt as begin_dt
+    , ended.dt as end_dt
+    , f.products_id
+    , f.quantity
+    , f.product_total
+    , f.discount
 
-FROM {{ source('bitrix24', 'products_facts') }}
+from {{ source('bitrix24', 'products_facts') }} as f
+	left join {{ ref('stg_general_dates') }} as began
+		on began.id = f.begindate_id
+	left join {{ ref('stg_general_dates') }} as ended
+		on ended.id = f.enddate_id
 
 {{ filter_rows(
     account_id=var('account_id_b24'),

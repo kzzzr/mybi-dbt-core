@@ -2,20 +2,20 @@
 
 with source as (
 
-SELECT
+select
 
-	[Идентификатор пользователя]
-	, [Идентификатор подключенного аккаунта]
-	, [Внутренний идентификатор пользователя]
-	, [Адрес электронной почты]
-	, Имя
-	, Фамилия
-	, Отчество
-	, Компания
-	, Должность
-	, Телефон
+      id
+    , account_id
+    , user_id
+    , email
+    , name
+    , last_name
+    , second_name
+    , work_company
+    , work_position
+    , work_phone
 
-FROM {{ source('bitrix24', 'users') }}
+from {{ source('bitrix24', 'users') }}
 
 {{ filter_rows(
     account_id=var('account_id_b24'),
