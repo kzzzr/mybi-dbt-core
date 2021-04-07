@@ -4,7 +4,12 @@ with source as (
 
 select
 
-      cf.account_id
+      {{ surrogate_key(["account_id",
+        "dates_id", 
+        "sites_id",
+        "traffic_id"])
+      }} as id
+    , cf.account_id
     , cf.dates_id
     , cf.sites_id
     , cf.traffic_id

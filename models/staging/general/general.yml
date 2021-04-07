@@ -2,38 +2,26 @@ version: 2
 
 models:
     - name: stg_general_dates
-      tests:
+      tests: &general_defualt
         - not_null:
             column_name: id
-    - name: stg_general_clientids
-      tests:
-        - not_null:
-            column_name: clientid
-    - name: stg_general_traffic
-      tests:
-        - not_null:
+        - unique:
             column_name: id
-    - name: stg_general_locations
-      tests:
-        - not_null:
-            column_name: id
-    - name: stg_general_sites
-      tests:
-        - not_null:
-            column_name: id
-    - name: stg_general_accounts
-      tests:
-        - not_null:
-            column_name: account_id
-    - name: stg_general_costs_facts
-      tests:
-        - not_null:
-            column_name: account_id
 
-              
-              
-                            
-              
-              
-              
-              
+    - name: stg_general_clientids
+      tests: *general_defualt
+
+    - name: stg_general_traffic
+      tests: *general_defualt
+      
+    - name: stg_general_locations
+      tests: *general_defualt
+
+    - name: stg_general_sites
+      tests: *general_defualt
+
+    - name: stg_general_accounts
+      tests: *general_defualt
+
+    - name: stg_general_costs_facts
+      tests: *general_defualt
