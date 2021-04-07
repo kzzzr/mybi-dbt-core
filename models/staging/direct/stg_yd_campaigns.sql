@@ -2,22 +2,25 @@
 
 with source as (
 
-SELECT
+select
 
-	  [Идентификатор кампании]
-	, [Идентификатор подключенного аккаунта]
-	, [Внутренний идентификатор кампании]
-	, [Название кампании]
-	, [Тип кампании]
-	, [Статус кампании]
-	, [Состояние кампании]
-	, [Статус оплаты кампании]
-	, [Текстовое пояснение к статусу]
-	, [Валюта кампании]
-	, [Дневной бюджет кампании]
-	, [Тип дневного бюджета]
+      id
+    , account_id
+    , campaign_id
+    , name
+    , campaign_type
+    , status
+    , state
+    , status_payment
+    , status_clarification
+    , currency
+    , daily_budget_amount
+    , daily_budget_mode
+    , start_date
+    , end_date
+    , is_actual
 
-FROM {{ source('direct', 'campaigns') }}
+from {{ source('direct', 'campaigns') }}
 
 {{ filter_rows(
     account_id=var('account_id_direct'),

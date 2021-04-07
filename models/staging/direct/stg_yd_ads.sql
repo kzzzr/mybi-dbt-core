@@ -2,26 +2,26 @@
 
 with source as (
 
-SELECT
+select
 	
-	  [Идентификатор объявления]
-	, [Идентификатор подключенного аккаунта]
-	, [Внутренний идентификатор объявления]
-	, [Статус объявления]
-	, [Состояние объявления]
-	, [Текстовое пояснение к статусу]
-	, [Возрастная метка]
-	, [Тип объявления]
-	, [Подтип объявления]
-	, [Заголовок объявления]
-	, [Второй заголовок объявления]
-	, [Текст объявления]
-	, [Ссылка на сайт рекламодателя]
-	, [Признак мобильного объявления]
-	, [Рекламируемый домен]
-	, [Отображаемая ссылка]
+      id
+    , account_id
+    , ad_id
+    , status
+    , state
+    , clarification
+    , age_label
+    , ad_type
+    , ad_subtype
+    , title
+    , title_two
+    , text_content
+    , url
+    , mobile
+    , display_domain
+    , display_url_path
 
-FROM {{ source('direct', 'ads') }}
+from {{ source('direct', 'ads') }}
 
 {{ filter_rows(
     account_id=var('account_id_direct'),

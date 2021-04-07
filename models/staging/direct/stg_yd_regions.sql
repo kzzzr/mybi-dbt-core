@@ -6,15 +6,13 @@ select
 
       id
     , account_id
-    , adgroup_id
+    , adgroups_id
+    , region_id
     , name
-    , tracking_params
-    , status
-    , serving_status
-    , adgroup_type
-    , adgroup_subtype
+    , region_type
+    , is_negative
 
-from {{ source('direct', 'adgroups') }}
+from {{ source('direct', 'regions') }}
 
 {{ filter_rows(
     account_id=var('account_id_direct'),

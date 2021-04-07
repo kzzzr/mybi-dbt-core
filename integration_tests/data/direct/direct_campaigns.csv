@@ -1,1 +1,4 @@
-"Идентификатор кампании","Идентификатор подключенного аккаунта","Внутренний идентификатор кампании","Название кампании","Тип кампании","Статус кампании","Состояние кампании","Статус оплаты кампании","Текстовое пояснение к статусу","Валюта кампании","Дневной бюджет кампании","Тип дневного бюджета"
+"id","account_id","campaign_id","name","campaign_type","status","state","status_payment","status_clarification","currency","daily_budget_amount","daily_budget_mode","start_date","end_date","is_actual"
+218,18378,"55336088",Network_Media_Zdorovie_Msk,CPM_BANNER_CAMPAIGN,ACCEPTED,ON,ALLOWED,Идут показы,RUB,600.00,STANDARD,,,1
+219,18378,"55343205",Network_Retargeting_Media_Msk,TEXT_CAMPAIGN,ACCEPTED,ON,ALLOWED,Показы начнутся в 6:00,RUB,1000.00,STANDARD,,,1
+223,18378,"55572598",Network_Media_Banners_Keyword_Msk,CPM_BANNER_CAMPAIGN,ACCEPTED,ON,ALLOWED,Показы начнутся в 6:00,RUB,1000.00,STANDARD,,,1

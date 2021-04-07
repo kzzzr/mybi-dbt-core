@@ -27,9 +27,9 @@ vars:
     mybi_dbt_core:
         account_id_metrika: "21600"
         account_id_adwords: "18380"
+        account_id_direct: "18378"
 
         account_id_b24: "19646"
-        account_id_direct: "18789"
         account_id_facebook: "18787"
         account_id_mytarget: "18799"
         account_id_amocrm: "20652"   
@@ -51,6 +51,7 @@ seeds:
         general_traffic:
             +column_types:
                 grouping: nvarchar(128)
+                content: nvarchar(512)
         general_sites:
             +column_types:
                 domain: nvarchar(1024)
@@ -60,6 +61,12 @@ seeds:
         +tags: ["bitrix24"]
     direct:
         +tags: ["direct"]
+        direct_adgroups:
+            +column_types:
+                adgroup_id: nvarchar(32)
+        direct_ads:
+            +column_types:
+                ad_id: nvarchar(32)
     facebook:
         +tags: ["facebook"]
     gaw:

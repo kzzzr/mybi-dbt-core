@@ -6,15 +6,13 @@ select
 
       id
     , account_id
-    , adgroup_id
-    , name
-    , tracking_params
-    , status
-    , serving_status
-    , adgroup_type
-    , adgroup_subtype
+    , ads_id
+    , sitelink_id
+    , title
+    , href
+    , description
 
-from {{ source('direct', 'adgroups') }}
+from {{ source('direct', 'sitelinks') }}
 
 {{ filter_rows(
     account_id=var('account_id_direct'),

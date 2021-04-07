@@ -50,6 +50,10 @@ sources:
           identifier: direct_adgroups
         - name: ads
           identifier: direct_ads
+        - name: regions
+          identifier: direct_regions
+        - name: sitelinks
+          identifier: direct_sitelinks
         - name: ads_facts
           identifier: direct_ads_facts          
 
@@ -144,4 +148,3 @@ sources:
           identifier: amocrm_leads_attributes
         - name: leads_tags
           identifier: amocrm_leads_tags
-          

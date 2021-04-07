@@ -3,7 +3,7 @@ version: 2
 models:
     - name: stg_gaw_campaigns
       tests: &gaw_defaults
-        - non_empty
+        - not_empty
         - not_null:
             column_name: id
         - unique:
@@ -20,7 +20,7 @@ models:
 
     - name: stg_gaw_ads_facts
       tests: 
-        - non_empty
+        - not_empty
         - not_null:
             column_name: id
         - unique:
@@ -70,7 +70,7 @@ models:
 
     - name: stg_gaw_keywords_facts
       tests:
-        - non_empty
+        - not_empty
         - not_null:
             column_name: id
         - unique:

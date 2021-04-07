@@ -2,18 +2,71 @@ version: 2
 
 models:
     - name: stg_yd_campaigns
-      tests:
-          - not_null:
-              column_name: "[Идентификатор кампании]"
+      tests: &direct_defaults
+        - not_empty
+        - not_null:
+            column_name: id
+        - unique:
+            column_name: id
+
     - name: stg_yd_adgroups
-      tests:
-          - not_null:
-              column_name: "[Идентификатор группы объявлений]"
+      tests: *direct_defaults
+
     - name: stg_yd_ads
-      tests:
-          - not_null:
-              column_name: "[Идентификатор объявления]"
+      tests: *direct_defaults
+
+    - name: stg_yd_sitelinks
+      tests: *direct_defaults
+
+    - name: stg_yd_regions
+      tests: *direct_defaults
+
     - name: stg_yd_ads_facts
-      tests:
-          - not_null:
-              column_name: "[Идентификатор подключенного аккаунта]"
+      tests: 
+        - not_empty
+        - not_null:
+            column_name: id
+        - unique:
+            column_name: id
+        - not_null:
+            column_name: account_id
+        - not_null:
+            column_name: campaigns_id
+        - not_null:
+            column_name: adgroups_id
+        - not_null:
+            column_name: ads_id
+        - not_null:
+            column_name: dates_id
+        - not_null:
+            column_name: traffic_id
+        - not_null:
+            column_name: sites_id
+        - relationships:
+            to: ref('stg_general_accounts')
+            column_name: account_id
+            field: account_id
+        - relationships:
+            to: ref('stg_general_dates')
+            column_name: dates_id
+            field: id
+        - relationships:
+            to: ref('stg_general_traffic')
+            column_name: traffic_id
+            field: id
+        - relationships:
+            to: ref('stg_general_sites')
+            column_name: sites_id
+            field: id
+        - relationships:
+            to: ref('stg_yd_campaigns')
+            column_name: campaigns_id
+            field: id
+        - relationships:
+            to: ref('stg_yd_adgroups')
+            column_name: adgroups_id
+            field: id
+        - relationships:
+            to: ref('stg_yd_ads')
+            column_name: ads_id
+            field: id

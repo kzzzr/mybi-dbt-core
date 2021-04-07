@@ -1,5 +1,5 @@
 -- NON_EMPTY
-{% macro test_non_empty(model, column_name) %}
+{% macro test_not_empty(model, column_name) %}
 
 with validation as (
 
