@@ -31,16 +31,17 @@ vars:
         account_id_facebook: "18441"
         account_id_mytarget: "18799"
         account_id_b24: "19646"
-
         account_id_amocrm: "20652"   
+        account_id_ga: "18783"
 
-        caption_metrika: 'metrika'
-        caption_direct: 'yandex'
-        caption_adwords: 'google'                    
+        caption_metrika: 'yandex_metrika'
+        caption_direct: 'yandex_direct'
+        caption_adwords: 'google_adwords'                    
         caption_facebook: 'facebook' 
         caption_mytarget: 'mytarget' 
         caption_bitrix24: 'bitrix24' 
-        caption_amocrm: 'amocrm' 
+        caption_amocrm: 'amocrm'
+        caption_ga: 'google_analytics' 
 
 seeds:
   +quote_columns: true  
@@ -110,3 +111,5 @@ seeds:
         +tags: ["metrika"]
     mytarget:
         +tags: ["mytarget"]
+    ga:
+        +tags: ["ga"]

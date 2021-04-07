@@ -13,7 +13,7 @@ models:
       tests:
         - not_empty
         - unique:
-            column_name: session_id
+            column_name: id
         - not_null:
             column_name: account_id
         - not_null:

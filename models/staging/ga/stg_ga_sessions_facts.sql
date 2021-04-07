@@ -2,34 +2,30 @@
 
 with source as (
 
-select 
+select
 
-      {{ surrogate_key(["account_id", 
-	  	"clientids_id", 
-		"dates_id", 
-		"traffic_id", 
-		"locations_id", 
-		"devices_id"])
-		}} as id
-	, f.account_id
-    , f.clientids_id
+      f.account_id
     , f.dates_id
+    , f.sites_id
+    , f.clientids_id
+    , f.devices_id
     , f.traffic_id
     , f.locations_id
-    , f.devices_id
+    , f.session_id
+    , f.user_type
     , f.sessions
     , f.bounces
     , f.pageviews
     , f.duration
     , gd.dt
-    , gd.ts
+    , gd.ts    
 
-from {{ source('metrika', 'sessions_facts') }} as f
+from {{ source('ga', 'sessions_facts') }} as f
 	left join {{ ref('stg_general_dates') }} as gd
 		on gd.id = f.dates_id
 
 {{ filter_rows(
-    account_id=var('account_id_metrika'),
+    account_id=var('account_id_ga'),
     last_number_of_days=true, 
     ts_field='dt'
 ) }}

@@ -4,6 +4,7 @@ sources:
     - name: general
       database: "{{ env_var('DBT_MSSQL_DATABASE') }}"
       schema: "{{ env_var('DBT_MSSQL_SCHEMA') }}"
+      description: myBI general dimensions and facts
       tags: ['general']
       tables:
         - name: clientids
@@ -24,6 +25,7 @@ sources:
     - name: metrika
       database: "{{ env_var('DBT_MSSQL_DATABASE') }}"
       schema: "{{ env_var('DBT_MSSQL_SCHEMA') }}"
+      description: Yandex.Metrika
       tags: ['metrika']
       tables:   
         - name: sessions_facts
@@ -42,6 +44,7 @@ sources:
     - name: direct
       database: "{{ env_var('DBT_MSSQL_DATABASE') }}"
       schema: "{{ env_var('DBT_MSSQL_SCHEMA') }}"
+      description: Yandex.Direct
       tags: ['direct']
       tables:
         - name: campaigns
@@ -60,6 +63,7 @@ sources:
     - name: gaw
       database: "{{ env_var('DBT_MSSQL_DATABASE') }}"
       schema: "{{ env_var('DBT_MSSQL_SCHEMA') }}"
+      description: Google Adwords
       tags: ['gaw']
       tables:
         - name: campaigns
@@ -80,6 +84,7 @@ sources:
     - name: facebook
       database: "{{ env_var('DBT_MSSQL_DATABASE') }}"
       schema: "{{ env_var('DBT_MSSQL_SCHEMA') }}"
+      description: Facebook
       tags: ['facebook']
       tables:
         - name: campaigns
@@ -96,6 +101,7 @@ sources:
     - name: mytarget
       database: "{{ env_var('DBT_MSSQL_DATABASE') }}"
       schema: "{{ env_var('DBT_MSSQL_SCHEMA') }}"
+      description: myTarget
       tags: ['mytarget']      
       tables:
         - name: campaigns
@@ -110,6 +116,7 @@ sources:
     - name: bitrix24
       database: "{{ env_var('DBT_MSSQL_DATABASE') }}"
       schema: "{{ env_var('DBT_MSSQL_SCHEMA') }}"
+      description: Bitrix24
       tags: ['bitrix24']      
       tables:
         - name: leads_facts
@@ -134,6 +141,7 @@ sources:
     - name: amocrm
       database: "{{ env_var('DBT_MSSQL_DATABASE') }}"
       schema: "{{ env_var('DBT_MSSQL_SCHEMA') }}"
+      description: amoCRM
       tags: ['amocrm']      
       tables:
         - name: leads_facts
@@ -150,3 +158,20 @@ sources:
           identifier: amocrm_leads_attributes
         - name: leads_tags
           identifier: amocrm_leads_tags
+
+    - name: ga
+      database: "{{ env_var('DBT_MSSQL_DATABASE') }}"
+      schema: "{{ env_var('DBT_MSSQL_SCHEMA') }}"
+      description: Google Analytics
+      tags: ['ga']      
+      tables:
+        - name: sessions_facts
+          identifier: analytics_sessions_facts
+        - name: goals_facts
+          identifier: analytics_goals_facts
+        - name: costs_facts
+          identifier: analytics_costs_facts
+        - name: goals
+          identifier: analytics_goals
+        - name: devices
+          identifier: analytics_devices
