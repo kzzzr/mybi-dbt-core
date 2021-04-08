@@ -1,4 +1,4 @@
 "id","account_id","user_id","email","name","last_name","second_name","work_company","work_position","work_phone"
-2,19646,7,dveplanety.spb1@gmail.com,,Две Планеты - СПб,,,,"79219381295"
-3,19646,460,dveplanety.msk1@gmail.com,Две Планеты ВДНХ,,,,,
-5,19646,1152,dveplanety.msk2@gmail.com,Две Планеты Беляево,,,,,
+2,19646,7,email,name,last_name,second_name,,,work_phone
+3,19646,460,email,name,last_name,second_name,,,work_phone
+5,19646,1152,email,name,last_name,second_name,,,work_phone

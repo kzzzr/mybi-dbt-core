@@ -1,9 +1,9 @@
 "id","account_id","adset_id","name","billing_event","configured_status","effective_status","is_autobid","optimization_goal","rtb_flag","bid_strategy","destination_type"
-936,18441,"23846477239820408",Интересы_доставка_кисломолочный,Показы,Активно,Активно,,OFFSITE_CONVERSIONS,,Низкая цена без суммы ставки,UNDEFINED
-937,18441,"23846478519700408",Lal_Интересы смешанные+purchase+cart_1%,Показы,Остановленно,Остановленно,,OFFSITE_CONVERSIONS,,Низкая цена без суммы ставки,UNDEFINED
-947,18441,"23846537414400408",Lal_Интересы смеш+purchase+cart_1%_Excl Purchase 180,Показы,Остановленно,Остановленно,,OFFSITE_CONVERSIONS,,Низкая цена без суммы ставки,UNDEFINED
-948,18441,"23846537439670408",Интересы_Сыр_Excl Purchase 180,Показы,Остановленно,Остановленно,,OFFSITE_CONVERSIONS,,Низкая цена без суммы ставки,UNDEFINED
-1099,18441,"23846791129910408",Ретаргет_Viewcontent+ATC_не купили,Переходы,Активно,Активно,,Переходы,,Низкая цена без суммы ставки,WEBSITE
-1115,18441,"23847055652950408",Интересы_доставка_кисломолочный_мясо,Показы,Активно,Активно,,OFFSITE_CONVERSIONS,,Низкая цена без суммы ставки,UNDEFINED
-1118,18441,"23847079511800408",Интересы_колабаса+purchase 180_23.01,Показы,Остановленно,Остановленно,,OFFSITE_CONVERSIONS,,Низкая цена без суммы ставки,UNDEFINED
-1121,18441,"23847103904670408",LAL purchase_доставка_Ферма шульгино,Показы,Активно,Активно,,OFFSITE_CONVERSIONS,,Низкая цена без суммы ставки,UNDEFINED
+936,18441,"23846477239820408",name,billing_event,configured_status,effective_status,,OFFSITE_CONVERSIONS,,bid_strategy,UNDEFINED
+937,18441,"23846478519700408",name,billing_event,configured_status,effective_status,,OFFSITE_CONVERSIONS,,bid_strategy,UNDEFINED
+947,18441,"23846537414400408",name,billing_event,configured_status,effective_status,,OFFSITE_CONVERSIONS,,bid_strategy,UNDEFINED
+948,18441,"23846537439670408",name,billing_event,configured_status,effective_status,,OFFSITE_CONVERSIONS,,bid_strategy,UNDEFINED
+1099,18441,"23846791129910408",name,billing_event,configured_status,effective_status,,????????,,bid_strategy,WEBSITE
+1115,18441,"23847055652950408",name,billing_event,configured_status,effective_status,,OFFSITE_CONVERSIONS,,bid_strategy,UNDEFINED
+1118,18441,"23847079511800408",name,billing_event,configured_status,effective_status,,OFFSITE_CONVERSIONS,,bid_strategy,UNDEFINED
+1121,18441,"23847103904670408",name,billing_event,configured_status,effective_status,,OFFSITE_CONVERSIONS,,bid_strategy,UNDEFINED
