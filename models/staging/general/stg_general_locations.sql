@@ -2,20 +2,20 @@
 
 with source as (
 
-SELECT
+select
 
-	[Идентификатор местоположения]
-	, [Код страны]
-	, Страна
-	, [Код региона]
-	, Регион
-	, Город
-	, Широта
-	, Долгота
+      id
+    , country_iso
+    , country
+    , region_iso
+    , region
+    , city
+    , latitude
+    , longitude	
 
-FROM {{ source('general', 'locations') }}
+from {{ source('general', 'locations') }}
 
-WHERE 1=1
+where 1=1
 
 )
 

@@ -1,49 +1,199 @@
 version: 2
 
-models:
+models:    
+    - name: stg_b24_users
+      tests: &b24_defaults
+        - not_empty
+        - not_null:
+            column_name: id
+        - unique:
+            column_name: id    
+    
+    - name: stg_b24_deals
+      tests: *b24_defaults
+    
+    - name: stg_b24_contacts
+      tests: *b24_defaults    
+    
+    - name: stg_b24_companies
+      tests: *b24_defaults
+
+    - name: stg_b24_products
+      tests: *b24_defaults
+          
+    - name: stg_b24_leads
+      tests: *b24_defaults
+
     - name: stg_b24_leads_facts
       tests:
-          - not_null:
-              column_name: "[Идентификатор лида]"
+        - not_empty
+        - unique:
+            column_name: leads_id        
+        - not_null:
+            column_name: account_id
+        - not_null:
+            column_name: clientids_id
+        - not_null:
+            column_name: traffic_id
+        - not_null:
+            column_name: users_id
+        - not_null:
+            column_name: leads_id
+        - not_null:
+            column_name: contacts_id
+        - not_null:
+            column_name: companies_id
+        - not_null:
+            column_name: locations_id
+        - not_null:
+            column_name: deals_id 
+        - relationships:
+            to: ref('stg_general_accounts')
+            column_name: account_id
+            field: account_id
+        - relationships:
+            to: ref('stg_general_clientids')
+            column_name: clientids_id
+            field: id
+        - relationships:
+            to: ref('stg_general_traffic')
+            column_name: traffic_id
+            field: id
+        - relationships:
+            to: ref('stg_general_locations')
+            column_name: locations_id
+            field: id
+        - relationships:
+            to: ref('stg_b24_users')
+            column_name: users_id
+            field: id            
+        - relationships:
+            to: ref('stg_b24_leads')
+            column_name: leads_id
+            field: id            
+        - relationships:
+            to: ref('stg_b24_contacts')
+            column_name: contacts_id
+            field: id            
+        - relationships:
+            to: ref('stg_b24_companies')
+            column_name: companies_id
+            field: id            
+        - relationships:
+            to: ref('stg_b24_deals')
+            column_name: deals_id
+            field: id
+      
     - name: stg_b24_deals_facts
-      tests:
-          - not_null:
-              column_name: "[Идентификатор сделки]"
-    - name: stg_b24_products_facts
-      tests:
-          - not_null:
-              column_name: "[Идентификатор товара]"
-    - name: stg_b24_users
-      tests:
-          - not_null:
-              column_name: "[Идентификатор пользователя]"
-    - name: stg_b24_deals
-      tests:
-          - not_null:
-              column_name: "[Идентификатор сделки]"
-    - name: stg_b24_contacts
-      tests:
-          - not_null:
-              column_name: "[Идентификатор контакта]"
-    - name: stg_b24_companies
-      tests:
-          - not_null:
-              column_name: "[Идентификатор компании]"
-    - name: stg_b24_products
-      tests:
-          - not_null:
-              column_name: "[Идентификатор товара]"
-    - name: stg_b24_leads
-      tests:
-          - not_null:
-              column_name: "[Идентификатор лида]"
+      tests:    
+        - not_empty
+        - unique:
+            column_name: deals_id        
+        - not_null:
+            column_name: account_id
+        - not_null:
+            column_name: clientids_id
+        - not_null:
+            column_name: traffic_id
+        - not_null:
+            column_name: users_id
+        - not_null:
+            column_name: deals_id
+        - not_null:
+            column_name: contacts_id
+        - not_null:
+            column_name: companies_id
+        - not_null:
+            column_name: locations_id            
+        - relationships:
+            to: ref('stg_general_accounts')
+            column_name: account_id
+            field: account_id
+        - relationships:
+            to: ref('stg_general_clientids')
+            column_name: clientids_id
+            field: id
+        - relationships:
+            to: ref('stg_general_traffic')
+            column_name: traffic_id
+            field: id
+        - relationships:
+            to: ref('stg_b24_users')
+            column_name: users_id
+            field: id            
+        - relationships:
+            to: ref('stg_b24_deals')
+            column_name: deals_id
+            field: id
+        - relationships:
+            to: ref('stg_b24_contacts')
+            column_name: contacts_id
+            field: id            
+        - relationships:
+            to: ref('stg_b24_companies')
+            column_name: companies_id
+            field: id            
+        - relationships:
+            to: ref('stg_general_locations')
+            column_name: locations_id
+            field: id
 
-              
-              
-              
-                            
-              
-              
-              
-              
-              
+    - name: stg_b24_products_facts
+      tests:    
+        - not_empty
+        - unique:
+            column_name: products_id        
+        - not_null:
+            column_name: account_id
+        - not_null:
+            column_name: clientids_id
+        - not_null:
+            column_name: traffic_id
+        - not_null:
+            column_name: users_id
+        - not_null:
+            column_name: deals_id
+        - not_null:
+            column_name: contacts_id
+        - not_null:
+            column_name: companies_id
+        - not_null:
+            column_name: locations_id         
+        - not_null:
+            column_name: products_id  
+        - relationships:
+            to: ref('stg_general_accounts')
+            column_name: account_id
+            field: account_id
+        - relationships:
+            to: ref('stg_general_clientids')
+            column_name: clientids_id
+            field: id
+        - relationships:
+            to: ref('stg_general_traffic')
+            column_name: traffic_id
+            field: id
+        - relationships:
+            to: ref('stg_b24_users')
+            column_name: users_id
+            field: id            
+        - relationships:
+            to: ref('stg_b24_deals')
+            column_name: deals_id
+            field: id
+        - relationships:
+            to: ref('stg_b24_contacts')
+            column_name: contacts_id
+            field: id            
+        - relationships:
+            to: ref('stg_b24_companies')
+            column_name: companies_id
+            field: id            
+        - relationships:
+            to: ref('stg_general_locations')
+            column_name: locations_id
+            field: id                   
+        - relationships:
+            to: ref('stg_b24_products')
+            column_name: products_id
+            field: id

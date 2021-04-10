@@ -2,15 +2,15 @@
 
 with source as (
 
-SELECT
+select
 
-	[Идентификатор сайта]
-	, [Доменное имя]
-	, Описание
+      id
+    , domain
+    , description
 
-FROM {{ source('general', 'sites') }}
+from {{ source('general', 'sites') }}
 
-WHERE 1=1
+where 1=1
 
 )
 

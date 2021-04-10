@@ -2,26 +2,26 @@
 
 with source as (
 
-SELECT
+select
 
-	[Идентификатор сделки],
-	[Идентификатор подключенного аккаунта],
-	[Внутренний идентификатор сделки],
-	[Название сделки],
-	[Название воронки],
-	[Идентификатор воронки],
-	[Статус сделки],
-	[Идентификатор этапа],
-	[Очередность статуса сделки],
-	[Дата начала актуальности записи],
-	[Дата окончания актуальности записи],
-	[Признак актуальности записи],
-	[Идентификатор заявки],
-	[Причина отказа],
-	[Идентификатор причины отказа],
-	[Сделка удалена]
+      id
+    , account_id
+    , lead_id
+    , name
+    , pipeline
+    , pipeline_id
+    , status
+    , status_id
+    , status_order
+    , start_date
+    , end_date
+    , is_actual
+    , request_id
+    , loss_reason
+    , loss_reason_id
+    , is_deleted
 
-FROM {{ source('amocrm', 'leads') }}
+from {{ source('amocrm', 'leads') }}
 
 {{ filter_rows(
     account_id=var('account_id_amocrm'),

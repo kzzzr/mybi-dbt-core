@@ -2,17 +2,17 @@
 
 with source as (
 
-SELECT
+select
 
-	[Идентификатор клиента]
-	, [Идентификатор посетителя сайта]
-	, [Идентификатор пользователя]
-	, [Телефон клиента]
-	, [e-mail клиента]
+      id
+    , clientid
+    , userid
+    , phone
+    , email	
 
-FROM {{ source('general', 'clientids') }}
+from {{ source('general', 'clientids') }}
 
-WHERE 1=1
+where 1=1
 
 )
 

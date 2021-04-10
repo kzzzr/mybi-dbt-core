@@ -2,15 +2,15 @@
 
 with source as (
 
-SELECT 
+select 
 
-	[Идентификатор цели]
-	,[Идентификатор подключенного аккаунта]
-	,[Внутренний идентификатор цели]
-	,[Название цели]
-	,[Тип цели]
+      id
+    , account_id
+    , goal_id
+    , name
+    , type
 
-FROM {{ source('metrika', 'goals') }}
+from {{ source('metrika', 'goals') }}
 
 {{ filter_rows(
     account_id=var('account_id_metrika'),

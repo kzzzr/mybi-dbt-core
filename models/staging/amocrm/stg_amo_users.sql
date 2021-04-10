@@ -2,17 +2,26 @@
 
 with source as (
 
-SELECT
+select
 
-	[Идентификатор пользователя],
-	[Идентификатор подключенного аккаунта],
-	[Внутренний идентификатор пользователя],
-	Логин,
-	Имя,
-	Телефон,
-	[Группа пользователя]
+      id
+    , account_id
+    , user_id
+    , login
+    , name
+    , phone
+    , group_name
+    , email
+    , is_admin
+    , is_active
+    , is_free
+    , mail_access
+    , catalog_access
+    , role_id
+    , role_name
+    , group_id
 
-FROM {{ source('amocrm', 'users') }}
+from {{ source('amocrm', 'users') }}
 
 {{ filter_rows(
     account_id=var('account_id_amocrm'),

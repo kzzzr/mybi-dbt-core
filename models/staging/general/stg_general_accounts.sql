@@ -2,20 +2,20 @@
 
 with source as (
 
-SELECT
+select
 
-	[Идентификатор записи]
-	, [Идентификатор подключенного аккаунта]
-	, [Название источника]
-	, Сервис
-	, Включен
-	, [Статус загрузки]
-	, [Дата начала интервала]
-	, [Дата окончания интервала]
+      id
+    , account_id
+    , caption
+    , service
+    , enabled
+    , status
+    , interval_start
+    , interval_end
 
-FROM {{ source('general', 'accounts') }}
+from {{ source('general', 'accounts') }}
 
-WHERE 1=1
+where 1=1
 
 )
 

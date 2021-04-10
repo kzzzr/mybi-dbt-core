@@ -2,30 +2,84 @@ version: 2
 
 models:
     - name: stg_amo_companies
-      tests:
-          - not_null:
-              column_name: "[Идентификатор компании]"
+      tests: &amo_defaults
+        - not_empty
+        - not_null:
+            column_name: id
+        - unique:
+            column_name: id    
+
     - name: stg_amo_contacts
-      tests:
-          - not_null:
-              column_name: "[Идентификатор контакта]"
+      tests: *amo_defaults
+      
     - name: stg_amo_leads
+      tests: *amo_defaults
+
+    - name: stg_amo_users
+      tests: *amo_defaults
+    
+    - name: stg_amo_leads_attributes
       tests:
-          - not_null:
-              column_name: "[Идентификатор сделки]"
-    - name: stg_amo_leads_facts
-      tests:
-          - not_null:
-              column_name: "[Идентификатор сделки]"
-    - name: stg_amo_leads_info
-      tests:
-          - not_null:
-              column_name: "[Идентификатор сделки]"
+        - not_empty
+        - not_null:
+            column_name: id
+        - unique:
+            column_name: id  
+        - relationships:
+            to: ref('stg_amo_leads')
+            column_name: leads_id
+            field: id                  
+
     - name: stg_amo_leads_tags
       tests:
-          - not_null:
-              column_name: "[Идентификатор сделки]"
-    - name: stg_amo_users
+        - not_empty
+        - not_null:
+            column_name: id
+        - unique:
+            column_name: id   
+        - relationships:
+            to: ref('stg_amo_leads')
+            column_name: leads_id
+            field: id
+
+    - name: stg_amo_leads_facts
       tests:
-          - not_null:
-              column_name: "[Идентификатор пользователя]"
+        - not_empty
+        - unique:
+            column_name: leads_id        
+        - not_null:
+            column_name: account_id
+        - not_null:
+            column_name: clientids_id
+        - not_null:
+            column_name: users_id
+        - not_null:
+            column_name: leads_id
+        - not_null:
+            column_name: contacts_id
+        - not_null:
+            column_name: companies_id
+        - relationships:
+            to: ref('stg_general_accounts')
+            column_name: account_id
+            field: account_id
+        - relationships:
+            to: ref('stg_general_clientids')
+            column_name: clientids_id
+            field: id
+        - relationships:
+            to: ref('stg_amo_users')
+            column_name: users_id
+            field: id            
+        - relationships:
+            to: ref('stg_amo_leads')
+            column_name: leads_id
+            field: id            
+        - relationships:
+            to: ref('stg_amo_contacts')
+            column_name: contacts_id
+            field: id            
+        - relationships:
+            to: ref('stg_amo_companies')
+            column_name: companies_id
+            field: id

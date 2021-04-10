@@ -1,4 +1,21 @@
--- surrogate hash key
+------------------------
+--- MSSQL hash macro ---
+------------------------
+{% macro hash(field) -%}
+  HASHBYTES('SHA2_256', {{field}})
+{%- endmacro %}
+
+--------------------------
+--- MSSQL concat macro ---
+--------------------------
+{% macro concat(fields) -%}
+    concat({{ fields|join(', ') }})
+{%- endmacro %}
+
+
+--------------------------
+--- Surrogate hash key ---
+--------------------------
 {%- macro surrogate_key(field_list) -%}
 
 
@@ -40,8 +57,9 @@
 
 {%- endmacro -%}
 
-
--- concat key for debugging
+--------------------------------
+--- Concat key for debugging ---
+--------------------------------
 {%- macro concat_key(field_list) -%}
 
 

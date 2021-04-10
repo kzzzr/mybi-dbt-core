@@ -1,0 +1,4 @@
+"id","account_id","campaign_id","name","campaign_type","status","state","status_payment","status_clarification","currency","daily_budget_amount","daily_budget_mode","start_date","end_date","is_actual"
+218,18378,55336088,name,CPM_BANNER_CAMPAIGN,ACCEPTED,ON,ALLOWED,status_clarification,RUB,600,STANDARD,,,1
+219,18378,55343205,name,TEXT_CAMPAIGN,ACCEPTED,ON,ALLOWED,status_clarification,RUB,1000,STANDARD,,,1
+223,18378,55572598,name,CPM_BANNER_CAMPAIGN,ACCEPTED,ON,ALLOWED,status_clarification,RUB,1000,STANDARD,,,1

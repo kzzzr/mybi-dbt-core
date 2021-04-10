@@ -2,23 +2,23 @@
 
 with source as (
 
-SELECT
+select
 
-	  [Идентификатор кампании]
-	, [Идентификатор подключенного аккаунта]
-	, [Внутренний идентификатор кампании]
-	, [Название кампании]
-	, [Системный статус кампании]
-	, [Статус кампании]
-	, [Аукционная стратегия]
-	, [Распределение бюджета]
-	, [Возрастные ограничения]
-	, [Члены группы]
-	, [Расширенные возрастные ограничения]
-	, [Добавлять ли UTM-метки в URL объявлений]
-	, [UTM-метки для добавления в URL объявлений]
+      id
+    , account_id
+    , campaign_id
+    , name
+    , system_status
+    , status
+    , autobidding
+    , mixing
+    , age_restrictions
+    , group_members
+    , extended_age
+    , enable_utm
+    , utm
 
-FROM {{ source('mytarget', 'campaigns') }}
+from {{ source('mytarget', 'campaigns') }}
 
 {{ filter_rows(
     account_id=var('account_id_mytarget'),

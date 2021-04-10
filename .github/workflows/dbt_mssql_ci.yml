@@ -36,6 +36,6 @@ jobs:
           DBT_MSSQL_PASSWORD: P@ssword
           DBT_MSSQL_DATABASE: master
           DBT_MSSQL_SCHEMA: core_ci
-      - name: Setup tmate session
-        uses: mxschmitt/action-tmate@v3
-        if: ${{ failure() }}
+      # - name: Setup tmate session
+      #   uses: mxschmitt/action-tmate@v3
+      #   if: ${{ failure() }}

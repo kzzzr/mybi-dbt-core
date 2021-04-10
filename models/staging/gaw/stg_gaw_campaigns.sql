@@ -2,23 +2,26 @@
 
 with source as (
 
-SELECT
+select
 
-	  [Идентификатор кампании]
-	, [Идентификатор подключенного аккаунта]
-	, [Внутренний идентификатор кампании]
-	, [Название кампании]
-	, [Статус кампании]
-	, [Статус обслуживания кампании]
-	, [Статус оптимизации для объявлений]
-	, [Тип канала]
-	, [Подтип канала]
-	, [Метки кампании]
-	, [Шаблон отслеживания основного объекта]
-	, [Идентификатор мобильного приложения]
-	, [Поставщик мобильного приложения]
+      id
+    , account_id
+    , campaign_id
+    , name
+    , status
+    , serving_status
+    , ad_serving_optimization_status
+    , advertising_channel_type
+    , advertising_channel_sub_type
+    , labels
+    , tracking_url_template
+    , app_id
+    , app_vendor
+    , start_date
+    , end_date
+    , is_actual
 
-FROM {{ source('gaw', 'campaigns') }}
+from {{ source('gaw', 'campaigns') }}
 
 {{ filter_rows(
     account_id=var('account_id_adwords'),

@@ -1,314 +1,177 @@
 version: 2
 
 sources:
+    - name: general
+      database: "{{ env_var('DBT_MSSQL_DATABASE') }}"
+      schema: "{{ env_var('DBT_MSSQL_SCHEMA') }}"
+      description: myBI general dimensions and facts
+      tags: ['general']
+      tables:
+        - name: clientids
+          identifier: general_clientids             
+        - name: dates
+          identifier: general_dates                
+        - name: traffic
+          identifier: general_traffic               
+        - name: locations
+          identifier: general_locations             
+        - name: sites
+          identifier: general_sites                 
+        - name: accounts
+          identifier: general_accounts              
+        - name: costs_facts
+          identifier: general_costs_facts
+
     - name: metrika
       database: "{{ env_var('DBT_MSSQL_DATABASE') }}"
       schema: "{{ env_var('DBT_MSSQL_SCHEMA') }}"
+      description: Yandex.Metrika
       tags: ['metrika']
       tables:   
         - name: sessions_facts
-          identifier: "ЯМ Посещения сайта"
+          identifier: metrika_sessions_facts
         - name: goals_facts
-          identifier: "ЯМ Достигнутые цели"
+          identifier: metrika_goals_facts
         - name: purchases_facts
-          identifier: "ЯМ Оформленные заказы"
+          identifier: metrika_purchases_facts
         - name: devices
-          identifier: "ЯМ Параметры устройств"
+          identifier: metrika_devices
         - name: goals
-          identifier: "ЯМ Параметры целей"
+          identifier: metrika_goals
         - name: purchases
-          identifier: "ЯМ Параметры заказов"
+          identifier: metrika_purchases
 
     - name: direct
       database: "{{ env_var('DBT_MSSQL_DATABASE') }}"
       schema: "{{ env_var('DBT_MSSQL_SCHEMA') }}"
+      description: Yandex.Direct
       tags: ['direct']
       tables:
         - name: campaigns
-          identifier: "ЯД Параметры кампаний"
-          columns:
-              - name: "[Идентификатор подключенного аккаунта]"
-                tests:
-                    - not_null
+          identifier: direct_campaigns
         - name: adgroups
-          identifier: "ЯД Параметры групп объявлений"
-          columns:
-              - name: "[Идентификатор подключенного аккаунта]"
-                tests:
-                    - not_null
+          identifier: direct_adgroups
         - name: ads
-          identifier: "ЯД Параметры объявлений"
-          columns:
-              - name: "[Идентификатор подключенного аккаунта]"
-                tests:
-                    - not_null
+          identifier: direct_ads
+        - name: regions
+          identifier: direct_regions
+        - name: sitelinks
+          identifier: direct_sitelinks
         - name: ads_facts
-          identifier: "ЯД Статистика по объявлениям"
-          columns:
-              - name: "[Идентификатор подключенного аккаунта]"
-                tests:
-                    - not_null                  
+          identifier: direct_ads_facts          
 
     - name: gaw
       database: "{{ env_var('DBT_MSSQL_DATABASE') }}"
       schema: "{{ env_var('DBT_MSSQL_SCHEMA') }}"
+      description: Google Adwords
       tags: ['gaw']
       tables:
         - name: campaigns
-          identifier: "GAW Параметры кампаний"
-          columns:
-              - name: "[Идентификатор кампании]"
-                tests:
-                    - not_null
+          identifier: adwords_campaigns
+        - name: location_criterions
+          identifier: adwords_location_criterions
         - name: adgroups
-          identifier: "GAW Параметры групп"
-          columns:
-              - name: "[Идентификатор группы объявлений]"
-                tests:
-                    - not_null
+          identifier: adwords_adgroups
         - name: ads
-          identifier: "GAW Параметры объявлений"
-          columns:
-              - name: "[Идентификатор объявлений]"
-                tests:
-                    - not_null
+          identifier: adwords_ads
         - name: keywords
-          identifier: "GAW Параметры ключевых слов"
-          columns:
-              - name: "[Идентификатор ключевого слова]"
-                tests:
-                    - not_null
+          identifier: adwords_keywords
         - name: ads_facts
-          identifier: "GAW Статистика по объявлениям"
-          columns:
-              - name: "[Идентификатор подключенного аккаунта]"
-                tests:
-                    - not_null
+          identifier: adwords_ads_facts
         - name: keywords_facts
-          identifier: "GAW Статистика по ключевым словам"
-          columns:
-              - name: "[Идентификатор подключенного аккаунта]"
-                tests:
-                    - not_null                   
+          identifier: adwords_keywords_facts     
 
     - name: facebook
       database: "{{ env_var('DBT_MSSQL_DATABASE') }}"
       schema: "{{ env_var('DBT_MSSQL_SCHEMA') }}"
+      description: Facebook
       tags: ['facebook']
       tables:
         - name: campaigns
-          identifier: "FB Параметры кампаний"
-          columns:
-              - name: "[Идентификатор кампании]"
-                tests:
-                    - not_null
+          identifier: facebook_campaigns
         - name: adsets
-          identifier: "FB Параметры наборов"
-          columns:
-              - name: "[Идентификатор набора объявлений]"
-                tests:
-                    - not_null
+          identifier: facebook_adsets
         - name: ads
-          identifier: "FB Параметры объявлений"
-          columns:
-              - name: "[Идентификатор объявления]"
-                tests:
-                    - not_null
+          identifier: facebook_ads
         - name: creatives
-          identifier: "FB Параметры креативов"
-          columns:
-              - name: "[Идентификатор креатива]"
-                tests:
-                    - not_null
+          identifier: facebook_creatives
         - name: ads_facts
-          identifier: "FB Статистика по объявлениям"
-          columns:
-              - name: "[Идентификатор подключенного аккаунта]"
-                tests:
-                    - not_null
+          identifier: facebook_ads_facts
 
     - name: mytarget
       database: "{{ env_var('DBT_MSSQL_DATABASE') }}"
       schema: "{{ env_var('DBT_MSSQL_SCHEMA') }}"
+      description: myTarget
       tags: ['mytarget']      
       tables:
         - name: campaigns
-          identifier: "MT Параметры кампаний"
-          columns:
-              - name: "[Идентификатор кампании]"
-                tests:
-                    - not_null                    
+          identifier: mytarget_campaigns          
         - name: banners
-          identifier: "MT Параметры объявлений"
-          columns:
-              - name: "[Идентификатор объявления]"
-                tests:
-                    - not_null                    
+          identifier: mytarget_banners            
         - name: campaigns_facts
-          identifier: "MT Статистика по кампаниям"
-          columns:
-              - name: "[Идентификатор кампании]"
-                tests:
-                    - not_null                    
+          identifier: mytarget_campaigns_facts    
         - name: banners_facts
-          identifier: "MT Статистика по объявлениям"
-          columns:
-              - name: "[Идентификатор объявления]"
-                tests:
-                    - not_null                    
+          identifier: mytarget_banners_facts      
 
     - name: bitrix24
       database: "{{ env_var('DBT_MSSQL_DATABASE') }}"
       schema: "{{ env_var('DBT_MSSQL_SCHEMA') }}"
+      description: Bitrix24
       tags: ['bitrix24']      
       tables:
         - name: leads_facts
-          identifier: "B24 Полученные лиды"
-          columns:
-              - name: "[Идентификатор лида]"
-                tests:
-                    - not_null                       
+          identifier: bitrix24_leads_facts           
         - name: deals_facts
-          identifier: "B24 Оформленные сделки"
-          columns:
-              - name: "[Идентификатор сделки]"
-                tests:
-                    - not_null                       
+          identifier: bitrix24_deals_facts           
         - name: products_facts
-          identifier: "B24 Проданные товары"
-          columns:
-              - name: "[Идентификатор товара]"
-                tests:
-                    - not_null                       
+          identifier: bitrix24_products_facts        
         - name: users
-          identifier: "B24 Параметры пользователей"
-          columns:
-              - name: "[Идентификатор пользователя]"
-                tests:
-                    - not_null                       
+          identifier: bitrix24_users                 
         - name: deals
-          identifier: "B24 Параметры сделок"
-          columns:
-              - name: "[Идентификатор сделки]"
-                tests:
-                    - not_null                       
+          identifier: bitrix24_deals                 
         - name: contacts
-          identifier: "B24 Параметры контактов"
-          columns:
-              - name: "[Идентификатор контакта]"
-                tests:
-                    - not_null                       
+          identifier: bitrix24_contacts              
         - name: companies
-          identifier: "B24 Параметры компаний"
-          columns:
-              - name: "[Идентификатор компании]"
-                tests:
-                    - not_null                       
+          identifier: bitrix24_companies             
         - name: products
-          identifier: "B24 Параметры товаров"
-          columns:
-              - name: "[Идентификатор товара]"
-                tests:
-                    - not_null                       
+          identifier: bitrix24_products              
         - name: leads
-          identifier: "B24 Параметры лидов"
-          columns:
-              - name: "[Идентификатор лида]"
-                tests:
-                    - not_null  
+          identifier: bitrix24_leads
 
     - name: amocrm
       database: "{{ env_var('DBT_MSSQL_DATABASE') }}"
       schema: "{{ env_var('DBT_MSSQL_SCHEMA') }}"
+      description: amoCRM
       tags: ['amocrm']      
       tables:
         - name: leads_facts
-          identifier: "AMO Сделки"
-          columns:
-              - name: "[Идентификатор сделки]"
-                tests:
-                    - not_null                     
+          identifier: amocrm_leads_facts           
         - name: users
-          identifier: "AMO Параметры пользователей"
-          columns:
-              - name: "[Идентификатор пользователя]"
-                tests:
-                    - not_null                     
+          identifier: amocrm_users                 
         - name: leads
-          identifier: "AMO Параметры сделок"
-          columns:
-              - name: "[Идентификатор сделки]"
-                tests:
-                    - not_null          
+          identifier: amocrm_leads      
         - name: contacts
-          identifier: "AMO Параметры контактов"
-          columns:
-              - name: "[Идентификатор контакта]"
-                tests:
-                    - not_null          
+          identifier: amocrm_contacts   
         - name: companies
-          identifier: "AMO Параметры компаний"
-          columns:
-              - name: "[Идентификатор компании]"
-                tests:
-                    - not_null          
-        - name: leads_info
-          identifier: "AMO Дополнительные параметры сделок"
-          columns:
-              - name: "[Идентификатор сделки]"
-                tests:
-                    - not_null          
+          identifier: amocrm_companies  
+        - name: leads_attributes
+          identifier: amocrm_leads_attributes
         - name: leads_tags
-          identifier: "AMO Метки сделок"
-          columns:
-              - name: "[Идентификатор сделки]"
-                tests:
-                    - not_null                    
-                    
-    - name: general
+          identifier: amocrm_leads_tags
+
+    - name: ga
       database: "{{ env_var('DBT_MSSQL_DATABASE') }}"
       schema: "{{ env_var('DBT_MSSQL_SCHEMA') }}"
-      tags: ['general']
+      description: Google Analytics
+      tags: ['ga']      
       tables:
-        - name: clientids
-          identifier: "SHD Параметры посетителей"
-          columns:
-              - name: "[Идентификатор клиента]"
-                tests:
-                    - not_null                      
-        - name: dates
-          identifier: "SHD Параметры дат"
-          columns:
-              - name: "[Идентификатор даты]"
-                tests:
-                    - not_null                      
-        - name: traffic
-          identifier: "SHD Параметры трафика"
-          columns:
-              - name: "[Идентификатор источника трафика]"
-                tests:
-                    - not_null                      
-        - name: locations
-          identifier: "SHD Параметры местоположений"
-          columns:
-              - name: "[Идентификатор местоположения]"
-                tests:
-                    - not_null                      
-        - name: sites
-          identifier: "SHD Параметры сайтов"
-          columns:
-              - name: "[Идентификатор сайта]"
-                tests:
-                    - not_null                      
-        - name: accounts
-          identifier: "SHD Параметры источников данных"
-          columns:
-              - name: "[Идентификатор записи]"
-                tests:
-                    - not_null                      
+        - name: sessions_facts
+          identifier: analytics_sessions_facts
+        - name: goals_facts
+          identifier: analytics_goals_facts
         - name: costs_facts
-          identifier: "SHD Статистика по расходам"
-          columns:
-              - name: "[Идентификатор подключенного аккаунта]"
-                tests:
-                    - not_null
+          identifier: analytics_costs_facts
+        - name: goals
+          identifier: analytics_goals
+        - name: devices
+          identifier: analytics_devices

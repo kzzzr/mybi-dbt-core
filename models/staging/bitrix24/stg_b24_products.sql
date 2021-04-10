@@ -2,19 +2,19 @@
 
 with source as (
 
-SELECT
+select
 
-	[Идентификатор товара]
-	, [Идентификатор подключенного аккаунта]
-	, [Внутренний идентификатор товара]
-	, [Название продукта]
-	, [Исходное название продукта]
-	, [Описание продукта]
-	, [Название единицы измерения]
-	, [Процент налога]
-	, [Налог включен]
+      id
+    , account_id
+    , product_id
+    , name
+    , original_name
+    , description
+    , measure
+    , tax_rate
+    , tax_included
 
-FROM {{ source('bitrix24', 'products') }}
+from {{ source('bitrix24', 'products') }}
 
 {{ filter_rows(
     account_id=var('account_id_b24'),

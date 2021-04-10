@@ -2,18 +2,18 @@
 
 with source as (
 
-SELECT
+select
 
-	[Идентификатор компании],
-	[Идентификатор подключенного аккаунта],
-	[Внутренний идентификатор компании],
-	[Название компании],
-	[Контактный телефон],
-	[Контактный email],
-	[Сайт компании],
-	[Компания удалена]
+      id
+    , account_id
+    , company_id
+    , name
+    , phone
+    , email
+    , site
+    , is_deleted
 
-FROM {{ source('amocrm', 'companies') }}
+from {{ source('amocrm', 'companies') }}
 
 {{ filter_rows(
     account_id=var('account_id_amocrm'),

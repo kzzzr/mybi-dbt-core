@@ -2,21 +2,22 @@
 
 with source as (
 
-SELECT
-      [Идентификатор набора объявлений]
-	, [Идентификатор подключенного аккаунта]
-	, [Внутренний идентификатор набора объявлений]
-	, [Название набора объявлений]
-	, [Тип оплаты набора объявлений]
-	, [Статус набора объявлений]
-	, [Состояние набора объявлений]
-	, [Автоматические ставки]
-	, [Цель оптимизации]
-	, [Используется ли RTB]
-	, [Стратегия оптимизации]
-	, [Тип назначения рекламы]
+select
 
-FROM {{ source('facebook', 'adsets') }}
+      id
+    , account_id
+    , adset_id
+    , name
+    , billing_event
+    , configured_status
+    , effective_status
+    , is_autobid
+    , optimization_goal
+    , rtb_flag
+    , bid_strategy
+    , destination_type
+
+from {{ source('facebook', 'adsets') }}
 
 {{ filter_rows(
     account_id=var('account_id_facebook'),

@@ -2,16 +2,16 @@
 
 with source as (
 
-SELECT
+select
 
-	  [Идентификатор объявления]
-	, [Идентификатор подключенного аккаунта]
-	, [Внутренний идентификатор объявления]
-	, [Название объявления]
-	, [Статус объявления]
-	, [Состояние объявления]
+      id
+    , account_id
+    , ad_id
+    , name
+    , configured_status
+    , effective_status
 
-FROM {{ source('facebook', 'ads') }}
+from {{ source('facebook', 'ads') }}
 
 {{ filter_rows(
     account_id=var('account_id_facebook'),

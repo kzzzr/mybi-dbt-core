@@ -1,0 +1,143 @@
+version: 2
+
+models:
+
+    - name: stg_ga_goals
+      tests: &ga_defaults
+        - not_empty
+        - not_null:
+            column_name: id
+        - unique:
+            column_name: id      
+
+    - name: stg_ga_devices
+      tests: *ga_defaults
+
+    - name: stg_ga_sessions_facts
+      tests:
+        - not_empty
+        - not_null:
+            column_name: account_id
+        - not_null:
+            column_name: dates_id
+        - not_null:
+            column_name: sites_id
+        - not_null:
+            column_name: clientids_id
+        - not_null:
+            column_name: devices_id
+        - not_null:
+            column_name: traffic_id
+        - not_null:
+            column_name: locations_id
+        - not_null:
+            column_name: session_id
+        - relationships:
+            to: ref('stg_general_accounts')
+            column_name: account_id
+            field: account_id
+        - relationships:
+            to: ref('stg_general_dates')
+            column_name: dates_id
+            field: id
+        - relationships:
+            to: ref('stg_general_sites')
+            column_name: sites_id
+            field: id
+        - relationships:
+            to: ref('stg_general_clientids')
+            column_name: clientids_id
+            field: id
+        - relationships:
+            to: ref('stg_general_traffic')
+            column_name: traffic_id
+            field: id
+        - relationships:
+            to: ref('stg_general_locations')
+            column_name: locations_id
+            field: id
+        - relationships:
+            to: ref('stg_ga_devices')
+            column_name: devices_id
+            field: id
+
+    - name: stg_ga_costs_facts
+      tests:
+        - not_empty
+        - not_null:
+            column_name: account_id
+        - not_null:
+            column_name: dates_id
+        - not_null:
+            column_name: sites_id
+        - not_null:
+            column_name: traffic_id
+        - relationships:
+            to: ref('stg_general_accounts')
+            column_name: account_id
+            field: account_id
+        - relationships:
+            to: ref('stg_general_dates')
+            column_name: dates_id
+            field: id
+        - relationships:
+            to: ref('stg_general_sites')
+            column_name: sites_id
+            field: id
+        - relationships:
+            to: ref('stg_general_traffic')
+            column_name: traffic_id
+            field: id
+
+    - name: stg_ga_goals_facts
+      tests:
+        - not_empty
+        - not_null:
+            column_name: account_id
+        - not_null:
+            column_name: dates_id
+        - not_null:
+            column_name: sites_id
+        - not_null:
+            column_name: clientids_id
+        - not_null:
+            column_name: devices_id
+        - not_null:
+            column_name: traffic_id
+        - not_null:
+            column_name: locations_id
+        - not_null:
+            column_name: goals_id
+        - relationships:
+            to: ref('stg_general_accounts')
+            column_name: account_id
+            field: account_id
+        - relationships:
+            to: ref('stg_general_dates')
+            column_name: dates_id
+            field: id
+        - relationships:
+            to: ref('stg_general_sites')
+            column_name: sites_id
+            field: id
+        - relationships:
+            to: ref('stg_general_clientids')
+            column_name: clientids_id
+            field: id
+        - relationships:
+            to: ref('stg_general_traffic')
+            column_name: traffic_id
+            field: id
+        - relationships:
+            to: ref('stg_general_locations')
+            column_name: locations_id
+            field: id
+        - relationships:
+            to: ref('stg_ga_devices')
+            column_name: devices_id
+            field: id        
+        - relationships:
+            to: ref('stg_ga_goals')
+            column_name: goals_id
+            field: id
+            

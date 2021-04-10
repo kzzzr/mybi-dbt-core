@@ -33,13 +33,16 @@ vars:
         account_id_adwords: null
         account_id_mytarget: null
         account_id_amocrm: null        
-        caption_metrika: 'metrika'
-        caption_direct: 'yandex'
-        caption_adwords: 'google'                    
+        account_id_ga: null
+
+        caption_metrika: 'yandex_metrika'
+        caption_direct: 'yandex_direct'
+        caption_adwords: 'google_adwords'                    
         caption_facebook: 'facebook' 
         caption_mytarget: 'mytarget' 
         caption_bitrix24: 'bitrix24' 
-        caption_amocrm: 'amocrm' 
+        caption_amocrm: 'amocrm'
+        caption_ga: 'google_analytics' 
 
 models:
     mybi_dbt_core:
@@ -48,10 +51,11 @@ models:
         
         staging:
             +schema: staging
-            +tags: ["staging"]
-        
+            +tags: ["staging"]        
             metrika:
                 +tags: ["metrika"]
+            ga:
+                +tags: ["ga"]
             direct:
                 +tags: ["direct"]
             gaw:

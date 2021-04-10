@@ -2,25 +2,25 @@
 
 with source as (
 
-SELECT
+select
 
-	[Идентификатор контакта]
-	, [Идентификатор подключенного аккаунта]
-	, [Внутренний идентификатор контакта]
-	, Имя
-	, Отчество
-	, Фамилия
-	, [Тип контакта]
-	, [Дата рождения]
-	, Должность
-	, Комментарии
-	, Телефон
-	, [Адрес электронной почты]
-	, Сайт
-	, [Служба сообщений]
-	, [Контакт удален]
+      id
+    , account_id
+    , contact_id
+    , name
+    , second_name
+    , last_name
+    , contact_type
+    , birthdate
+    , post
+    , comments
+    , phone
+    , email
+    , web
+    , im
+    , is_deleted
 
-FROM {{ source('bitrix24', 'contacts') }}
+from {{ source('bitrix24', 'contacts') }}
 
 {{ filter_rows(
     account_id=var('account_id_b24'),

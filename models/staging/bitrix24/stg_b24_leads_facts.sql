@@ -2,22 +2,26 @@
 
 with source as (
 
-SELECT
+select
 
-	[Идентификатор подключенного аккаунта]
-	, [Идентификатор клиента]
-	, [Идентификатор источника трафика]
-	, [Идентификатор пользователя]
-	, [Идентификатор лида]
-	, [Идентификатор контакта]
-	, [Идентификатор компании]
-	, [Идентификатор местоположения]
-	, [Идентификатор сделки]
-	, [Идентификатор даты создания]
-	, [Идентификатор даты закрытия]
-	, Сумма
+      f.account_id
+    , f.clientids_id
+    , f.traffic_id
+    , f.users_id
+    , f.leads_id
+    , f.contacts_id
+    , f.companies_id
+    , f.locations_id
+    , f.deals_id
+    , created.dt as created_dt
+    , closed.dt as closed_dt
+    , f.lead_total
 
-FROM {{ source('bitrix24', 'leads_facts') }}
+from {{ source('bitrix24', 'leads_facts') }} as f
+	left join {{ ref('stg_general_dates') }} as created
+		on created.id = f.created_id
+	left join {{ ref('stg_general_dates') }} as closed
+		on closed.id = f.closed_id
 
 {{ filter_rows(
     account_id=var('account_id_b24'),
