@@ -47,8 +47,7 @@ vars:
 models:
     mybi_dbt_core:
         +materialized: view
-        +enabled: true       
-        
+        +enabled: true
         staging:
             +schema: staging
             +tags: ["staging"]        
