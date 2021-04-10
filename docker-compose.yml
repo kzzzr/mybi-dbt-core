@@ -10,7 +10,7 @@ services:
       - "1433:1433"
 
   dbt:
-    image: mybi/dbt:latest
+    build: .
     entrypoint: /bin/bash
     tty: true
     volumes:
