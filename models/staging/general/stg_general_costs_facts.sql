@@ -24,7 +24,11 @@ from {{ source('general', 'costs_facts') }} as cf
 	left join {{ ref('stg_general_dates') }} as gd
 		on gd.id = cf.dates_id
 
-where 1=1
+{{ filter_rows(
+    account_id=none,
+    last_number_of_days=true, 
+    ts_field='dt'
+) }}
 
 )
 

@@ -10,9 +10,6 @@ models:
 
     - name: stg_general_clientids
       tests: *general_defualt
-
-    - name: stg_general_traffic
-      tests: *general_defualt
       
     - name: stg_general_locations
       tests: *general_defualt
@@ -23,5 +20,18 @@ models:
     - name: stg_general_accounts
       tests: *general_defualt
 
+    - name: stg_general_traffic
+      tests:
+        - not_null:
+            column_name: id        
+
     - name: stg_general_costs_facts
-      tests: *general_defualt
+      tests:
+        - not_null:
+            column_name: account_id
+        - not_null:
+            column_name: dates_id
+        - not_null:
+            column_name: sites_id
+        - not_null:
+            column_name: traffic_id

@@ -3,7 +3,8 @@ version: 2
 models:
     - name: stg_yd_campaigns
       tests: &direct_defaults
-        - not_empty
+        - not_empty:
+            severity: warn
         - not_null:
             column_name: id
         - unique:
@@ -17,7 +18,8 @@ models:
 
     - name: stg_yd_sitelinks
       tests:
-        - not_empty
+        - not_empty:
+            severity: warn
         - not_null:
             column_name: id
         - unique:
@@ -29,7 +31,8 @@ models:
 
     - name: stg_yd_regions
       tests:
-        - not_empty
+        - not_empty:
+            severity: warn
         - not_null:
             column_name: id
         - unique:
@@ -41,7 +44,8 @@ models:
 
     - name: stg_yd_ads_facts
       tests: 
-        - not_empty
+        - not_empty:
+            severity: warn
         - not_null:
             column_name: id
         - unique:

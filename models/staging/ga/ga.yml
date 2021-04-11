@@ -4,7 +4,8 @@ models:
 
     - name: stg_ga_goals
       tests: &ga_defaults
-        - not_empty
+        - not_empty:
+            severity: warn
         - not_null:
             column_name: id
         - unique:
@@ -15,7 +16,8 @@ models:
 
     - name: stg_ga_sessions_facts
       tests:
-        - not_empty
+        - not_empty:
+            severity: warn
         - not_null:
             column_name: account_id
         - not_null:
@@ -63,7 +65,8 @@ models:
 
     - name: stg_ga_costs_facts
       tests:
-        - not_empty
+        - not_empty:
+            severity: warn
         - not_null:
             column_name: account_id
         - not_null:
@@ -91,7 +94,8 @@ models:
 
     - name: stg_ga_goals_facts
       tests:
-        - not_empty
+        - not_empty:
+            severity: warn
         - not_null:
             column_name: account_id
         - not_null:

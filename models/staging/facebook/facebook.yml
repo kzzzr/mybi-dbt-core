@@ -3,7 +3,8 @@ version: 2
 models:
     - name: stg_fb_campaigns
       tests: &facebook_defaults
-        - not_empty
+        - not_empty:
+            severity: warn
         - not_null:
             column_name: id
         - unique:
@@ -20,7 +21,8 @@ models:
     
     - name: stg_fb_ads_facts
       tests:
-        - not_empty
+        - not_empty:
+            severity: warn
         - not_null:
             column_name: id
         - unique:
