@@ -3,7 +3,8 @@ version: 2
 models:
     - name: stg_gaw_campaigns
       tests: &gaw_defaults
-        - not_empty
+        - not_empty:
+            severity: warn
         - not_null:
             column_name: id
         - unique:
@@ -20,7 +21,8 @@ models:
 
     - name: stg_gaw_location_criterions
       tests:
-        - not_empty
+        - not_empty:
+            severity: warn
         - not_null:
             column_name: id
         - unique:
@@ -33,7 +35,8 @@ models:
 
     - name: stg_gaw_ads_facts
       tests: 
-        - not_empty
+        - not_empty:
+            severity: warn
         - not_null:
             column_name: id
         - unique:
@@ -83,7 +86,8 @@ models:
 
     - name: stg_gaw_keywords_facts
       tests:
-        - not_empty
+        - not_empty:
+            severity: warn
         - not_null:
             column_name: id
         - unique:

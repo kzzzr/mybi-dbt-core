@@ -3,7 +3,8 @@ version: 2
 models:
     - name: stg_amo_companies
       tests: &amo_defaults
-        - not_empty
+        - not_empty:
+            severity: warn
         - not_null:
             column_name: id
         - unique:
@@ -20,7 +21,8 @@ models:
     
     - name: stg_amo_leads_attributes
       tests:
-        - not_empty
+        - not_empty:
+            severity: warn
         - not_null:
             column_name: id
         - unique:
@@ -32,7 +34,8 @@ models:
 
     - name: stg_amo_leads_tags
       tests:
-        - not_empty
+        - not_empty:
+            severity: warn
         - not_null:
             column_name: id
         - unique:
@@ -44,7 +47,8 @@ models:
 
     - name: stg_amo_leads_facts
       tests:
-        - not_empty
+        - not_empty:
+            severity: warn
         - unique:
             column_name: leads_id        
         - not_null:

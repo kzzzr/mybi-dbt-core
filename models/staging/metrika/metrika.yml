@@ -3,7 +3,8 @@ version: 2
 models:
     - name: stg_ym_devices
       tests:
-        - not_empty
+        - not_empty:
+            severity: warn
         - not_null:
             column_name: id
         - unique:
@@ -11,7 +12,8 @@ models:
 
     - name: stg_ym_sessions_facts
       tests:
-        - not_empty
+        - not_empty:
+            severity: warn
         - unique:
             column_name: id
         - not_null:
