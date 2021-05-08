@@ -15,3 +15,5 @@ services:
     tty: true
     volumes:
      - .:/usr/app/mybi-dbt-core
+    ports:
+      - "8080:8080"     
