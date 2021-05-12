@@ -165,13 +165,19 @@ sources:
       description: Google Analytics
       tags: ['ga']      
       tables:
+        - name: goals
+          identifier: analytics_goals
+        - name: devices
+          identifier: analytics_devices
+        - name: events
+          identifier: analytics_events
         - name: sessions_facts
           identifier: analytics_sessions_facts
         - name: goals_facts
           identifier: analytics_goals_facts
         - name: costs_facts
           identifier: analytics_costs_facts
-        - name: goals
-          identifier: analytics_goals
-        - name: devices
-          identifier: analytics_devices
+        - name: events_facts
+          identifier: analytics_events_facts
+        - name: mcf_facts
+          identifier: analytics_mcf_facts
