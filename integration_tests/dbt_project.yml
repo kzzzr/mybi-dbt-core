@@ -32,7 +32,7 @@ vars:
         account_id_mytarget: "18799"
         account_id_b24: "19646"
         account_id_amocrm: "20652"   
-        account_id_ga: "18783"
+        account_id_ga: "18783, 26557"
 
         caption_metrika: 'yandex_metrika'
         caption_direct: 'yandex_direct'
