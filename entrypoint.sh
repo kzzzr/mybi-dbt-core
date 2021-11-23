@@ -1,7 +1,7 @@
 #!/bin/bash -l
 
 # set logging
-set -ex
+set -e
 
 banner() {
     echo
@@ -18,14 +18,14 @@ dbt --version
 banner "Check connection:"
 dbt debug
 
+banner "Install dependencies:"
+dbt deps
+
 banner "Check connection:"
 dbt seed
 
 banner "Check connection:"
 dbt run
-
-# banner "Install dependencies:"
-# dbt deps
 
 # banner "Build DWH:"
 # dbt build && dbt run-operation "clean_up"
