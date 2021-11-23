@@ -4,14 +4,23 @@ config:
     partial_parse: True
 
 mybi_dbt_core:
-  target: "{{ env_var('DBT_MSSQL_TARGET') }}"
+  target: core_ci
   outputs:
     core_ci:
-      type: sqlserver
-      driver: 'ODBC Driver 17 for SQL Server'
-      server: "{{ env_var('DBT_MSSQL_SERVER') }}"
-      port: 1433
-      user: "{{ env_var('DBT_MSSQL_USER') }}"
-      password: "{{ env_var('DBT_MSSQL_PASSWORD') }}"
-      database: "{{ env_var('DBT_MSSQL_DATABASE') }}"
-      schema: "{{ env_var('DBT_MSSQL_TARGET') }}"
+      type: clickhouse
+      host: clickhouse
+      port: 9000
+      schema: default
+
+# mybi_dbt_core:
+#   target: "{{ env_var('DBT_MSSQL_TARGET') }}"
+#   outputs:
+#     core_ci:
+#       type: sqlserver
+#       driver: 'ODBC Driver 17 for SQL Server'
+#       server: "{{ env_var('DBT_MSSQL_SERVER') }}"
+#       port: 1433
+#       user: "{{ env_var('DBT_MSSQL_USER') }}"
+#       password: "{{ env_var('DBT_MSSQL_PASSWORD') }}"
+#       database: "{{ env_var('DBT_MSSQL_DATABASE') }}"
+#       schema: "{{ env_var('DBT_MSSQL_TARGET') }}"

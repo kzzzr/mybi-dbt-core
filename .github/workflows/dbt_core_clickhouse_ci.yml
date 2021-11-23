@@ -1,0 +1,30 @@
+name: CI dbt core on Clickhouse
+
+# Controls when the action will run. 
+on:
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  dbt_ci:    
+    services:
+      clickhouse:
+        image: yandex/clickhouse-server:21.10
+        ports:
+          - 9000:9000
+          - 8123:8123
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: wait for services to start up
+        run: sleep 10
+      - name: dbt action
+        uses: kzzzr/mybi-dbt-action@v3
+        with:
+          project_dir: ./integration_tests
+        env:
+          DBT_SOURCE_DATABASE: default
+          DBT_SOURCE_SCHEMA: default   
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v3
+        if: ${{ failure() }}

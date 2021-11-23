@@ -1,4 +1,8 @@
-Welcome to your new dbt project!
+# Development
+
+```bash
+docker-compose up --build
+```
 
 ### Using the starter project
 

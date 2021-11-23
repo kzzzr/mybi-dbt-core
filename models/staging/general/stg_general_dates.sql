@@ -18,8 +18,9 @@ select
     , hour
     , minute
     , simple_date as dt
-	, cast(dateadd(wk, 0, dateadd(day, 1-datepart(weekday, simple_date), datediff(dd, 0, simple_date))) as date)
-		as week_start_dt
+	, toStartOfWeek(simple_date) week_start_dt
+--	, cast(dateadd(wk, 0, dateadd(day, 1-datepart(weekday, simple_date), datediff(dd, 0, simple_date))) as date)
+--		as week_start_dt
 
 from {{ source('general', 'dates') }}
 

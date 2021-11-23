@@ -2,7 +2,7 @@ name: 'mybi_dbt_core_integration_tests'
 version: '1.0.0'
 config-version: 2
 
-require-dbt-version: [">=0.19.0", "<0.20.0"]
+require-dbt-version: [">=0.21.0", "<0.22.0"]
 
 profile: 'mybi_dbt_core'
 
@@ -44,69 +44,73 @@ vars:
         caption_ga: 'google_analytics' 
 
 seeds:
+  +pre-hook: "SET data_type_default_nullable = 1"
   +quote_columns: true  
+
   mybi_dbt_core_integration_tests:
     
     general:
         +tags: ["general"]
         general_traffic:
             +column_types:
-                grouping: nvarchar(128)
-                content: nvarchar(512)
-                source: nvarchar(512)
-                campaign: nvarchar(256)
+                grouping: String
+                content: String
+                source: String
+                campaign: String
         general_sites:
             +column_types:
-                domain: nvarchar(512)
+                domain: String
         general_accounts:
             +column_types:
-                caption: nvarchar(256)                
+                caption: String                
     amocrm:
         +tags: ["amocrm"]
     bitrix24:
         +tags: ["bitrix24"]
         bitrix24_contacts:
             +column_types:
-                phone: nvarchar(32)
+                phone: String
         bitrix24_users:
             +column_types:
-                work_phone: nvarchar(32)
+                work_phone: String
     direct:
         +tags: ["direct"]
         direct_adgroups:
             +column_types:
-                adgroup_id: nvarchar(32)
+                adgroup_id: String
         direct_ads:
             +column_types:
-                ad_id: nvarchar(32)
+                ad_id: String
     facebook:
         +tags: ["facebook"]
         facebook_ads:
             +column_types:
-                ad_id: nvarchar(32)
+                ad_id: String
         facebook_adsets:
             +column_types:
-                adset_id: nvarchar(32)            
+                adset_id: String            
         facebook_campaigns:
             +column_types:
-                campaign_id: nvarchar(32)            
+                campaign_id: String            
         facebook_creatives:
             +column_types:
-                creative_id: nvarchar(32)            
+                creative_id: String            
     gaw:
         +tags: ["gaw"]
         adwords_campaigns:
             +column_types:
-                campaign_id: nvarchar(32)
+                campaign_id: String
+                ad_serving_optimization_status: String
         adwords_adgroups:
             +column_types:
-                adgroup_id: nvarchar(32)
+                adgroup_id: String
         adwords_ads:
             +column_types:
-                ad_id: nvarchar(32)
+                ad_id: String
+                url: String
         adwords_keywords:
             +column_types:
-                keyword_id: nvarchar(32)
+                keyword_id: String
     metrika:
         +tags: ["metrika"]
     mytarget:

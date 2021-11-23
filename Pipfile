@@ -1,17 +1,13 @@
 [[source]]
-name = "pypi"
 url = "https://pypi.org/simple"
 verify_ssl = true
+name = "pypi"
+
+[packages]
+dbt = "==0.21.0"
+dbt-clickhouse = "==0.21.0"
 
 [dev-packages]
 
-[packages]
-dbt = "==0.18.1"
-dbt-sqlserver = "==0.18.0"
-mssql-cli = "*"
-
 [requires]
 python_version = "3.8"
-
-[pipenv]
-allow_prereleases = true

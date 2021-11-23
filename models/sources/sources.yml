@@ -2,8 +2,8 @@ version: 2
 
 sources:
     - name: general
-      database: "{{ env_var('DBT_MSSQL_DATABASE') }}"
-      schema: "{{ env_var('DBT_MSSQL_SCHEMA') }}"
+      database: "{{ env_var('DBT_SOURCE_DATABASE') }}"
+      schema: "{{ env_var('DBT_SOURCE_SCHEMA') }}"
       description: myBI general dimensions and facts
       tags: ['general']
       tables:
@@ -23,8 +23,8 @@ sources:
           identifier: general_costs_facts
 
     - name: metrika
-      database: "{{ env_var('DBT_MSSQL_DATABASE') }}"
-      schema: "{{ env_var('DBT_MSSQL_SCHEMA') }}"
+      database: "{{ env_var('DBT_SOURCE_DATABASE') }}"
+      schema: "{{ env_var('DBT_SOURCE_SCHEMA') }}"
       description: Yandex.Metrika
       tags: ['metrika']
       tables:   
@@ -42,8 +42,8 @@ sources:
           identifier: metrika_purchases
 
     - name: direct
-      database: "{{ env_var('DBT_MSSQL_DATABASE') }}"
-      schema: "{{ env_var('DBT_MSSQL_SCHEMA') }}"
+      database: "{{ env_var('DBT_SOURCE_DATABASE') }}"
+      schema: "{{ env_var('DBT_SOURCE_SCHEMA') }}"
       description: Yandex.Direct
       tags: ['direct']
       tables:
@@ -61,8 +61,8 @@ sources:
           identifier: direct_ads_facts          
 
     - name: gaw
-      database: "{{ env_var('DBT_MSSQL_DATABASE') }}"
-      schema: "{{ env_var('DBT_MSSQL_SCHEMA') }}"
+      database: "{{ env_var('DBT_SOURCE_DATABASE') }}"
+      schema: "{{ env_var('DBT_SOURCE_SCHEMA') }}"
       description: Google Adwords
       tags: ['gaw']
       tables:
@@ -82,8 +82,8 @@ sources:
           identifier: adwords_keywords_facts     
 
     - name: facebook
-      database: "{{ env_var('DBT_MSSQL_DATABASE') }}"
-      schema: "{{ env_var('DBT_MSSQL_SCHEMA') }}"
+      database: "{{ env_var('DBT_SOURCE_DATABASE') }}"
+      schema: "{{ env_var('DBT_SOURCE_SCHEMA') }}"
       description: Facebook
       tags: ['facebook']
       tables:
@@ -99,8 +99,8 @@ sources:
           identifier: facebook_ads_facts
 
     - name: mytarget
-      database: "{{ env_var('DBT_MSSQL_DATABASE') }}"
-      schema: "{{ env_var('DBT_MSSQL_SCHEMA') }}"
+      database: "{{ env_var('DBT_SOURCE_DATABASE') }}"
+      schema: "{{ env_var('DBT_SOURCE_SCHEMA') }}"
       description: myTarget
       tags: ['mytarget']      
       tables:
@@ -114,8 +114,8 @@ sources:
           identifier: mytarget_banners_facts      
 
     - name: bitrix24
-      database: "{{ env_var('DBT_MSSQL_DATABASE') }}"
-      schema: "{{ env_var('DBT_MSSQL_SCHEMA') }}"
+      database: "{{ env_var('DBT_SOURCE_DATABASE') }}"
+      schema: "{{ env_var('DBT_SOURCE_SCHEMA') }}"
       description: Bitrix24
       tags: ['bitrix24']      
       tables:
@@ -139,8 +139,8 @@ sources:
           identifier: bitrix24_leads
 
     - name: amocrm
-      database: "{{ env_var('DBT_MSSQL_DATABASE') }}"
-      schema: "{{ env_var('DBT_MSSQL_SCHEMA') }}"
+      database: "{{ env_var('DBT_SOURCE_DATABASE') }}"
+      schema: "{{ env_var('DBT_SOURCE_SCHEMA') }}"
       description: amoCRM
       tags: ['amocrm']      
       tables:
@@ -160,8 +160,8 @@ sources:
           identifier: amocrm_leads_tags
 
     - name: ga
-      database: "{{ env_var('DBT_MSSQL_DATABASE') }}"
-      schema: "{{ env_var('DBT_MSSQL_SCHEMA') }}"
+      database: "{{ env_var('DBT_SOURCE_DATABASE') }}"
+      schema: "{{ env_var('DBT_SOURCE_SCHEMA') }}"
       description: Google Analytics
       tags: ['ga']      
       tables:

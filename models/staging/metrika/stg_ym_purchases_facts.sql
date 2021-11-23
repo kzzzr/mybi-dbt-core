@@ -14,7 +14,7 @@ select
     , gd.ts	
 
 from {{ source('metrika', 'purchases_facts') }} as f
-	left join{{ ref('stg_general_dates') }} as gd
+	left join {{ ref('stg_general_dates') }} as gd
 		on gd.id = f.dates_id
 
 {{ filter_rows(
