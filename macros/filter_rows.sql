@@ -1,8 +1,35 @@
--- filter data for selected accounts, resize for dev, ci pipelines
+{# LIMIT NUMBER OF ROWS FOR DEV, CI PIPELINES TO X LAST DAYS #}
+{% macro limit_last_number_of_days(ts_field='dt') %}
+
+    {#- prepare expression to filter only last N days of data (e.g. last 3 days) -#}
+    {%- if target.name in ['dev', 'ci'] -%} 
+        {%- set limit_rows = limit_last_number_of_days_expression() -%}
+    {%- else -%} 
+        {%- set limit_rows = '1 = 1' -%}
+    {%- endif -%}
+
+    {{ ts_field }} {{ limit_rows }}
+
+{% endmacro %}
+
+{% macro limit_last_number_of_days_expression() %}
+{{ return(adapter.dispatch('limit_last_number_of_days_expression') ()) }}
+{% endmacro %}
+
+{% macro clickhouse__limit_last_number_of_days_expression() %}
+    {%- set limit_rows = '>= now() - interval ' ~ var('limit_data_days') ~ ' day' -%}
+    {{ return(limit_rows) }}
+{% endmacro %}
+
+{% macro sqlserver__limit_last_number_of_days_expression() %}
+    {%- set limit_rows = '>= dateadd(day, ' ~ -var('limit_data_days') ~ ', convert(date, getdate()))' -%}              
+    {{ return(limit_rows) }}
+{% endmacro %}
+
+
+{# FILTER DATA FOR SELECTED ACCOUNTS #}
 {% macro filter_rows(
-    account_id=none,
-    last_number_of_days=none, 
-    ts_field='dt'
+    account_id=none
 ) -%}
     
     {#- prepare expression to filter on according account_id -#}
@@ -11,17 +38,7 @@
     {% else -%}
         {%- set filter_account_id = '1 = 1' -%}
     {%- endif -%}
-
-    {#- prepare expression to filter only last N days of data (e.g. last 3 days) -#}
-    {%- if target.name in ['dev', 'ci'] and last_number_of_days -%} 
-        {%- set limit_rows = ts_field ~ ' >= dateadd(day, ' ~ -var('filter_days_of_data') ~ ', convert(date, getdate()))' -%}
-    {%- else -%} 
-        {%- set limit_rows = '1 = 1' -%}
-    {%- endif -%}
-
-    {#- prepare final filter expression -#}
-    where 1 = 1
-        and {{ filter_account_id }}
-        and {{ limit_rows }}
+    
+    where {{ filter_account_id }}
 
 {%- endmacro -%}

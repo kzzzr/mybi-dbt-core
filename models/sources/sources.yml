@@ -81,6 +81,32 @@ sources:
         - name: keywords_facts
           identifier: adwords_keywords_facts     
 
+    - name: ads
+      database: "{{ env_var('DBT_SOURCE_DATABASE') }}"
+      schema: "{{ env_var('DBT_SOURCE_SCHEMA') }}"
+      description: Google Ads
+      tags: ['ads']
+      tables:
+        - name: adgroups
+          identifier: ads_adgroups
+        - name: adgroups_facts
+          identifier: ads_adgroups_facts
+        - name: ads
+          identifier: ads_ads
+        - name: ads_facts
+          identifier: ads_ads_facts
+        - name: campaigns
+          identifier: ads_campaigns
+        - name: campaigns_facts
+          identifier: ads_campaigns_facts
+        - name: keywords
+          identifier: ads_keywords
+        - name: keywords_facts
+          identifier: ads_keywords_facts
+        - name: location_criterions
+          identifier: ads_location_criterions
+   
+
     - name: facebook
       database: "{{ env_var('DBT_SOURCE_DATABASE') }}"
       schema: "{{ env_var('DBT_SOURCE_SCHEMA') }}"
@@ -181,3 +207,41 @@ sources:
           identifier: analytics_events_facts
         - name: mcf_facts
           identifier: analytics_mcf_facts
+
+    - name: currency
+      database: "{{ env_var('DBT_SOURCE_DATABASE') }}"
+      schema: "{{ env_var('DBT_SOURCE_SCHEMA') }}"
+      description: Currency Exchange Rates (CBRF)
+      tags: ['currency']      
+      tables:
+        - name: items
+          identifier: currency_items
+        - name: items_facts
+          identifier: currency_items_facts
+
+    - name: vkontakte
+      database: "{{ env_var('DBT_SOURCE_DATABASE') }}"
+      schema: "{{ env_var('DBT_SOURCE_SCHEMA') }}"
+      description: VKontakte (VK)
+      tags: ['vkontakte']      
+      tables:
+        - name: ads
+          identifier: vkontakte_ads
+        - name: ads_facts
+          identifier: vkontakte_ads_facts
+        - name: campaigns
+          identifier: vkontakte_campaigns
+        - name: campaigns_facts
+          identifier: vkontakte_campaigns_facts
+        - name: groups
+          identifier: vkontakte_groups
+        - name: groups_facts
+          identifier: vkontakte_groups_facts
+        - name: members
+          identifier: vkontakte_members
+        - name: members_facts
+          identifier: vkontakte_members_facts
+        - name: posts
+          identifier: vkontakte_posts
+        - name: posts_facts
+          identifier: vkontakte_posts_facts

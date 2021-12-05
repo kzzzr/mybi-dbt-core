@@ -1,7 +1,3 @@
-
-
-with source as (
-
 select
 
       id
@@ -11,9 +7,3 @@ select
     , email	
 
 from {{ source('general', 'clientids') }}
-
-where 1=1
-
-)
-
-select * from source

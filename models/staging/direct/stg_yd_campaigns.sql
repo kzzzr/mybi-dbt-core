@@ -1,7 +1,3 @@
-
-
-with source as (
-
 select
 
       id
@@ -16,18 +12,12 @@ select
     , currency
     , daily_budget_amount
     , daily_budget_mode
-    , start_date
-    , end_date
-    , is_actual
+    -- , is_actual
+    -- , start_date
+    -- , end_date
 
 from {{ source('direct', 'campaigns') }}
 
 {{ filter_rows(
-    account_id=var('account_id_direct'),
-    last_number_of_days=false, 
-    ts_field=none
+    account_id=var('account_id_direct')
 ) }}
-
-)
-
-select * from source

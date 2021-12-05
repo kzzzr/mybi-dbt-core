@@ -23,14 +23,16 @@ quoting:
     identifier: True
     
 vars:
-    filter_days_of_data: 3
+    limit_data: false
+    limit_data_days: 365
+    
     mybi_dbt_core:
         account_id_metrika: "21600"
-        account_id_adwords: "18380"
+        account_id_gaw: "18380"
         account_id_direct: "18378"
         account_id_facebook: "18441"
         account_id_mytarget: "18799"
-        account_id_b24: "19646"
+        account_id_bitrix24: "19646"
         account_id_amocrm: "20652"   
         account_id_ga: "18783, 26557"
 

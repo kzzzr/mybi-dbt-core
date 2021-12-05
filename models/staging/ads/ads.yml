@@ -1,0 +1,195 @@
+version: 2
+
+models:
+    - name: stg_ads_adgroups
+      tests: &ads_defaults
+        - not_empty:
+            severity: warn
+        - not_null:
+            column_name: id
+        - unique:
+            column_name: id
+
+    - name: stg_ads_ads
+      tests: *ads_defaults
+
+    - name: stg_ads_campaigns
+      tests: *ads_defaults
+
+    - name: stg_ads_keywords
+      tests: *ads_defaults
+
+    - name: stg_ads_location_criterions
+      tests:
+        - not_empty:
+            severity: warn
+        - not_null:
+            column_name: id
+        - unique:
+            column_name: id
+        - relationships:
+            to: ref('stg_ads_campaigns')
+            column_name: campaigns_id
+            field: id            
+
+    - name: stg_ads_campaigns_facts
+      tests: 
+        - not_empty:
+            severity: warn
+        - not_null:
+            column_name: id
+        - unique:
+            column_name: id
+        - not_null:
+            column_name: account_id
+        - not_null:
+            column_name: campaigns_id
+        - not_null:
+            column_name: dates_id
+        - relationships:
+            to: ref('stg_general_accounts')
+            column_name: account_id
+            field: account_id
+        - relationships:
+            to: ref('stg_general_dates')
+            column_name: dates_id
+            field: id
+        - relationships:
+            to: ref('stg_ads_campaigns')
+            column_name: campaigns_id
+            field: id
+
+    - name: stg_ads_adgroups_facts
+      tests:
+        - not_empty:
+            severity: warn
+        - not_null:
+            column_name: id
+        - unique:
+            column_name: id
+        - not_null:
+            column_name: account_id
+        - not_null:
+            column_name: campaigns_id
+        - not_null:
+            column_name: adgroups_id
+        - not_null:
+            column_name: dates_id
+        - relationships:
+            to: ref('stg_general_accounts')
+            column_name: account_id
+            field: account_id
+        - relationships:
+            to: ref('stg_general_dates')
+            column_name: dates_id
+            field: id
+        - relationships:
+            to: ref('stg_ads_campaigns')
+            column_name: campaigns_id
+            field: id
+        - relationships:
+            to: ref('stg_ads_adgroups')
+            column_name: adgroups_id
+            field: id
+
+    - name: stg_ads_ads_facts
+      tests:
+        - not_empty:
+            severity: warn
+        - not_null:
+            column_name: id
+        - unique:
+            column_name: id
+        - not_null:
+            column_name: account_id
+        - not_null:
+            column_name: campaigns_id
+        - not_null:
+            column_name: adgroups_id
+        - not_null:
+            column_name: ads_id
+        - not_null:
+            column_name: dates_id
+        - not_null:
+            column_name: traffic_id
+        - not_null:
+            column_name: sites_id
+        - relationships:
+            to: ref('stg_general_accounts')
+            column_name: account_id
+            field: account_id
+        - relationships:
+            to: ref('stg_general_dates')
+            column_name: dates_id
+            field: id
+        - relationships:
+            to: ref('stg_general_traffic')
+            column_name: traffic_id
+            field: id
+        - relationships:
+            to: ref('stg_general_sites')
+            column_name: sites_id
+            field: id
+        - relationships:
+            to: ref('stg_ads_campaigns')
+            column_name: campaigns_id
+            field: id
+        - relationships:
+            to: ref('stg_ads_adgroups')
+            column_name: adgroups_id
+            field: id
+        - relationships:
+            to: ref('stg_ads_ads')
+            column_name: ads_id
+            field: id
+
+    - name: stg_ads_keywords_facts
+      tests:
+        - not_empty:
+            severity: warn
+        - not_null:
+            column_name: id
+        - unique:
+            column_name: id
+        - not_null:
+            column_name: account_id
+        - not_null:
+            column_name: campaigns_id
+        - not_null:
+            column_name: adgroups_id
+        - not_null:
+            column_name: keywords_id
+        - not_null:
+            column_name: dates_id
+        - not_null:
+            column_name: traffic_id
+        - not_null:
+            column_name: sites_id
+        - relationships:
+            to: ref('stg_general_accounts')
+            column_name: account_id
+            field: account_id
+        - relationships:
+            to: ref('stg_general_dates')
+            column_name: dates_id
+            field: id
+        - relationships:
+            to: ref('stg_general_traffic')
+            column_name: traffic_id
+            field: id
+        - relationships:
+            to: ref('stg_general_sites')
+            column_name: sites_id
+            field: id
+        - relationships:
+            to: ref('stg_ads_campaigns')
+            column_name: campaigns_id
+            field: id
+        - relationships:
+            to: ref('stg_ads_adgroups')
+            column_name: adgroups_id
+            field: id
+        - relationships:
+            to: ref('stg_ads_keywords')
+            column_name: keywords_id
+            field: id

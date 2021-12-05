@@ -1,16 +1,14 @@
 version: 2
 
 models:
-    - name: stg_general_dates
+
+    - name: stg_general_clientids
       tests: &general_defualt
         - not_null:
             column_name: id
         - unique:
             column_name: id
 
-    - name: stg_general_clientids
-      tests: *general_defualt
-      
     - name: stg_general_locations
       tests: *general_defualt
 
@@ -19,6 +17,17 @@ models:
 
     - name: stg_general_accounts
       tests: *general_defualt
+
+    - name: stg_general_dates
+      tests:
+        - not_null:
+            column_name: id
+        - unique:
+            column_name: id
+        - not_null:
+            column_name: dt
+        - not_null:
+            column_name: ts
 
     - name: stg_general_traffic
       tests:

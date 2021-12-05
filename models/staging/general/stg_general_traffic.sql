@@ -1,7 +1,3 @@
-
-
-with source as (
-
 select
 
       id
@@ -14,9 +10,3 @@ select
     , landing_page
 
 from {{ source('general', 'traffic') }}
-
-where 1=1
-
-)
-
-select * from source

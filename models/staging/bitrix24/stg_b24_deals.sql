@@ -1,7 +1,3 @@
-
-
-with source as (
-
 select
 
       id
@@ -27,11 +23,5 @@ select
 from {{ source('bitrix24', 'deals') }}
 
 {{ filter_rows(
-    account_id=var('account_id_b24'),
-    last_number_of_days=false, 
-    ts_field=none
+    account_id=var('account_id_bitrix24')
 ) }}
-
-)
-
-select * from source

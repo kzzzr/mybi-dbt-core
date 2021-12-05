@@ -1,7 +1,3 @@
-
-
-with source as (
-
 select 
 
       id
@@ -11,11 +7,5 @@ select
 from {{ source('metrika', 'purchases') }}
 
 {{ filter_rows(
-    account_id=var('account_id_metrika'),
-    last_number_of_days=false, 
-    ts_field=none
+    account_id=var('account_id_metrika')
 ) }}
-
-)
-
-select * from source

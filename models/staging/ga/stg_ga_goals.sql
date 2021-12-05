@@ -1,7 +1,3 @@
-
-
-with source as (
-
 select
 
       id
@@ -13,11 +9,5 @@ select
 from {{ source('ga', 'goals') }}
 
 {{ filter_rows(
-    account_id=var('account_id_ga'),
-    last_number_of_days=false, 
-    ts_field=none
+    account_id=var('account_id_ga')
 ) }}
-
-)
-
-select * from source

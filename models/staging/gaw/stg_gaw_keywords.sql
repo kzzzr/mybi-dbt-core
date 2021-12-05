@@ -1,8 +1,4 @@
-
-
-with source as (
-
-SELECT 
+select 
 
 
       id
@@ -14,14 +10,8 @@ SELECT
     , first_page_cpc
     , top_of_page_cpc
 
-FROM {{ source('gaw', 'keywords') }}
+from {{ source('gaw', 'keywords') }}
 
 {{ filter_rows(
-    account_id=var('account_id_adwords'),
-    last_number_of_days=false, 
-    ts_field=none
+    account_id=var('account_id_gaw')
 ) }}
-
-)
-
-select * from source

@@ -2,7 +2,7 @@ name: 'mybi_dbt_core'
 version: '0.1.0'
 config-version: 2
 
-require-dbt-version: [">=0.21.0", "<0.22.0"]
+require-dbt-version: [">=0.20.0", "<0.21.0"]
 
 profile: 'mybi_dbt_core'
 
@@ -24,48 +24,59 @@ quoting:
     identifier: True
     
 vars:
-    filter_days_of_data: 3
+    filter_days_of_data: 30
     mybi_dbt_core:
-        account_id_metrika: null
-        account_id_b24: null
+        account_id_ads: null
+        account_id_amocrm: null        
+        account_id_bitrix24: null
+        account_id_currency: null
         account_id_direct: null
         account_id_facebook: null
-        account_id_adwords: null
-        account_id_mytarget: null
-        account_id_amocrm: null        
         account_id_ga: null
+        account_id_gaw: null
+        account_id_metrika: null
+        account_id_mytarget: null
+        account_id_vkontakte: null
 
-        caption_metrika: 'yandex_metrika'
-        caption_direct: 'yandex_direct'
-        caption_adwords: 'google_adwords'                    
-        caption_facebook: 'facebook' 
-        caption_mytarget: 'mytarget' 
-        caption_bitrix24: 'bitrix24' 
+        caption_ads: 'google_ads'                    
         caption_amocrm: 'amocrm'
+        caption_bitrix24: 'bitrix24' 
+        caption_direct: 'yandex_direct'
+        caption_facebook: 'facebook' 
         caption_ga: 'google_analytics' 
+        caption_gaw: 'google_adwords'                    
+        caption_metrika: 'yandex_metrika'
+        caption_mytarget: 'mytarget' 
+        caption_vkontakte: 'vkontakte' 
 
 models:
     mybi_dbt_core:
-        +materialized: view
+        +materialized: table
         +enabled: true
         staging:
             +schema: staging
-            +tags: ["staging"]        
-            metrika:
-                +tags: ["metrika"]
-            ga:
-                +tags: ["ga"]
-            direct:
-                +tags: ["direct"]
-            gaw:
-                +tags: ["gaw"]
-            facebook:
-                +tags: ["facebook"]
-            mytarget:
-                +tags: ["mytarget"]
-            bitrix24:
-                +tags: ["bitrix24"]
+            +tags: ["staging"]   
+            ads:
+                +tags: ["ads"]     
             amocrm:
                 +tags: ["amocrm"]
+            bitrix24:
+                +tags: ["bitrix24"]
+            currency:
+                +tags: ["currency"]
+            direct:
+                +tags: ["direct"]
+            facebook:
+                +tags: ["facebook"]
+            ga:
+                +tags: ["ga"]
+            gaw:
+                +tags: ["gaw"]
             general:
                 +tags: ["general"]
+            metrika:
+                +tags: ["metrika"]
+            mytarget:
+                +tags: ["mytarget"]
+            vkontakte:
+                +tags: ["vkontakte"]

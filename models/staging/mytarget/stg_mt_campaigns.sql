@@ -1,7 +1,3 @@
-
-
-with source as (
-
 select
 
       id
@@ -21,11 +17,5 @@ select
 from {{ source('mytarget', 'campaigns') }}
 
 {{ filter_rows(
-    account_id=var('account_id_mytarget'),
-    last_number_of_days=false, 
-    ts_field=none
+    account_id=var('account_id_mytarget')
 ) }}
-
-)
-
-select * from source

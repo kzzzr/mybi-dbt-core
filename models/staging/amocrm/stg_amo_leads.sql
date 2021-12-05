@@ -1,7 +1,3 @@
-
-
-with source as (
-
 select
 
       id
@@ -13,22 +9,16 @@ select
     , status
     , status_id
     , status_order
-    , start_date
-    , end_date
-    , is_actual
     , request_id
     , loss_reason
     , loss_reason_id
     , is_deleted
+    -- , is_actual
+    -- , start_date
+    -- , end_date
 
 from {{ source('amocrm', 'leads') }}
 
 {{ filter_rows(
-    account_id=var('account_id_amocrm'),
-    last_number_of_days=false, 
-    ts_field=none
+    account_id=var('account_id_amocrm')
 ) }}
-
-)
-
-select * from source

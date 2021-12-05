@@ -1,7 +1,3 @@
-
-
-with source as (
-
 select
 
       {{ surrogate_key(["account_id", 
@@ -13,52 +9,46 @@ select
 		"traffic_id", 
 		"sites_id"])
 		}} as id
-    , f.account_id
-    , f.dates_id
-    , f.traffic_id
-    , f.sites_id
-    , f.campaigns_id
-    , f.adsets_id
-    , f.ads_id
-    , f.creatives_id
-    , f.clicks
-    , f.unique_clicks
-    , f.cpc
-    , f.cost_per_unique_click
-    , f.cpm
-    , f.cpp
-    , f.ctr
-    , f.unique_ctr
-    , f.frequency
-    , f.impressions
-    , f.reach
-    , f.cost
-    , f.total_action_value
-    , f.total_actions
-    , f.comments
-    , f.likes
-    , f.posts
-    , f.leadgens
-    , f.all_clicks
-    , f.pixel_purchase
-    , f.pixel_lead
-    , f.landing_page_views
-    , f.link_clicks
-    , f.post_reactions
-    , f.video_views
-    , gd.dt
-    , gd.ts	
+    , f.account_id as account_id
+    , f.dates_id as dates_id
+    , f.traffic_id as traffic_id
+    , f.sites_id as sites_id
+    , f.campaigns_id as campaigns_id
+    , f.adsets_id as adsets_id
+    , f.ads_id as ads_id
+    , f.creatives_id as creatives_id
+    , f.clicks as clicks
+    , f.unique_clicks as unique_clicks
+    , f.cpc as cpc
+    , f.cost_per_unique_click as cost_per_unique_click
+    , f.cpm as cpm
+    , f.cpp as cpp
+    , f.ctr as ctr
+    , f.unique_ctr as unique_ctr
+    , f.frequency as frequency
+    , f.impressions as impressions
+    , f.reach as reach
+    , f.cost as cost
+    , f.total_action_value as total_action_value
+    , f.total_actions as total_actions
+    , f.comments as comments
+    , f.likes as likes
+    , f.posts as posts
+    , f.leadgens as leadgens
+    , f.all_clicks as all_clicks
+    , f.pixel_purchase as pixel_purchase
+    , f.pixel_lead as pixel_lead
+    , f.landing_page_views as landing_page_views
+    , f.link_clicks as link_clicks
+    , f.post_reactions as post_reactions
+    , f.video_views as video_views
+    , gd.dt as dt
+    , gd.ts	 as ts	
 
 from {{ source('facebook', 'ads_facts') }} as f
-	left join {{ ref('stg_general_dates') }} as gd
+	inner join {{ ref('stg_general_dates') }} as gd
 		on gd.id = f.dates_id
 
 {{ filter_rows(
-    account_id=var('account_id_facebook'),
-    last_number_of_days=false, 
-    ts_field='dt'
+    account_id=var('account_id_facebook')
 ) }}
-
-)
-
-select * from source

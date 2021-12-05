@@ -1,7 +1,3 @@
-
-
-with source as (
-
 select
 
       id
@@ -10,18 +6,12 @@ select
     , attribute_id
     , name
     , value
-    , start_date
-    , end_date
-    , is_actual
+    -- , is_actual
+    -- , start_date
+    -- , end_date
 
 from {{ source('amocrm', 'leads_attributes') }}
 
 {{ filter_rows(
-    account_id=var('account_id_amocrm'),
-    last_number_of_days=false, 
-    ts_field=none
+    account_id=var('account_id_amocrm')
 ) }}
-
-)
-
-select * from source

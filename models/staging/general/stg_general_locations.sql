@@ -1,7 +1,3 @@
-
-
-with source as (
-
 select
 
       id
@@ -14,9 +10,3 @@ select
     , longitude	
 
 from {{ source('general', 'locations') }}
-
-where 1=1
-
-)
-
-select * from source

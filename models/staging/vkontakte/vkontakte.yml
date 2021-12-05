@@ -1,0 +1,236 @@
+version: 2
+
+models:
+    - name: stg_vkontakte_ads
+      tests:
+        - not_empty:
+            severity: warn
+        - unique:
+            column_name: id
+        - not_null:
+            column_name: account_id
+        - not_null:
+            column_name: ad_id
+        - relationships:
+            to: ref('stg_general_accounts')
+            column_name: account_id
+            field: account_id            
+
+    - name: stg_vkontakte_campaigns
+      tests:
+        - not_empty:
+            severity: warn
+        - unique:
+            column_name: id
+        - not_null:
+            column_name: account_id
+        - not_null:
+            column_name: campaign_id
+        - relationships:
+            to: ref('stg_general_accounts')
+            column_name: account_id
+            field: account_id            
+
+    - name: stg_vkontakte_groups
+      tests:
+        - not_empty:
+            severity: warn
+        - unique:
+            column_name: id
+        - not_null:
+            column_name: account_id
+        - not_null:
+            column_name: group_id
+        - relationships:
+            to: ref('stg_general_accounts')
+            column_name: account_id
+            field: account_id            
+
+    - name: stg_vkontakte_members
+      tests:
+        - not_empty:
+            severity: warn
+        - unique:
+            column_name: id
+        - not_null:
+            column_name: account_id
+        - not_null:
+            column_name: member_id
+        - relationships:
+            to: ref('stg_general_accounts')
+            column_name: account_id
+            field: account_id            
+
+    - name: stg_vkontakte_posts
+      tests:
+        - not_empty:
+            severity: warn
+        - unique:
+            column_name: id
+        - not_null:
+            column_name: account_id
+        - not_null:
+            column_name: post_id
+        - relationships:
+            to: ref('stg_general_accounts')
+            column_name: account_id
+            field: account_id            
+
+    - name: stg_vkontakte_campaigns_facts
+      tests: 
+        - not_empty:
+            severity: warn
+        - not_null:
+            column_name: id
+        - unique:
+            column_name: id
+        - not_null:
+            column_name: account_id
+        - not_null:
+            column_name: campaigns_id
+        - not_null:
+            column_name: dates_id
+        - relationships:
+            to: ref('stg_general_accounts')
+            column_name: account_id
+            field: account_id
+        - relationships:
+            to: ref('stg_general_dates')
+            column_name: dates_id
+            field: id
+        - relationships:
+            to: ref('stg_vkontakte_campaigns')
+            column_name: campaigns_id
+            field: id
+
+    - name: stg_vkontakte_ads_facts
+      tests:
+        - not_empty:
+            severity: warn
+        - not_null:
+            column_name: id
+        - unique:
+            column_name: id
+        - not_null:
+            column_name: account_id
+        - not_null:
+            column_name: campaigns_id
+        - not_null:
+            column_name: ads_id
+        - not_null:
+            column_name: dates_id
+        - not_null:
+            column_name: traffic_id
+        - relationships:
+            to: ref('stg_general_accounts')
+            column_name: account_id
+            field: account_id
+        - relationships:
+            to: ref('stg_general_dates')
+            column_name: dates_id
+            field: id
+        - relationships:
+            to: ref('stg_general_traffic')
+            column_name: traffic_id
+            field: id
+        - relationships:
+            to: ref('stg_vkontakte_campaigns')
+            column_name: campaigns_id
+            field: id
+        - relationships:
+            to: ref('stg_vkontakte_ads')
+            column_name: ads_id
+            field: id            
+
+    - name: stg_vkontakte_groups_facts
+      tests:
+        - not_empty:
+            severity: warn
+        - not_null:
+            column_name: id
+        - unique:
+            column_name: id
+        - not_null:
+            column_name: account_id
+        - not_null:
+            column_name: dates_id
+        - not_null:
+            column_name: groups_id
+        - relationships:
+            to: ref('stg_general_accounts')
+            column_name: account_id
+            field: account_id
+        - relationships:
+            to: ref('stg_general_dates')
+            column_name: dates_id
+            field: id
+        - relationships:
+            to: ref('stg_vkontakte_groups')
+            column_name: groups_id
+            field: id
+
+    - name: stg_vkontakte_members_facts
+      tests:
+        - not_empty:
+            severity: warn
+        - not_null:
+            column_name: id
+        - unique:
+            column_name: id
+        - not_null:
+            column_name: account_id
+        - not_null:
+            column_name: locations_id
+        - not_null:
+            column_name: groups_id
+        - not_null:
+            column_name: members_id
+        - relationships:
+            to: ref('stg_general_accounts')
+            column_name: account_id
+            field: account_id
+        - relationships:
+            to: ref('stg_general_locations')
+            column_name: locations_id
+            field: id
+        - relationships:
+            to: ref('stg_vkontakte_groups')
+            column_name: groups_id
+            field: id
+        - relationships:
+            to: ref('stg_vkontakte_members')
+            column_name: members_id
+            field: id
+
+    - name: stg_vkontakte_posts_facts
+      tests:
+        - not_empty:
+            severity: warn
+        - not_null:
+            column_name: id
+        - unique:
+            column_name: id
+        - not_null:
+            column_name: account_id
+        - not_null:
+            column_name: dates_id
+        - not_null:
+            column_name: groups_id
+        - not_null:
+            column_name: posts_id
+        - relationships:
+            to: ref('stg_general_accounts')
+            column_name: account_id
+            field: account_id
+        - relationships:
+            to: ref('stg_general_dates')
+            column_name: dates_id
+            field: id
+        - relationships:
+            to: ref('stg_vkontakte_groups')
+            column_name: groups_id
+            field: id
+        - relationships:
+            to: ref('stg_vkontakte_posts')
+            column_name: posts_id
+            field: id

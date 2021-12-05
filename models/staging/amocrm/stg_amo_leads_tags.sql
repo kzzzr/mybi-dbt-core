@@ -1,7 +1,3 @@
-
-
-with source as (
-
 select
 
       id
@@ -13,11 +9,5 @@ select
 from {{ source('amocrm', 'leads_tags') }}
 
 {{ filter_rows(
-    account_id=var('account_id_amocrm'),
-    last_number_of_days=false, 
-    ts_field=none
+    account_id=var('account_id_amocrm')
 ) }}
-
-)
-
-select * from source

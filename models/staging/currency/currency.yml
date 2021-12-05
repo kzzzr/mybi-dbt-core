@@ -1,0 +1,46 @@
+version: 2
+
+models:
+    - name: stg_currency_items
+      tests:
+        - not_empty:
+            severity: warn
+        - not_null:
+            column_name: id
+        - unique:
+            column_name: id
+        - not_null:
+            column_name: account_id
+        - relationships:
+            to: ref('stg_general_accounts')
+            column_name: account_id
+            field: account_id
+
+    - name: stg_currency_items_facts
+      tests:
+        - not_empty:
+            severity: warn
+        - not_null:
+            column_name: id
+        - unique:
+            column_name: id
+        - not_null:
+            column_name: account_id
+        - not_null:
+            column_name: items_id
+        - not_null:
+            column_name: dates_id
+        - not_null:
+            column_name: rate
+        - relationships:
+            to: ref('stg_general_accounts')
+            column_name: account_id
+            field: account_id
+        - relationships:
+            to: ref('stg_general_dates')
+            column_name: dates_id
+            field: id                     
+        - relationships:
+            to: ref('stg_currency_items')
+            column_name: items_id
+            field: id

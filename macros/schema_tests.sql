@@ -1,33 +1,25 @@
 -- NON_EMPTY
 {% macro test_not_empty(model, column_name) %}
+  {{ return(adapter.dispatch('test_not_empty') (model, column_name)) }}
+{% endmacro %}
 
-with validation as (
+{% macro default__test_not_empty(model, column_name) %}
 
     select
         count(1) as row_count
-
     from {{ model }}
-
-),
-
-validation_errors as (
-
-    select
-        row_count
-
-    from validation
-    where row_count = 0
-
-)
-
-select count(*)
-from validation_errors
+    having count(1) = 0
 
 {% endmacro %}
 
 
 -- UNIQUE
-{% macro default__test_unique(model) %}
+{% macro test_unique(model) %}
+    {% set macro = adapter.dispatch('test_unique') %}
+    {{ macro(model, **kwargs) }}
+{% endmacro %}
+
+{% macro sqlserver__test_unique(model) %}
 
 {% set column_name = kwargs.get('column_name', kwargs.get('arg')) %}
 
@@ -44,10 +36,4 @@ from (
 
 ) validation_errors
 
-{% endmacro %}
-
-
-{% macro test_unique(model) %}
-    {% set macro = adapter.dispatch('test_unique') %}
-    {{ macro(model, **kwargs) }}
 {% endmacro %}
