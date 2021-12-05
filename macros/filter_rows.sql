@@ -1,28 +1,28 @@
 {# LIMIT NUMBER OF ROWS FOR DEV, CI PIPELINES TO X LAST DAYS #}
-{% macro limit_last_number_of_days(ts_field='dt') %}
+{% macro limit_last_number_of_days(ts_field) %}
 
     {#- prepare expression to filter only last N days of data (e.g. last 3 days) -#}
     {%- if target.name in ['dev', 'ci'] -%} 
-        {%- set limit_rows = limit_last_number_of_days_expression() -%}
+        {%- set limit_rows = limit_last_number_of_days_expression(ts_field) -%}
     {%- else -%} 
         {%- set limit_rows = '1 = 1' -%}
     {%- endif -%}
 
-    {{ ts_field }} {{ limit_rows }}
+    {{ limit_rows }}
 
 {% endmacro %}
 
-{% macro limit_last_number_of_days_expression() %}
-{{ return(adapter.dispatch('limit_last_number_of_days_expression') ()) }}
+{% macro limit_last_number_of_days_expression(ts_field) %}
+{{ return(adapter.dispatch('limit_last_number_of_days_expression') (ts_field)) }}
 {% endmacro %}
 
-{% macro clickhouse__limit_last_number_of_days_expression() %}
-    {%- set limit_rows = '>= now() - interval ' ~ var('limit_data_days') ~ ' day' -%}
+{% macro clickhouse__limit_last_number_of_days_expression(ts_field) %}
+    {%- set limit_rows = ts_field ~ ' >= now() - interval ' ~ var('limit_data_days') ~ ' day' -%}
     {{ return(limit_rows) }}
 {% endmacro %}
 
-{% macro sqlserver__limit_last_number_of_days_expression() %}
-    {%- set limit_rows = '>= dateadd(day, ' ~ -var('limit_data_days') ~ ', convert(date, getdate()))' -%}              
+{% macro sqlserver__limit_last_number_of_days_expression(ts_field) %}
+    {%- set limit_rows = ts_field ~ ' >= dateadd(day, ' ~ -var('limit_data_days') ~ ', convert(date, getdate()))' -%}              
     {{ return(limit_rows) }}
 {% endmacro %}
 

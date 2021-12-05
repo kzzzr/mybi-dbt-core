@@ -24,7 +24,9 @@ quoting:
     identifier: True
     
 vars:
-    filter_days_of_data: 30
+    limit_data: true
+    limit_data_days: 30
+    
     mybi_dbt_core:
         account_id_ads: null
         account_id_amocrm: null        
