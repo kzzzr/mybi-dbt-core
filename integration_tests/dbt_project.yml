@@ -2,20 +2,20 @@ name: 'mybi_dbt_core_integration_tests'
 version: '1.0.0'
 config-version: 2
 
-require-dbt-version: [">=0.21.0", "<0.22.0"]
+require-dbt-version: [">=1.0.0", "<1.1.0"]
 
 profile: 'mybi_dbt_core'
 
-source-paths: ["models"]
+model-paths: ["models"]
 test-paths: ["tests"]
-data-paths: ["data"]
+seed-paths: ["data"]
 macro-paths: ["macros"]
 snapshot-paths: ["snapshots"]
 
 target-path: "target"
 clean-targets:       
     - "target"
-    - "dbt_modules"
+    - "dbt_packages"
 
 quoting:
     database: True

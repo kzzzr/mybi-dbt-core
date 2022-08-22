@@ -1,7 +1,13 @@
 # Development
 
 ```bash
+pipenv install dbt==0.21.0 dbt-clickhouse==0.21.0 
+
 docker-compose up --build
+docker-compose up --force-recreate
+
+dbt clean && dbt deps
+dbt run -m stg_fb_ads_facts
 ```
 
 ### Using the starter project

@@ -7,3 +7,4 @@ audit/
 models/data_audit/
 integration_tests/.user.yml
 .gitignore
+profiles.yml
