@@ -8,6 +8,6 @@ select
 
 from {{ source('vkontakte', 'members_facts') }}
 
-{{ filter_rows(
+{{ source_filter_rows(
     account_id=var('account_id_vkontakte')
 ) }}

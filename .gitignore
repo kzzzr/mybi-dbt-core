@@ -1,10 +1,9 @@
 target/
 logs/
+*.log
 .DS_Store
+
 dbt_modules/
-dbt_modules/dbt_utils/
-audit/
-models/data_audit/
+dbt_packages/
+
 integration_tests/.user.yml
-.gitignore
-profiles.yml

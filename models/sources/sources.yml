@@ -217,7 +217,7 @@ sources:
         - name: items
           identifier: currency_items
         - name: items_facts
-          identifier: currency_items_facts
+          identifier: currency_item_facts
 
     - name: vkontakte
       database: "{{ env_var('DBT_SOURCE_DATABASE') }}"

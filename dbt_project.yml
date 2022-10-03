@@ -1,8 +1,8 @@
 name: 'mybi_dbt_core'
-version: '0.1.0'
+version: '1.0.0'
 config-version: 2
 
-require-dbt-version: [">=1.0.0", "<1.1.0"]
+require-dbt-version: [">=1.2.0", "<1.3.0"]
 
 profile: 'mybi_dbt_core'
 
@@ -23,8 +23,7 @@ quoting:
     identifier: True
     
 vars:
-    limit_data: true
-    limit_data_days: 30
+    limit_data_days: 5
 
     mybi_dbt_core:
         account_id_ads: null
@@ -66,8 +65,8 @@ models:
                 +tags: ["amocrm"]
             bitrix24:
                 +tags: ["bitrix24"]
-            currency:
-                +tags: ["currency"]
+            currencies:
+                +tags: ["currencies"]
             direct:
                 +tags: ["direct"]
             facebook:
@@ -83,4 +82,5 @@ models:
             mytarget:
                 +tags: ["mytarget"]
             vkontakte:
+                +enabled: false
                 +tags: ["vkontakte"]

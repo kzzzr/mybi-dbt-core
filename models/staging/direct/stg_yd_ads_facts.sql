@@ -1,6 +1,6 @@
 select 
 
-      {{ surrogate_key(["account_id", 
+      {{ dbt_utils.surrogate_key(["account_id", 
 	  	"campaigns_id", 
 		"adgroups_id", 
 		"ads_id", 
@@ -30,12 +30,13 @@ select
     , f.average_position_clicks as average_position_clicks
     , f.bounces as bounces
     , gd.dt as dt
-    , gd.ts	 as ts
+    , gd.ts	as ts
 
 from {{ source('direct', 'ads_facts') }} as f
 	inner join {{ ref('stg_general_dates') }} as gd
 		on gd.id = f.dates_id
 
-{{ filter_rows(
-    account_id=var('account_id_direct')
+{{ source_filter_rows(
+    account_id=var('account_id_direct'),
+    limit_data_for_dev=true
 ) }}

@@ -2,7 +2,7 @@ name: 'mybi_dbt_core_integration_tests'
 version: '1.0.0'
 config-version: 2
 
-require-dbt-version: [">=1.0.0", "<1.1.0"]
+require-dbt-version: [">=1.2.0", "<1.3.0"]
 
 profile: 'mybi_dbt_core'
 
@@ -23,8 +23,7 @@ quoting:
     identifier: True
     
 vars:
-    limit_data: false
-    limit_data_days: 365
+    limit_data_days: 3650
     
     mybi_dbt_core:
         account_id_metrika: "21600"
@@ -35,6 +34,7 @@ vars:
         account_id_bitrix24: "19646"
         account_id_amocrm: "20652"   
         account_id_ga: "18783, 26557"
+        account_id_ads: "35960"
 
         caption_metrika: 'yandex_metrika'
         caption_direct: 'yandex_direct'
@@ -46,73 +46,24 @@ vars:
         caption_ga: 'google_analytics' 
 
 seeds:
-  +pre-hook: "SET data_type_default_nullable = 1"
-  +quote_columns: true  
+  # +quote_columns: true  
 
   mybi_dbt_core_integration_tests:
     
+    ads:
+      +tags: ["ads"]
     general:
-        +tags: ["general"]
-        general_traffic:
-            +column_types:
-                grouping: String
-                content: String
-                source: String
-                campaign: String
-        general_sites:
-            +column_types:
-                domain: String
-        general_accounts:
-            +column_types:
-                caption: String                
+        +tags: ["general"]            
     amocrm:
         +tags: ["amocrm"]
     bitrix24:
         +tags: ["bitrix24"]
-        bitrix24_contacts:
-            +column_types:
-                phone: String
-        bitrix24_users:
-            +column_types:
-                work_phone: String
     direct:
         +tags: ["direct"]
-        direct_adgroups:
-            +column_types:
-                adgroup_id: String
-        direct_ads:
-            +column_types:
-                ad_id: String
     facebook:
         +tags: ["facebook"]
-        facebook_ads:
-            +column_types:
-                ad_id: String
-        facebook_adsets:
-            +column_types:
-                adset_id: String            
-        facebook_campaigns:
-            +column_types:
-                campaign_id: String            
-        facebook_creatives:
-            +column_types:
-                creative_id: String            
     gaw:
         +tags: ["gaw"]
-        adwords_campaigns:
-            +column_types:
-                campaign_id: String
-                ad_serving_optimization_status: String
-        adwords_adgroups:
-            +column_types:
-                adgroup_id: String
-        adwords_ads:
-            +column_types:
-                ad_id: String
-                url: String
-        adwords_keywords:
-            +column_types:
-                keyword_id: String
     metrika:
         +tags: ["metrika"]
     mytarget:

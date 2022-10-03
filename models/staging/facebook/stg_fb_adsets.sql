@@ -15,6 +15,6 @@ select
 
 from {{ source('facebook', 'adsets') }}
 
-{{ filter_rows(
+{{ source_filter_rows(
     account_id=var('account_id_facebook')
 ) }}

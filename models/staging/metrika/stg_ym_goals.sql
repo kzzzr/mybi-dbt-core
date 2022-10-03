@@ -1,3 +1,9 @@
+{{
+    config (
+        enabled=false
+    )
+}}
+
 select 
 
       id
@@ -8,6 +14,6 @@ select
 
 from {{ source('metrika', 'goals') }}
 
-{{ filter_rows(
+{{ source_filter_rows(
     account_id=var('account_id_metrika')
 ) }}

@@ -14,8 +14,8 @@ select
 	, f.conversion_value as conversion_value
 	, f.all_conversions as all_conversions
 	, f.all_conversion_value as all_conversion_value
-    , {{ cast_to_timestamp('created_date') }} as created_date
-    , {{ cast_to_timestamp('modified_date') }} as modified_date
+    , f.created_date as created_date
+    , f.modified_date as modified_date
     , gd.dt as dt
     , gd.ts as ts
 
@@ -23,6 +23,6 @@ from {{ source('ads', 'adgroups_facts') }} as f
 	inner join {{ ref('stg_general_dates') }} as gd
 		on gd.id = f.dates_id
 
-{{ filter_rows(
+{{ source_filter_rows(
     account_id=var('account_id_ads')
 ) }}

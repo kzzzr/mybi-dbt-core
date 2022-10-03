@@ -1,3 +1,9 @@
+{{
+    config (
+        enabled=false
+    )
+}}
+
 select 
 
       f.account_id as account_id
@@ -14,6 +20,6 @@ from {{ source('metrika', 'goals_facts') }} as f
 	inner join {{ ref('stg_general_dates') }} as gd
 		on gd.id = f.dates_id
 
-{{ filter_rows(
+{{ source_filter_rows(
     account_id=var('account_id_metrika')
 ) }}

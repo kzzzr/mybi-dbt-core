@@ -1,6 +1,6 @@
 select
 
-      {{ surrogate_key(["account_id",
+      {{ dbt_utils.surrogate_key(["account_id",
         "dates_id", 
         "sites_id",
         "traffic_id"])
@@ -20,6 +20,6 @@ from {{ source('general', 'costs_facts') }} as cf
 	inner join {{ ref('stg_general_dates') }} as gd
 		on gd.id = cf.dates_id
 
-{{ filter_rows(
+{{ source_filter_rows(
     account_id=none
 ) }}

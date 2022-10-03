@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<clickhouse>
+    <!-- See also the files in users.d directory where the settings can be overridden. -->
+
+    <!-- Profiles of settings. -->
+    <profiles>
+        <!-- Default settings. -->
+        <default>
+            <data_type_default_nullable>0</data_type_default_nullable>
+        </default>
+
+    </profiles>
+
+ 
+</clickhouse>

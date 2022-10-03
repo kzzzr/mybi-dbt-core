@@ -1,8 +1,8 @@
 select
 
 	  id
-    , {{ cast_to_timestamp('full_date') }} as ts
-    , {{ cast_to_timestamp('simple_date') }} as dt
+    , full_date as ts
+    , simple_date as dt
     , year
     , quarter
     , quarter_label
@@ -17,4 +17,4 @@ select
 
 from {{ source('general', 'dates') }}
 
-where {{ limit_last_number_of_days(ts_field='dt') }}
+{{ source_filter_rows() }}

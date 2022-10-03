@@ -1,28 +1,27 @@
 version: '2'
 services:
 
-  # mssql:
-  #   image: mcr.microsoft.com/mssql/server:2019-latest
-  #   environment: 
-  #     ACCEPT_EULA: "Y"
-  #     SA_PASSWORD: "P@ssword"
-  #   ports:
-  #     - "1433:1433"
-
-  clickhouse:
-    image: yandex/clickhouse-server:21.10
-    ports:
-      - 9000:9000
-      - 8123:8123
-
   dbt:
     build: .
-    entrypoint: /bin/bash
-    tty: true
     volumes:
-     - .:/usr/app/mybi-dbt-core
+     - .:/usr/app/
     ports:
       - "8080:8080" 
     environment:
       DBT_SOURCE_DATABASE: default
       DBT_SOURCE_SCHEMA: default    
+
+  clickhouse:
+    image: clickhouse/clickhouse-server:22.3
+    ports:
+      - 9000:9000
+      - 8123:8123
+    volumes:
+      - ./integration_tests/clickhouse/:/etc/clickhouse-server/users.d
+
+  postgres:
+    image: postgres:14-alpine
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_PASSWORD=postgres

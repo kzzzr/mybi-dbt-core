@@ -12,6 +12,6 @@ select
 
 from {{ source('amocrm', 'leads_attributes') }}
 
-{{ filter_rows(
+{{ source_filter_rows(
     account_id=var('account_id_amocrm')
 ) }}

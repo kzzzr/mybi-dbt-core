@@ -4,23 +4,23 @@ config:
     partial_parse: True
 
 mybi_dbt_core:
-  target: core_ci
+  target: clickhouse
+
   outputs:
-    core_ci:
+  
+    clickhouse:
       type: clickhouse
       host: clickhouse
-      port: 9000
+      port: 8123
       schema: default
-
-# mybi_dbt_core:
-#   target: "{{ env_var('DBT_MSSQL_TARGET') }}"
-#   outputs:
-#     core_ci:
-#       type: sqlserver
-#       driver: 'ODBC Driver 17 for SQL Server'
-#       server: "{{ env_var('DBT_MSSQL_SERVER') }}"
-#       port: 1433
-#       user: "{{ env_var('DBT_MSSQL_USER') }}"
-#       password: "{{ env_var('DBT_MSSQL_PASSWORD') }}"
-#       database: "{{ env_var('DBT_MSSQL_DATABASE') }}"
-#       schema: "{{ env_var('DBT_MSSQL_TARGET') }}"
+      threads: 4
+  
+    postgres:
+      type: postgres
+      host: postgres
+      port: 5432
+      user: postgres
+      pass: postgres
+      dbname: postgres
+      schema: public
+      threads: 4
