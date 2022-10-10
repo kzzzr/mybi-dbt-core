@@ -36,12 +36,7 @@
     {{ return(adapter.dispatch('watermark') (history_depth_days)) }}
 {% endmacro %}
 
-{% macro clickhouse__watermark(history_depth_days) %}
-    {%- set watermark = '(now() - interval ' ~ history_depth_days ~ ' day)' -%}
-    {{ return(watermark) }}
-{% endmacro %}
-
-{% macro postgres__watermark(history_depth_days) %}
-    {%- set watermark = '(dateadd(day, ' ~ -1 * history_depth_days ~ ', convert(date, getdate())))' -%}
+{% macro default__watermark(history_depth_days) %}
+    {%- set watermark = '(now() - interval \'' ~ history_depth_days ~ '\' day)' -%}
     {{ return(watermark) }}
 {% endmacro %}

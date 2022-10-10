@@ -15,12 +15,12 @@
     - [x] Custom schema names: `custom_schema_management`
     - [x] Surrogate keys
     - [x] WHERE expression: limit rows
+
 - [x] Support different versions of dbt (Release management)
 - [ ] Introduce Continuous Integration testing for changes in `mybi-dbt-core`
 
 - [ ] Document `mybi-dbt-core`: Overview (features), Quickstart, Development
 - [ ] Prepare Tutorial (Showcase) with `mybi-dbt-core` (Quickstart, HowTo)
-
 
 # Quickstart
 
@@ -31,8 +31,6 @@
 ## Configurations
 
 # Development
-
-## dbt container (#1)
 
 ```bash
 # launch containers: dbt, clickhouse, postgres
@@ -51,15 +49,8 @@ dbt clean && dbt deps
 
 # build and test on dummy data
 dbt seed --full-refresh
-dbt run --full-refresh
-dbt test
+dbt build --full-refresh
 
 # stop containers
 docker-compose down
-```
-
-## clickhouse container (#2)
-
-```bash
-docker-compose exec clickhouse bash
 ```

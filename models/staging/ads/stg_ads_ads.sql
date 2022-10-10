@@ -7,7 +7,7 @@ select
 	, final_urls
 	, tracking_url_template
 	, url_custom_parameters
-	, [type]
+	, "type"
 	, headline
 	, headline_part_one
 	, headline_part_two
