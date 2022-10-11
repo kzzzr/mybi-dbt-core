@@ -4,7 +4,7 @@ config:
     partial_parse: True
 
 mybi_dbt_core:
-  target: "{{ env_var('DBT_TARGET') }}"
+  target: "{{ env_var('DBT_TARGET', 'clickhouse') }}"
 
   outputs:
   

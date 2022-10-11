@@ -1,0 +1,96 @@
+name: Continuous Integration Tests
+
+on:
+  pull_request:
+    branches: [ master ]
+env:
+  DBT_PROJECT_DIR: integration_tests
+concurrency: 
+  group: ${{ github.ref }}
+  cancel-in-progress: true  
+
+jobs:
+  postgresql:
+    name: PostgreSQL CI
+    timeout-minutes: 10
+    env:
+      DBT_TARGET: postgres
+      DBT_SOURCE_DATABASE: postgres
+      DBT_SOURCE_SCHEMA: public
+    strategy:
+      matrix:
+        version: [12, 13, 14]
+    services:
+      postgres:
+        image: postgres:${{ matrix.version }}-alpine
+        ports:
+          - 5432:5432
+        env:
+          POSTGRES_PASSWORD: postgres
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: wait for services to start up
+        run: sleep 10
+      - name: dbt version
+        uses: kzzzr/mybi-dbt-action@mybi-dbt-core
+        with:
+          command: dbt --version
+      - name: dbt debug
+        uses: kzzzr/mybi-dbt-action@mybi-dbt-core
+        with:
+          command: dbt debug          
+      - name: dbt deps
+        uses: kzzzr/mybi-dbt-action@mybi-dbt-core
+        with:
+          command: dbt deps
+      - name: dbt seed
+        uses: kzzzr/mybi-dbt-action@mybi-dbt-core
+        with:
+          command: dbt seed --full-refresh
+      - name: dbt build
+        uses: kzzzr/mybi-dbt-action@mybi-dbt-core
+        with:
+          command: dbt build --full-refresh
+  
+  clickhouse:
+    name: Clickhouse CI
+    timeout-minutes: 10
+    env:
+      DBT_TARGET: clickhouse
+      DBT_SOURCE_DATABASE: default
+      DBT_SOURCE_SCHEMA: default
+    strategy:
+      matrix:
+        version: [22.3, 22.7, 22.8]      
+    services:
+      clickhouse:
+        image: clickhouse/clickhouse-server:${{ matrix.version }}
+        ports:
+          - 9000:9000
+          - 8123:8123
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: wait for services to start up
+        run: sleep 10
+      - name: dbt version
+        uses: kzzzr/mybi-dbt-action@mybi-dbt-core
+        with:
+          command: dbt --version
+      - name: dbt debug
+        uses: kzzzr/mybi-dbt-action@mybi-dbt-core
+        with:
+          command: dbt debug          
+      - name: dbt deps
+        uses: kzzzr/mybi-dbt-action@mybi-dbt-core
+        with:
+          command: dbt deps
+      - name: dbt seed
+        uses: kzzzr/mybi-dbt-action@mybi-dbt-core
+        with:
+          command: dbt seed --full-refresh
+      - name: dbt build
+        uses: kzzzr/mybi-dbt-action@mybi-dbt-core
+        with:
+          command: dbt build --full-refresh
