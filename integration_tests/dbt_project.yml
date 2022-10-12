@@ -2,8 +2,6 @@ name: 'mybi_dbt_core_integration_tests'
 version: '1.0.0'
 config-version: 2
 
-require-dbt-version: [">=1.2.0", "<1.3.0"]
-
 profile: 'mybi_dbt_core'
 
 model-paths: ["models"]
@@ -26,6 +24,7 @@ vars:
     limit_data_days: 3650
     
     mybi_dbt_core:
+    
         account_id_metrika: "21600"
         account_id_gaw: "18380"
         account_id_direct: "18378"
@@ -51,7 +50,19 @@ seeds:
   mybi_dbt_core_integration_tests:
     
     ads:
-      +tags: ["ads"]
+        +tags: ["ads"]
+        ads_campaigns:
+            +column_types:
+                campaign_id: BIGINT
+        ads_adgroups:
+            +column_types:
+                adgroup_id: BIGINT
+        ads_ads:
+            +column_types:
+                ad_id: BIGINT
+        ads_keywords:
+            +column_types:
+                keyword_id: BIGINT
     general:
         +tags: ["general"]            
     amocrm:
@@ -60,10 +71,40 @@ seeds:
         +tags: ["bitrix24"]
     direct:
         +tags: ["direct"]
+        direct_adgroups:
+            +column_types:
+                adgroup_id: BIGINT
+        direct_ads:
+            +column_types:
+                ad_id: BIGINT                
     facebook:
         +tags: ["facebook"]
+        facebook_ads:
+            +column_types:
+                ad_id: BIGINT        
+        facebook_adsets:
+            +column_types:
+                adset_id: BIGINT        
+        facebook_campaigns:
+            +column_types:
+                campaign_id: BIGINT        
+        facebook_creatives:
+            +column_types:
+                creative_id: BIGINT        
     gaw:
         +tags: ["gaw"]
+        adwords_adgroups:
+            +column_types:
+                adgroup_id: BIGINT  
+        adwords_ads:
+            +column_types:
+                ad_id: BIGINT  
+        adwords_campaigns:
+            +column_types:
+                campaign_id: BIGINT  
+        adwords_keywords:
+            +column_types:
+                keyword_id: BIGINT  
     metrika:
         +tags: ["metrika"]
     mytarget:
