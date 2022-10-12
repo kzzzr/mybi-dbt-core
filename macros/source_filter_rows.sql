@@ -1,4 +1,4 @@
--- filter data for deleted rows; resize for dev, ci pipelines; apply incremental load filters
+-- macro to limit rows for specific accounts, dev/test environments
 {% macro source_filter_rows(
     account_id=none,
     limit_data_for_dev=false, 
