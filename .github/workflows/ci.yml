@@ -15,8 +15,6 @@ jobs:
     timeout-minutes: 10
     env:
       DBT_TARGET: postgres
-      # DBT_SOURCE_DATABASE: postgres
-      # DBT_SOURCE_SCHEMA: public
     strategy:
       matrix:
         version: [12, 13, 14]
@@ -51,15 +49,14 @@ jobs:
       - name: dbt build
         uses: kzzzr/mybi-dbt-action@v4
         with:
-          command: dbt build --full-refresh
+          command: >
+            dbt build --full-refresh --vars '{"dbt_source_database": "postgres", "dbt_source_schema": "public"}'
   
   clickhouse:
     name: Clickhouse CI
     timeout-minutes: 10
     env:
       DBT_TARGET: clickhouse
-      # DBT_SOURCE_DATABASE: default
-      # DBT_SOURCE_SCHEMA: default
     strategy:
       matrix:
         version: [22.3, 22.7, 22.8]      
@@ -93,4 +90,5 @@ jobs:
       - name: dbt build
         uses: kzzzr/mybi-dbt-action@v4
         with:
-          command: dbt build --full-refresh
+          command: >
+            dbt build --full-refresh --vars '{"dbt_source_database": "default", "dbt_source_schema": "default"}'

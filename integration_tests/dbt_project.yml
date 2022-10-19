@@ -24,9 +24,9 @@ vars:
     limit_data_days: 3650
     
     mybi_dbt_core:
-        dbt_source_database: "{{ 'postgres' if target.name in ('postgres') else 'default' }}"
-        dbt_source_schema: "{{ 'public' if target.name in ('postgres') else 'default' }}"
-    
+        dbt_source_database: null
+        dbt_source_schema: null
+
         account_id_metrika: "21600"
         account_id_gaw: "18380"
         account_id_direct: "18378"
