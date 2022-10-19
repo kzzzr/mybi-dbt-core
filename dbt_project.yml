@@ -26,6 +26,9 @@ vars:
     limit_data_days: 5
 
     mybi_dbt_core:
+        dbt_source_database: null
+        dbt_source_schema: null
+
         account_id_ads: null
         account_id_amocrm: null        
         account_id_bitrix24: null
