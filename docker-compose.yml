@@ -16,8 +16,6 @@ services:
     ports:
       - 9000:9000
       - 8123:8123
-    volumes:
-      - ./integration_tests/clickhouse/:/etc/clickhouse-server/users.d
 
   postgres:
     image: postgres:14-alpine
