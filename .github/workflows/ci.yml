@@ -33,23 +33,23 @@ jobs:
       - name: wait for services to start up
         run: sleep 10
       - name: dbt version
-        uses: kzzzr/mybi-dbt-action@mybi-dbt-core
+        uses: kzzzr/mybi-dbt-action@v4
         with:
           command: dbt --version
       - name: dbt debug
-        uses: kzzzr/mybi-dbt-action@mybi-dbt-core
+        uses: kzzzr/mybi-dbt-action@v4
         with:
           command: dbt debug          
       - name: dbt deps
-        uses: kzzzr/mybi-dbt-action@mybi-dbt-core
+        uses: kzzzr/mybi-dbt-action@v4
         with:
           command: dbt deps
       - name: dbt seed
-        uses: kzzzr/mybi-dbt-action@mybi-dbt-core
+        uses: kzzzr/mybi-dbt-action@v4
         with:
           command: dbt seed --full-refresh
       - name: dbt build
-        uses: kzzzr/mybi-dbt-action@mybi-dbt-core
+        uses: kzzzr/mybi-dbt-action@v4
         with:
           command: dbt build --full-refresh
   
@@ -75,22 +75,22 @@ jobs:
       - name: wait for services to start up
         run: sleep 10
       - name: dbt version
-        uses: kzzzr/mybi-dbt-action@mybi-dbt-core
+        uses: kzzzr/mybi-dbt-action@v4
         with:
           command: dbt --version
       - name: dbt debug
-        uses: kzzzr/mybi-dbt-action@mybi-dbt-core
+        uses: kzzzr/mybi-dbt-action@v4
         with:
           command: dbt debug          
       - name: dbt deps
-        uses: kzzzr/mybi-dbt-action@mybi-dbt-core
+        uses: kzzzr/mybi-dbt-action@v4
         with:
           command: dbt deps
       - name: dbt seed
-        uses: kzzzr/mybi-dbt-action@mybi-dbt-core
+        uses: kzzzr/mybi-dbt-action@v4
         with:
           command: dbt seed --full-refresh
       - name: dbt build
-        uses: kzzzr/mybi-dbt-action@mybi-dbt-core
+        uses: kzzzr/mybi-dbt-action@v4
         with:
           command: dbt build --full-refresh
