@@ -1,9 +1,11 @@
+# dbt module to build DWH on top of myBI Connect data
+
 [![Continuous Integration Tests](https://github.com/kzzzr/mybi-dbt-core/actions/workflows/ci.yml/badge.svg)](https://github.com/kzzzr/mybi-dbt-core/actions/workflows/ci.yml)
-# Overview
+
+![](https://habrastorage.org/webt/l8/9t/gu/l89tgucplrrnkg421ytbfceg7ia.png)
 
 [mybi-dbt-core](https://github.com/kzzzr/mybi-dbt-core) is [dbt](https://www.getdbt.com/) module to quick start transformations on top of data synced by [myBI Connect](https://connect.mybi.ru/) along with multiple useful macros.
 
-![](https://habrastorage.org/webt/l8/9t/gu/l89tgucplrrnkg421ytbfceg7ia.png)
 
 ## Installation instructions
 
@@ -14,8 +16,6 @@ New to dbt packages? Read more about them [here](https://docs.getdbt.com/docs/bu
 
 ## Main features
 
-- [ ] TODO [Licencing a repository](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository)
-- [ ] TODO [Release management](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository)
 ### Supported Adapters
 - [x] [Clickhouse](https://docs.getdbt.com/reference/warehouse-setups/clickhouse-setup)
 - [x] [PostgreSQL](https://docs.getdbt.com/reference/warehouse-setups/postgres-setup)
@@ -50,26 +50,31 @@ Supported data sources:
 * [source_filter_rows](macros/source_filter_rows.sql) macro to limit rows for specific accounts, dev/test environments
 * (WIP) [clean_up](macros/clean_up.sql)
 
-# (WIP) Quickstart (Tutorial)
+## (WIP) Demo project (tutorial)
 
-* Source dataset (myBI)
-* Init dbt project
-* Configure Docker containers (dbt, clickhouse, postgres)
-* Choose database (Postgres / Clickhouse)
-* Install module via `packages.yml`
-* Assign variables
-* Transformations (business value)
-* Visualize with BI tool (mProve, Superset, Redash)
+- [x] Source dataset (myBI)
+- [ ] Init dbt project
+- [ ] Configure Docker containers (dbt, clickhouse, postgres)
+- [x] Choose database: Clickhouse
+- [ ] Install module via `packages.yml`
+- [ ] Assign variables
+- [ ] Transformations (business value)
+- [ ] Tests & Docs
+- [ ] Visualize with BI tool (mProve, Superset, Redash)
+- [ ] dbt Docs as Github Pages
 
-# (WIP) Development
+## Contributing
 
 Development is done via Docker containers and .csv mock files. Refer to [integration_tests](integration_tests) folder.
 
 Any PR will be tested with [Continuous Integration workflow](.github/workflows/ci.yml)
 
+Development workflow looks like this: 
+
 ```bash
 # launch containers: dbt, clickhouse, postgres
-docker-compose up --build -d
+docker-compose build --no-cache
+docker-compose up -d
 
 # enter container with dbt installed
 docker-compose exec dbt bash
@@ -80,6 +85,8 @@ dbt --version
 dbt debug --target clickhouse
 dbt debug --target postgres
 
+# introduce any code changes
+
 # install dependencies (modules)
 dbt clean
 dbt deps
@@ -88,6 +95,6 @@ dbt deps
 dbt seed --full-refresh
 dbt build --full-refresh
 
-# stop containers
+# exit container and clean up
 docker-compose down
 ```
