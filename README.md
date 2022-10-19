@@ -63,17 +63,7 @@ Supported data sources:
 
 ## (WIP) Demo project (tutorial)
 
-- [x] Init dbt project
-- [x] Choose database: Clickhouse
-- [ ] Configure Docker containers (dbt, clickhouse, postgres)
-- [x] Source dataset (myBI)
-- [ ] Install module via `packages.yml`
-- [ ] Assign variables
-- [ ] Transformations (business value)
-- [ ] Tests & Docs
-- [ ] Visualize with BI tool (mProve, Superset, Redash)
-- [ ] dbt Docs as Github Pages
-- [ ] Protect master branch and introduce CI
+- [ ] TODO: release verisions, install from tag not branch
 
 ## Contributing
 

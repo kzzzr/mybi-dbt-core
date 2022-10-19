@@ -10,7 +10,7 @@
     {% if account_id -%}
         {%- set filter_account_id = 'account_id in (' ~ account_id ~ ')' -%}
     {% else -%}
-        {%- set filter_account_id = '1 = 1' -%}
+        {%- set filter_account_id = 'TRUE' -%}
     {%- endif -%}
     
     {#- prepare expression to limit rows depending on target.name and flags provided -#}
@@ -21,11 +21,11 @@
         {%- set watermark = watermark(var('limit_data_days')) -%}
         {%- set history_depth_expression = timestamp_column ~ ' >= ' ~ watermark -%}
     {%- else -%}
-        {%- set history_depth_expression = '1 = 1' -%}
+        {%- set history_depth_expression = 'TRUE' -%}
     {%- endif -%}
 
     {#- prepare final filter expression -#}
-    WHERE 1 = 1
+    WHERE TRUE
         AND {{ filter_account_id }}
         AND {{ history_depth_expression }}
 

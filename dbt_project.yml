@@ -25,32 +25,31 @@ quoting:
 vars:
     limit_data_days: 5
 
-    mybi_dbt_core:
-        dbt_source_database: null
-        dbt_source_schema: null
+    # dbt_source_database: null
+    # dbt_source_schema: null
 
-        account_id_ads: null
-        account_id_amocrm: null        
-        account_id_bitrix24: null
-        account_id_currency: null
-        account_id_direct: null
-        account_id_facebook: null
-        account_id_ga: null
-        account_id_gaw: null
-        account_id_metrika: null
-        account_id_mytarget: null
-        account_id_vkontakte: null
+    account_id_ads: null
+    account_id_amocrm: null        
+    account_id_bitrix24: null
+    account_id_currency: null
+    account_id_direct: null
+    account_id_facebook: null
+    account_id_ga: null
+    account_id_gaw: null
+    account_id_metrika: null
+    account_id_mytarget: null
+    account_id_vkontakte: null
 
-        caption_ads: 'google_ads'                    
-        caption_amocrm: 'amocrm'
-        caption_bitrix24: 'bitrix24' 
-        caption_direct: 'yandex_direct'
-        caption_facebook: 'facebook' 
-        caption_ga: 'google_analytics' 
-        caption_gaw: 'google_adwords'                    
-        caption_metrika: 'yandex_metrika'
-        caption_mytarget: 'mytarget' 
-        caption_vkontakte: 'vkontakte' 
+    caption_ads: 'google_ads'                    
+    caption_amocrm: 'amocrm'
+    caption_bitrix24: 'bitrix24' 
+    caption_direct: 'yandex_direct'
+    caption_facebook: 'facebook' 
+    caption_ga: 'google_analytics' 
+    caption_gaw: 'google_adwords'                    
+    caption_metrika: 'yandex_metrika'
+    caption_mytarget: 'mytarget' 
+    caption_vkontakte: 'vkontakte' 
 
 models:
 

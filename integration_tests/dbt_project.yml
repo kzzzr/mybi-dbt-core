@@ -21,9 +21,10 @@ quoting:
     identifier: True
     
 vars:
-    limit_data_days: 3650
-    
+
     mybi_dbt_core:
+        limit_data_days: 3650
+
         dbt_source_database: null
         dbt_source_schema: null
 
