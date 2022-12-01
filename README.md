@@ -6,18 +6,6 @@
 
 [mybi-dbt-core](https://github.com/kzzzr/mybi-dbt-core) is [dbt](https://www.getdbt.com/) module to quick start transformations on top of data synced by [myBI Connect](https://connect.mybi.ru/) along with multiple useful macros.
 
-
-## Installation instructions
-
-New to dbt packages? Read more about them [here](https://docs.getdbt.com/docs/building-a-dbt-project/package-management/).
-
-* Include this package in your `packages.yml` file
-* Run `dbt deps` to install the package
-
-[mybi-dbt-core](https://github.com/kzzzr/mybi-dbt-core) is [dbt](https://www.getdbt.com/) module to quick start transformations on top of data synced by [myBI Connect](https://connect.mybi.ru/) along with multiple useful macros.
-
-![](https://habrastorage.org/webt/l8/9t/gu/l89tgucplrrnkg421ytbfceg7ia.png)
-
 ## Installation instructions
 
 New to dbt packages? Read more about them [here](https://docs.getdbt.com/docs/building-a-dbt-project/package-management/).
@@ -57,7 +45,7 @@ Supported data sources:
 
 ### Macros
 
-* All macros and test from [dbt_utils](https://github.com/dbt-labs/dbt-utils) package are available
+* All the macros and tests from [dbt_utils](https://github.com/dbt-labs/dbt-utils) package are available
 * [source_filter_rows](macros/source_filter_rows.sql) macro to limit rows for specific accounts, dev/test environments
 * (WIP) [clean_up](macros/clean_up.sql)
 
@@ -86,6 +74,10 @@ cd integration_tests/
 dbt --version
 dbt debug --target clickhouse
 dbt debug --target postgres
+
+# Setup target variables
+export DBT_SOURCE_DATABASE=default DBT_SOURCE_SCHEMA=default # for Clickhouse
+export DBT_SOURCE_DATABASE=postgres DBT_SOURCE_SCHEMA=public # for Postgres
 
 # introduce any code changes
 
