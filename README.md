@@ -14,6 +14,17 @@ New to dbt packages? Read more about them [here](https://docs.getdbt.com/docs/bu
 * Include this package in your `packages.yml` file
 * Run `dbt deps` to install the package
 
+[mybi-dbt-core](https://github.com/kzzzr/mybi-dbt-core) is [dbt](https://www.getdbt.com/) module to quick start transformations on top of data synced by [myBI Connect](https://connect.mybi.ru/) along with multiple useful macros.
+
+![](https://habrastorage.org/webt/l8/9t/gu/l89tgucplrrnkg421ytbfceg7ia.png)
+
+## Installation instructions
+
+New to dbt packages? Read more about them [here](https://docs.getdbt.com/docs/building-a-dbt-project/package-management/).
+
+* Include this package in your `packages.yml` file
+* Run `dbt deps` to install the package
+
 ## Main features
 
 ### Supported Adapters
