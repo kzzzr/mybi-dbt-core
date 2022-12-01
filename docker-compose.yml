@@ -6,18 +6,13 @@ services:
     volumes:
      - .:/usr/app/
     ports:
-      - "8080:8080" 
-    environment:
-      DBT_SOURCE_DATABASE: default
-      DBT_SOURCE_SCHEMA: default    
+      - "8080:8080"
 
   clickhouse:
     image: clickhouse/clickhouse-server:22.3
     ports:
       - 9000:9000
       - 8123:8123
-    volumes:
-      - ./integration_tests/clickhouse/:/etc/clickhouse-server/users.d
 
   postgres:
     image: postgres:14-alpine

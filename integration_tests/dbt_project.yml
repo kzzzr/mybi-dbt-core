@@ -21,10 +21,13 @@ quoting:
     identifier: True
     
 vars:
-    limit_data_days: 3650
-    
+
     mybi_dbt_core:
-    
+        limit_data_days: 3650
+
+        dbt_source_database: null
+        dbt_source_schema: null
+
         account_id_metrika: "21600"
         account_id_gaw: "18380"
         account_id_direct: "18378"
