@@ -2,7 +2,7 @@ name: Continuous Integration Tests
 
 on:
   pull_request:
-    branches: [ master ]
+    branches: [ main ]
 env:
   DBT_PROJECT_DIR: integration_tests
 concurrency: 
