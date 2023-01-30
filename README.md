@@ -6,6 +6,8 @@
 
 [mybi-dbt-core](https://github.com/kzzzr/mybi-dbt-core) is [dbt](https://www.getdbt.com/) module to quick start transformations on top of data synced by [myBI Connect](https://connect.mybi.ru/) along with multiple useful macros.
 
+🚀 Get experience with [myBI Market + dbt demo project](https://github.com/kzzzr/mybi-dbt-showcase)
+
 ## Installation instructions
 
 New to dbt packages? Read more about them [here](https://docs.getdbt.com/docs/building-a-dbt-project/package-management/).
@@ -32,7 +34,7 @@ Access data tables as simple as `select * from ref('stg_yd_ads_facts')`:
 Supported data sources:
 * `general` – [General]()
 * `metrika` – [Yandex.Metrika](https://docs.mybi.ru/yandeks-metrika-beta-struktura-bazovoy-vygruzki/)
-* `direct` – [Yandex.Direct ](https://docs.mybi.ru/yandeks-direkt-struktura-bazovoy-vygruzki/)
+* `direct` – [Yandex.Direct](https://docs.mybi.ru/yandeks-direkt-struktura-bazovoy-vygruzki/)
 * `gaw` – [Google Adwords]()
 * `ads` – [Google Ads](https://docs.mybi.ru/google-ads-struktura-bazovoy-vygruzki/)
 * `facebook` – [Facebook]()
@@ -49,9 +51,10 @@ Supported data sources:
 * [source_filter_rows](macros/source_filter_rows.sql) macro to limit rows for specific accounts, dev/test environments
 * (WIP) [clean_up](macros/clean_up.sql)
 
-## (WIP) Demo project (tutorial)
+## Demo project (tutorial)
 
-- [ ] TODO: release verisions, install from tag not branch
+Get experience with worked example of this module usage:
+- 🚀 [myBI Market + dbt demo project](https://github.com/kzzzr/mybi-dbt-showcase)
 
 ## Contributing
 
